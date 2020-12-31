@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<recource>
+    <ParameterLimit type="int" id="MPC_ALT_MODE" name="仿地" list="0:等高;1:仿地" group="仿地"/>
+    <ParameterLimit type="float" strict="true" id="MPC_Z_P" name="仿地灵敏度" list="1.2:高;1.0:中;0.8:低" group="仿地" />
+
+    <ParameterLimit type="float" id="MPC_ALT_KP" name="其它参数1"  group="仿地其它参数" />
+    <ParameterLimit type="float" id="MPC_ALT_KI" name="其它参数2"  group="仿地其它参数" />
+    <ParameterLimit type="float" id="MPC_ALT_KD" name="其它参数3"  group="仿地其它参数" />
+    <ParameterLimit type="int" id="EKF2_DISFILTER_N" name="其它参数4" group="仿地其它参数" />
+
+    <ParameterLimit type="float" id="RC1_MIN" name="横滚最小"  group="横滚" />
+    <ParameterLimit type="float" id="RC1_TRIM" name="横滚中值"  group="横滚" />
+    <ParameterLimit type="float" id="RC1_MAX" name="横滚最大"  group="横滚" />
+
+    <ParameterLimit type="float" id="RC2_MIN" name="俯仰最小"  group="俯仰" />
+    <ParameterLimit type="float" id="RC2_TRIM" name="俯仰中值"  group="俯仰" />
+    <ParameterLimit type="float" id="RC2_MAX" name="俯仰最大"  group="俯仰" />
+
+    <ParameterLimit type="float" id="RC3_MIN" name="油门最小"  group="油门" />
+    <ParameterLimit type="float" id="RC3_TRIM" name="油门中值"  group="油门" />
+    <ParameterLimit type="float" id="RC3_MAX" name="油门最大"  group="油门" />
+
+    <ParameterLimit type="float" id="RC4_MIN" name="偏航最小"  group="偏航" />
+    <ParameterLimit type="float" id="RC4_TRIM" name="偏航中值"  group="偏航" />
+    <ParameterLimit type="float" id="RC4_MAX" name="偏航最大"  group="偏航" />
+
+    <ParameterLimit type="float" id="SPRAY_SWAT" name="喷幅" group="喷洒参数"/>
+    <ParameterLimit type="float" id="SPRAY_QUAN" name="亩用量" group="喷洒参数"/>
+    <ParameterLimit type="float" id="MPC_XY_CRUISE" name="作业速度" group="喷洒参数"/>
+    <ParameterLimit type="int" id="NAV_MIS_SWITCH" name="校磁" group="校磁"/>
+    <ParameterLimit type="float" id="MPC_WORK_MIN_ALT" name="飞行最低高度" group="高度"/>
+    <ParameterLimit type="float" id="RTL_DESCEND_ALT" name="下降高度" group="高度"/>
+    <ParameterLimit type="float" id="MIS_TAKEOFF_ALT" name="校磁高度" group="高度"/>
+    <ParameterLimit type="float" id="EKF2_ALT1_SAFETY" name="越界保护高度" group="高度"/>
+
+    <!-- readonly -->
+    <ParameterLimit type="uint" id="SYS_UAV_ID" name="飞机ID" show="base16" group="undef" readonly="true" />
+    <ParameterLimit type="int" id="BAT_N_CELLS" name="电池芯数" group="undef" least="1" readonly="true" />
+	
+    <ParameterLimit type="uint" id="HOST_IP" name="云IP" show="ip" group="undef" least="1.0.0.1" biggest="255.0.0.0" />
+    <ParameterLimit type="uint" id="HOST_PORT" name="云Port" group="undef" least="1" biggest="65535" />
+
+    <ParameterLimit type="float" id="BAT_V_LOW_THR" name="低电压阈值" group="undef" least="3.5" biggest="3.7" />
+    <ParameterLimit type="float" id="BAT_V_CRIT_THR" name="严重低电压阈值" group="undef" least="3.5" biggest="3.7" />
+    <ParameterLimit type="float" id="BAT_V_EMER_THR" name="紧急低电压阈值" group="undef" least="3.42" biggest="3.7" />
+
+    <ParameterLimit type="float" id="GF_MAX_HOR_DIST" name="限距" group="undef" least="0" biggest="5000" />
+    <ParameterLimit type="float" id="GF_MAX_VER_DIST" name="限高" group="undef" least="0" biggest="30" />
+    <ParameterLimit type="float" id="MPC_XY_VEL_MAX" name="限速" group="undef" least="1" biggest="7" />
+
+    <ParameterLimit type="int" id="SPRAY_NOWATER" name="无药处理方式" list="0:不处理;1:警告;2:悬停;3:返航"  />
+    <ParameterLimit type="int" strict="true" id="COM_LOW_BAT_ACT" name="电量低处理方式" list="0:警告;2:原地降落;3:返航" />
+    <ParameterLimit type="int" id="NAV_RCL_ACT" name="遥控器失效处理方式" list="0:不处理;1:悬停;3:着陆" />
+
+    <ParameterLimit type="float" id="FLMT_CALI" name="流量计修正系数" group="undef" least="0" biggest="10" />
+
+    <ParameterLimit type="float" id="MIS_AB_LINE_DIS" name="AB点喷幅" group="undef" least="0" biggest="10"/>
+    <ParameterLimit type="float" id="SPRAY_QUAN" name="亩用量" group="undef" least="0.5" biggest="5"/>
+    <ParameterLimit type="float" id="MPC_XY_CRUISE" name="作业速度" group="undef" least="1" biggest="7"/>
+    <ParameterLimit type="float" id="MIS_AB_TF_ALT" name="AB点仿地高度" group="undef" least="0.5" biggest="10" />
+    <ParameterLimit type="int" id="COM_ARM_SPS" name="允许单点作业" list="0:不允许;1:允许(不安全)" />
+
+    <ParameterLimit type="int" id="RTCM_SOURCE" name="千寻方式" group="千寻" list="0:ntrip;1:sdk" />
+    <UavEvents>
+        <UavEvent  event="1" tip="解锁成功！" leave="Event_Info"/>
+        <UavEvent  event="2" tip="加锁成功！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="3" tip="不满足起飞条件，请稍等！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="4" tip="切换至返航模式" leave="Event_SpeakInfo"/>
+        <UavEvent  event="5" tip="返航路径计算成功！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="8" tip="可以解锁！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="11" tip="雷达高度超限，请注意！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="13" tip="航向异常，请重新上电！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="14" tip="请校磁！" leave="Event_Fatal"/>
+        <UavEvent  event="15" tip="导航异常，请尽快降落！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="16" tip="导航异常，请尽快降落！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="17" tip="GPS未工作，请检查！" leave="Event_Fatal"/>
+        <UavEvent  event="18" tip="RTK未工作，请检查！" leave="Event_Fatal"/>
+        <UavEvent  event="19" tip="雷达未工作，请检查！" leave="Event_Fatal"/>
+        <UavEvent  event="20" tip="请重新上电(a)！" leave="Event_Fatal"/>
+        <UavEvent  event="21" tip="请重新上电(b)！" leave="Event_Fatal"/>
+        <UavEvent  event="22" tip="请重新上电(c)！" leave="Event_Fatal"/>
+        <UavEvent  event="23" tip="请重新上电(d)！" leave="Event_Fatal"/>
+        <UavEvent  event="24" tip="请重新上电(e)！" leave="Event_Fatal"/>
+        <UavEvent  event="25" tip="请重新上电(f)！" leave="Event_Fatal"/>
+        <UavEvent  event="26" tip="请重新上电(g)！" leave="Event_Fatal"/>
+        <UavEvent  event="27" tip="请重新上电(h)！" leave="Event_Fatal"/>
+        <UavEvent  event="28" tip="请重新上电(i)！" leave="Event_Fatal"/>
+        <UavEvent  event="29" tip="请重新上电(g)！" leave="Event_Fatal"/>
+        <UavEvent  event="30" tip="GPS信号弱！" leave="Event_Fatal"/>
+        <UavEvent  event="35" tip="遥控器信号丢失！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="40" tip="药液耗尽！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="41" tip="药液耗尽，悬停！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="42" tip="药液耗尽，返航！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="43" tip="GPS信号丢失，原地降落！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="44" tip="GPS信号丢失，悬停！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="45" tip="飞行越界，悬停！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="46" tip="飞行越界，返航！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="47" tip="飞行越界，紧急终止飞行！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="48" tip="电池电压低，已切换至着陆模式！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="49" tip="电池电压低，已切换至返航模式！" leave="Event_SpeakInfo"/>
+        <UavEvent  event="50" tip="请关注电池电量！" leave="Event_Fatal"/>
+        <UavEvent  event="51" tip="电池电量低，请立即返航！" leave="Event_Fatal"/>
+        <UavEvent  event="52" tip="危险，电池电压极低，飞机即将降落！" leave="Event_Fatal"/>
+        <UavEvent  event="53" tip="电池电压低，已切换至悬停模式！" leave="Event_Fatal"/>
+	<UavEvent  event="60" tip="仿地雷达异常，请注意植保机作业高度！" leave="Event_Fatal"/>
+	<UavEvent  event="62" tip="加锁成功！" leave="Event_Info"/>
+	<UavEvent  event="63" tip="飞机高度过低，自动切换仿地模式！" leave="Event_Info"/>
+	<UavEvent  event="69" tip="主天线异常，请立即终止飞行并报修！" leave="Event_SpeakInfo"/>
+	<UavEvent  event="70" tip="AB点参数错误，请重新设定！" leave="Event_Fatal"/>
+	<UavEvent  event="71" tip="副天线异常，请立即终止飞行并报修！" leave="Event_SpeakInfo"/>
+	<UavEvent  event="90" tip="导航滤波器异常，请断电重启飞控！" leave="Event_SpeakInfo"/>
+	</UavEvents>
+</recource>

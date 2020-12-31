@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{972A5A02-87DA-3306-80E8-29B6DD49EABA}</ProjectGuid>
+    <RootNamespace>UavAdmin</RootNamespace>
+    <Keyword>QtVS_v302</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <PlatformToolset>v140</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>obj\</IntermediateDirectory>
+    <PrimaryOutput>UavAdmin</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <PlatformToolset>v140</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>obj\</IntermediateDirectory>
+    <PrimaryOutput>UavAdmin</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
+    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <QtInstall>msvc2015</QtInstall>
+    <QtModules>core;core-private;sql;network;gui;gui-private;svg;widgets;location;location-private;qml;qml-private;positioning;positioning-private;quick;quick-private;texttospeech</QtModules>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <QtInstall>msvc2015</QtInstall>
+    <QtModules>core;core-private;sql;network;gui;gui-private;svg;widgets;location;location-private;qml;qml-private;positioning;positioning-private;quick;quick-private;texttospeech</QtModules>
+  </PropertyGroup>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UavAdmin</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)/bin</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)/$(ProjectName)</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">UavAdmin</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;../PX4;..\base;VGViewerUI;VGViewerUI\plant;..\..\common-librarys\vgbase\src;..\..\vgmapplugin;..\..\protobuf;moc;\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>obj\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>shell32.lib;vgbase.lib;protobuf.lib;vgmapplugin.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\opensslx86\lib;C:\Utils\my_sql\mysql-5.6.11-win32\lib;C:\Utils\postgresqlx86\pgsql\lib;E:\Project\VigaApp\output\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\UavAdmin.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_LOCATION_LIB;QT_QUICK_LIB;QT_SVG_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_POSITIONING_LIB;QT_SQL_LIB;QT_TEXTTOSPEECH_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./moc/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <QtMocDir>.\moc</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
+    </QtMoc>
+    <QtRcc>
+      <InitFuncName>VGPlantViewer</InitFuncName>
+      <Compression>default</Compression>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <QtRccDir>.\rcc</QtRccDir>
+      <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\GeneratedFiles\$(ConfigurationName);.\GeneratedFiles;.;../PX4;..\base;VGViewerUI;VGViewerUI\plant;..\..\common-librarys\vgbase\src;..\..\vgmapplugin;..\..\protobuf;moc;\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>obj\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;QT_DEPRECATED_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>shell32.lib;vgbase.lib;protobuf.lib;vgmapplugin.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\opensslx86\lib;C:\Utils\my_sql\mysql-5.6.11-win32\lib;C:\Utils\postgresqlx86\pgsql\lib;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\UavAdmin.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;QT_DEPRECATED_WARNINGS;QT_LOCATION_LIB;QT_QUICK_LIB;QT_SVG_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;QT_QML_LIB;QT_NETWORK_LIB;QT_POSITIONING_LIB;QT_SQL_LIB;QT_TEXTTOSPEECH_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./moc/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <QtMocDir>.\moc</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
+    </QtMoc>
+    <QtRcc>
+      <InitFuncName>VGPlantViewer</InitFuncName>
+      <Compression>default</Compression>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <QtRccDir>.\rcc</QtRccDir>
+      <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include=".\moc\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -O2 -MD -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;.\moc\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\moc\moc_predefs.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zi -MDd -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;.\moc\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\moc\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\qml\BluetoothGPS.qml" />
+    <None Include="res\qml\BluetoothSettings.qml" />
+    <None Include="res\image\C.png" />
+    <None Include="res\qml\GUISettings.qml" />
+    <None Include="res\qml\GroundSetting.qml" />
+    <None Include="res\image\H.svg" />
+    <None Include="res\qml\HomePage.qml" />
+    <None Include="res\qml\LandBoundary.qml" />
+    <None Include="res\qml\LandBoundarySave.qml" />
+    <None Include="res\qml\LandInfoEdit.qml" />
+    <None Include="res\qml\LandManager.qml" />
+    <None Include="res\qml\LandRouteOption.qml" />
+    <None Include="res\qml\ListViewIndicator.qml" />
+    <None Include="res\qml\LogPage.qml" />
+    <None Include="res\qml\LogginPage.qml" />
+    <None Include="res\qml\OperationPage.qml" />
+    <None Include="res\qml\ParameterView.qml" />
+    <None Include="res\qml\QXWZSetting.qml" />
+    <None Include="res\qml\RegisterPage.qml" />
+    <None Include="res\qml\RouteInfoEdit.qml" />
+    <None Include="res\qml\SerialSettings.qml" />
+    <None Include="res\qml\SurveyLand.qml" />
+    <None Include="res\qml\SurveyLandSave.qml" />
+    <None Include="res\qml\TestMotorPage.qml" />
+    <None Include="res\qml\UavEvents.qml" />
+    <None Include="res\qml\UdpSettings.qml" />
+    <None Include="res\qml\VGAreaEditRect.qml" />
+    <None Include="res\qml\VGBoundaryAdd.qml" />
+    <None Include="res\qml\VGBoundaryAdjust.qml" />
+    <None Include="res\qml\VGBoundaryEdit.qml" />
+    <None Include="res\qml\VGBoundaryInfo.qml" />
+    <None Include="res\qml\VGButtonStyle.qml" />
+    <None Include="res\qml\VGCheckBox.qml" />
+    <None Include="res\qml\VGComboBox.qml" />
+    <None Include="res\qml\VGEdgeShrink.qml" />
+    <None Include="res\qml\VGGenaralPage.qml" />
+    <None Include="res\qml\VGImage.qml" />
+    <None Include="res\qml\VGLandList.qml" />
+    <None Include="res\qml\VGMap.qml" />
+    <None Include="res\qml\VGMission.qml" />
+    <None Include="res\qml\VGOnKeyStart.qml" />
+    <None Include="res\qml\VGOperationHeader.qml" />
+    <None Include="res\qml\VGParamEdit.qml" />
+    <None Include="res\qml\VGParamView.qml" />
+    <QtRcc Include="VGPlantViewer.qrc">
+    </QtRcc>
+    <None Include="res\qml\VGPopupButton.qml" />
+    <None Include="res\qml\VGRadioButton.qml" />
+    <None Include="res\qml\VGRouteList.qml" />
+    <None Include="res\qml\VGRoutePlan.qml" />
+    <None Include="res\qml\VGSlider.qml" />
+    <None Include="res\qml\VGSliderRect.qml" />
+    <None Include="res\qml\VGSplashScreen.qml" />
+    <None Include="res\qml\VGSupportEditRect.qml" />
+    <None Include="res\qml\VGSwitch.qml" />
+    <None Include="res\qml\VGTabHeader.qml" />
+    <None Include="res\qml\VGTextButton.qml" />
+    <None Include="res\qml\VGTextField.qml" />
+    <None Include="res\qml\VGTip.qml" />
+    <None Include="res\qml\VGTip2.qml" />
+    <None Include="res\qml\VGToolButton.qml" />
+    <None Include="res\qml\VGValueChange.qml" />
+    <None Include="res\qml\VGValueEdit.qml" />
+    <None Include="res\qml\VGValueItem.qml" />
+    <None Include="res\qml\VGValueShow.qml" />
+    <None Include="res\qml\VehicleManager.qml" />
+    <None Include="res\qml\VehicleSearch.qml" />
+    <None Include="res\qml\VoiceSetting.qml" />
+    <None Include="res\image\adbg.png" />
+    <None Include="res\image\add.png" />
+    <None Include="res\image\adjusting.png" />
+    <None Include="res\image\adjusting_gray.png" />
+    <None Include="res\image\arrow.png" />
+    <None Include="res\image\arrow_down.png" />
+    <None Include="res\image\arrow_down.svg" />
+    <None Include="res\image\arrow_gray.png" />
+    <None Include="res\image\arrow_left.svg" />
+    <None Include="res\image\arrow_right.svg" />
+    <None Include="res\image\arrow_up.svg" />
+    <None Include="res\image\backBg.png" />
+    <None Include="res\image\backBg_prs.png" />
+    <None Include="res\image\backb.png" />
+    <None Include="res\image\backb_prs.png" />
+    <None Include="res\image\backw.png" />
+    <None Include="res\image\backw_prs.png" />
+    <None Include="res\image\bind.svg" />
+    <None Include="res\image\block_add.png" />
+    <None Include="res\image\blocksTip.png" />
+    <None Include="res\image\bluetooth.png" />
+    <None Include="res\image\bluetooth_prs.png" />
+    <None Include="res\image\ccw.png" />
+    <None Include="res\image\center.png" />
+    <None Include="res\image\checked.png" />
+    <None Include="res\image\clear.png" />
+    <None Include="res\image\clock.png" />
+    <None Include="res\image\close.png" />
+    <None Include="res\image\close_prs.png" />
+    <None Include="res\image\compass.png" />
+    <None Include="res\image\confirm.png" />
+    <None Include="res\image\craft.png" />
+    <None Include="res\image\craft_gray.png" />
+    <None Include="res\image\cw.png" />
+    <None Include="res\image\dataSetting.png" />
+    <None Include="res\image\detail.png" />
+    <None Include="res\image\disConnect.svg" />
+    <None Include="res\image\end.png" />
+    <None Include="res\image\errRange.png" />
+    <None Include="res\image\forbidden.png" />
+    <None Include="res\image\gps.png" />
+    <None Include="res\image\height.png" />
+    <None Include="res\image\height2.png" />
+    <None Include="res\image\hold.png" />
+    <None Include="res\image\imitateGround.png" />
+    <None Include="res\image\linked.png" />
+    <None Include="res\image\lock.png" />
+    <None Include="res\image\logginBg.png" />
+    <None Include="res\image\magnetic.png" />
+    <None Include="res\qml\main.qml" />
+    <None Include="res\image\marker.png" />
+    <None Include="res\image\marker_gray.png" />
+    <None Include="res\image\maximum.png" />
+    <None Include="res\image\medVol.png" />
+    <None Include="res\image\minimum.png" />
+    <None Include="res\image\minus.png" />
+    <None Include="res\image\model.png" />
+    <None Include="res\image\model2.png" />
+    <None Include="res\image\motor.png" />
+    <None Include="res\image\notile.png" />
+    <None Include="res\image\orientate.png" />
+    <None Include="res\image\owner.png" />
+    <None Include="res\image\pitch.png" />
+    <None Include="res\image\plane.svg" />
+    <None Include="res\image\plane_gray.svg" />
+    <None Include="res\image\plant.png" />
+    <None Include="res\image\plantG.svg" />
+    <None Include="res\image\plantV.png" />
+    <None Include="res\image\plantV_gray.png" />
+    <None Include="res\image\position.png" />
+    <None Include="res\image\position_gray.png" />
+    <None Include="res\image\postip.png" />
+    <None Include="res\image\power.png" />
+    <None Include="res\image\precision.png" />
+    <None Include="res\image\pump.png" />
+    <None Include="res\image\qxwz.png" />
+    <None Include="res\image\return.png" />
+    <None Include="res\image\roll.png" />
+    <None Include="res\image\routePlan.svg" />
+    <None Include="res\image\rtk.png" />
+    <None Include="res\image\rtkgps.png" />
+    <None Include="res\image\satellite.png" />
+    <None Include="res\image\scale.png" />
+    <None Include="res\image\scale_tip.png" />
+    <None Include="res\image\settings.png" />
+    <None Include="res\image\settings_prs.png" />
+    <None Include="res\image\shadow.png" />
+    <None Include="res\image\shutdown.png" />
+    <None Include="res\image\speed.png" />
+    <None Include="res\image\speed.svg" />
+    <None Include="res\image\splash.png" />
+    <None Include="res\image\start.png" />
+    <None Include="res\image\step_minus.svg" />
+    <None Include="res\image\step_plus.svg" />
+    <None Include="res\image\survey.png" />
+    <None Include="res\image\syscGreen.png" />
+    <None Include="res\image\tip_error.png" />
+    <None Include="res\image\tip_success.png" />
+    <None Include="res\image\user.png" />
+    <None Include="res\image\user_gray.png" />
+    <None Include="res\image\vehicle.png" />
+    <None Include="res\image\velocity.png" />
+    <None Include="res\image\warning.svg" />
+    <None Include="res\image\wlc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\base\VGGlobalFun.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="srcload\VGIconEngine.cpp" />
+    <ClCompile Include="srcload\VGImageProvider.cpp" />
+    <ClCompile Include="VGApplication.cpp" />
+    <ClCompile Include="VGNetManager.cpp" />
+    <ClCompile Include="VGTcpClient.cpp" />
+    <ClCompile Include="VGViewerUI\audio\AudioWorker.cpp" />
+    <ClCompile Include="VGViewerUI\MapAbstractItem.cpp" />
+    <ClCompile Include="VGViewerUI\plant\VGPlantInformation.cpp" />
+    <ClCompile Include="VGViewerUI\plant\VGPlantManager.cpp" />
+    <ClCompile Include="VGViewerUI\QmlObjectListModel.cc" />
+    <ClCompile Include="VGViewerUI\VGMainPage.cpp" />
+    <ClCompile Include="VGViewerUI\VGMapManager.cpp" />
+    <ClCompile Include="VGViewerUI\VGUIInstance.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\base\VGGlobalFun.h" />
+    <ClInclude Include="..\base\VGMavLinkCode.h" />
+    <ClInclude Include="srcload\VGIconEngine.h" />
+    <ClInclude Include="srcload\VGImageProvider.h" />
+    <QtMoc Include="VGViewerUI\plant\VGPlantManager.h" />
+    <QtMoc Include="VGViewerUI\plant\VGPlantInformation.h" />
+    <QtMoc Include="VGViewerUI\audio\AudioWorker.h" />
+    <QtMoc Include="VGViewerUI\VGUIInstance.h" />
+    <QtMoc Include="VGViewerUI\VGMapManager.h" />
+    <QtMoc Include="VGViewerUI\VGMainPage.h" />
+    <QtMoc Include="VGViewerUI\QmlObjectListModel.h" />
+    <QtMoc Include="VGViewerUI\MapAbstractItem.h" />
+    <QtMoc Include="VGTcpClient.h" />
+    <QtMoc Include="VGNetManager.h" />
+    <QtMoc Include="VGApplication.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

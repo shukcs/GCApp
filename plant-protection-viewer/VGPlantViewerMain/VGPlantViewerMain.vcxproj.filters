@@ -1,0 +1,953 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="VGPlantViewerMain">
+      <UniqueIdentifier>{0dcda266-f4b1-4d0f-ad61-df62ec7e6c33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\srcload">
+      <UniqueIdentifier>{254e4c1e-f273-460d-aa46-f072cb0d2baf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI">
+      <UniqueIdentifier>{2db73685-f7b4-4b0f-b517-0707be09127a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\audio">
+      <UniqueIdentifier>{4c9593f9-242e-4be4-b89b-f3d1ee6cf1aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\friends">
+      <UniqueIdentifier>{064b709a-c977-4c75-ac4e-911b81b140cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\land">
+      <UniqueIdentifier>{d1b49cac-b47e-4a60-8dcd-ce9bc1996713}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\plant">
+      <UniqueIdentifier>{45e5126b-b5e2-43ab-82f0-f02e67a0f896}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\qx">
+      <UniqueIdentifier>{505cd135-2c68-46e4-82a9-c8021f3e6388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\survey">
+      <UniqueIdentifier>{ede32bf9-216b-4b51-9565-88cf3b2aad43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{ef84ff56-e903-4e7a-aeb8-9a40d30b697a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include=".\moc\moc_predefs.h.cbt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="MissionItem.cc">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="MissionManager.cc">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="VGApplication.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="VGDbManager.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="VGNetManager.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="VGTcpClient.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="VGToolBox.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="VGVehicle.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="VGVehicleLogManager.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="VGVehicleManager.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="srcload\VGIconEngine.cpp">
+      <Filter>VGPlantViewerMain\srcload</Filter>
+    </ClCompile>
+    <ClCompile Include="srcload\VGImageProvider.cpp">
+      <Filter>VGPlantViewerMain\srcload</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\MapAbstractItem.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\MapItemFactory.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\QmlObjectListModel.cc">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\VGLogDataObject.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\VGMainPage.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\VGMapManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\VGPlanningWorker.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\VGUIInstance.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\audio\AudioWorker.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\friends\VGFriend.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\friends</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\friends\VGFriendsManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\friends</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\land\VGCoordinate.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\land\VGFlyRoute.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\land\VGLandBoundary.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\land\VGLandInformation.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\land\VGLandManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\land\VGLandPolygon.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\land\VGOutline.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\land\VGPolylineMapItem.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\land\VGSelectEdge.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\plant\VGController.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\plant\VGMissionHistory.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\plant\VGMissionRecord.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\plant\VGPlantEvents.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\plant\VGPlantInformation.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\plant\VGPlantManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\plant\VGSupportPolyline.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\plant\VGVehicleMission.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\qx\VGQXManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\qx</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\survey\VGBDLocation.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\survey\VGBluetoothManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\survey\VGGetGpsLocation.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\survey\VGSurveyMonitor.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\JQChecksum.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\logHelper.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\ParameterLimit.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\ParametersLimit.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\VGGlobalFun.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\VGMavLinkCode.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\plant\VGBlock.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="MissionItem.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </QtMoc>
+    <QtMoc Include="MissionManager.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </QtMoc>
+    <QtMoc Include="VGApplication.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </QtMoc>
+    <QtMoc Include="VGDbManager.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </QtMoc>
+    <QtMoc Include="VGNetManager.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </QtMoc>
+    <QtMoc Include="VGTcpClient.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </QtMoc>
+    <QtMoc Include="VGToolBox.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </QtMoc>
+    <QtMoc Include="VGVehicle.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </QtMoc>
+    <QtMoc Include="VGVehicleLogManager.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </QtMoc>
+    <QtMoc Include="VGVehicleManager.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\MapAbstractItem.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\QmlObjectListModel.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\VGLogDataObject.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\VGMainPage.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\VGMapManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\VGPlanningWorker.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\VGUIInstance.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\audio\AudioWorker.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\audio</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\friends\VGFriend.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\friends</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\friends\VGFriendsManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\friends</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\land\VGCoordinate.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\land\VGFlyRoute.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\land\VGLandBoundary.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\land\VGLandInformation.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\land\VGLandManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\land\VGLandPolygon.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\land\VGOutline.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\land\VGPolylineMapItem.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\land\VGSelectEdge.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\plant\VGController.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\plant\VGMissionHistory.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\plant\VGMissionRecord.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\plant\VGPlantEvents.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\plant\VGPlantInformation.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\plant\VGPlantManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\plant\VGSupportPolyline.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\plant\VGVehicleMission.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\qx\VGQXManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\qx</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\survey\VGBDLocation.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\survey\VGBluetoothManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\survey\VGGetGpsLocation.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\survey\VGSurveyMonitor.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </QtMoc>
+    <QtMoc Include="..\base\logHelper.h">
+      <Filter>base</Filter>
+    </QtMoc>
+    <QtMoc Include="..\base\ParametersLimit.h">
+      <Filter>base</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\plant\VGBlock.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="srcload\VGIconEngine.h">
+      <Filter>VGPlantViewerMain\srcload</Filter>
+    </ClInclude>
+    <ClInclude Include="srcload\VGImageProvider.h">
+      <Filter>VGPlantViewerMain\srcload</Filter>
+    </ClInclude>
+    <ClInclude Include="VGPlantViewerUI\MapItemFactory.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\JQChecksum.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\ParameterLimit.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\QLog.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\VGGlobalFun.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\VGMacro.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\VGMavLinkCode.h">
+      <Filter>base</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\qml\BluetoothGPS.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\BluetoothSettings.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\DeviceOption.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\FriendsManager.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\GroundSetting.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\GUISettings.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\HomePage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\LandBoundary.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\LandBoundarySave.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\LandInfoEdit.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\LandManager.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\LandRouteOption.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\ListViewIndicator.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\LogginPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\LogPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\main.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\OperationPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\ParameterView.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\QXWZSetting.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\RegisterPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\RouteInfoEdit.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\SerialSettings.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\SurveyLand.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\SurveyLandSave.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\TestMotorPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\UavEvents.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\UdpSettings.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VehicleSearch.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGAreaEditRect.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGBoundaryAdd.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGBoundaryInfo.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGBoundaryEdit.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGBoundaryAdjust.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGButtonStyle.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGCheckBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGComboBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGEdgeShrink.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGGenaralPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGImage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGLandList.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGMap.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGMission.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGOnKeyStart.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGOperationHeader.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGParamEdit.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGParamView.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGPopupButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGRadioButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGRouteList.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGRoutePlan.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGSplashScreen.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGSlider.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGSliderRect.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGSupportEditRect.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGSwitch.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGTabHeader.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGTextButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGTextField.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGTip.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGTip2.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGToolButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGValueChange.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGValueEdit.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGValueItem.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGValueShow.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VoiceSetting.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGConversationPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGFriendCheckBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGContactPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGNewFriendPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGMissionHistoryDetail.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\qml\VGCalendarBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\arrow_down.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\arrow_left.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\arrow_right.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\arrow_up.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\bind.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\disConnect.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\H.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\plane.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\plantG.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\plane_gray.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\routePlan.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\speed.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\step_minus.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\step_plus.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\image\warning.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\image\adbg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\add.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\adjusting.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\adjusting_gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\arrow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\arrow_down.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\arrow_gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\backw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\backw_prs.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\backb.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\backb_prs.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\backBg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\backBg_prs.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\block_add.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\blocksTip.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\bluetooth.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\bluetooth_prs.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\C.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\center.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\checked.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\clear.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\clock.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\close.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\close_prs.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\compass.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\confirm.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\craft.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\craft_gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\ccw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\cw.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\dataSetting.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\detail.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\deviceOpt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\end.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\forbidden.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\errRange.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\gps.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\height.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\height2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\hold.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\imitateGround.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\linked.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\lock.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\logginBg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\magnetic.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\marker.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\marker_gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\maximum.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\medVol.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\minimum.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\minus.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\model.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\model2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\motor.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\notile.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\orientate.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\owner.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\pitch.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\plant.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\plantV.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\plantV_gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\position.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\position_gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\postip.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\power.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\precision.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\pump.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\qxwz.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\return.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\roll.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\rtk.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\rtkgps.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\satellite.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\scale.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\scale_tip.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\settings.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\settings_prs.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\shadow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\shutdown.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\speed.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\splash.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\start.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\survey.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\syscGreen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\tip_error.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\tip_success.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\user.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\user_gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\vehicle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\velocity.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\wlc.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\msg_f.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\msg_f_select.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\user_f.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\user_f_select.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\sendLand.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\sendLand_prs.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\A.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\B.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\image\ABC.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="VGPlantViewer.qrc">
+      <Filter>VGPlantViewerMain</Filter>
+    </QtRcc>
+  </ItemGroup>
+</Project>
