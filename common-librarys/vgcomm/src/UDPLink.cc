@@ -22,6 +22,7 @@
 #include <QSettings>
 #include <QThread>
 #include <QDateTime>
+#include <QTimerEvent>
 
 #define REMOVE_GONE_HOSTS 0
 
@@ -60,16 +61,17 @@ static QString get_ip_address(const QString& address)
     return QString("");
 }
 
-UDPLink::UDPLink(UDPCommand* cmd):LinkInterface(cmd)
+UDPLink::UDPLink(UDPCommand* cmd) :LinkInterface(cmd)
 , m_socket(NULL), m_thread(new QThread)
 #if defined(QGC_ZEROCONF_ENABLED)
 , _dnssServiceRef(NULL)
 #endif
+, m_timerId(-1)
 {
     if (m_thread)
         moveToThread(m_thread);
 
-    connect(this, &UDPLink::_sendUdp, this, &UDPLink::sendUdp);
+    connect(this, &UDPLink::sendUdp, this, &UDPLink::OnSendUdp);
     m_thread->start(QThread::NormalPriority);
 }
 
@@ -94,25 +96,7 @@ void UDPLink::writeBytes(const QByteArray &array)
     if (!m_socket || !m_thread || !m_thread->isFinished())
         return;
 
-     m_outQueue << array;
-     emit sendUdp();
-}
-
-bool UDPLink::_dequeBytes()
-{
-    UDPCommand *cmd = udpCommand();
-    QString host;
-    int port;
-    if (!cmd || !cmd->GetLastRcvHost(host, port))
-        return false;
-
-    while (m_outQueue.count() > 0 && m_socket)
-    {
-        QByteArray qdata = m_outQueue.takeFirst();
-        QHostAddress currentHost(host);
-        m_socket->writeDatagram(qdata.data(), qdata.size(), currentHost, (quint16)port);
-    }
-    return (m_outQueue.count() > 0);
+     emit sendUdp(array);
 }
 
 UDPCommand *UDPLink::udpCommand() const
@@ -149,9 +133,24 @@ void UDPLink::readBytes()
         emit bytesReceived(this, databuffer);
 }
 
-void UDPLink::sendUdp()
+void UDPLink::OnSendUdp(const QByteArray &array)
 {
-    _dequeBytes();
+    UDPCommand *cmd = udpCommand();
+    if (!cmd || array.size() < 1)
+        return;
+    QString host;
+    int port;
+    if (cmd->GetLastRcvHost(host, port))
+        m_socket->writeDatagram(array.data(), array.size(), QHostAddress(host), port);
+}
+
+
+void UDPLink::timerEvent(QTimerEvent *e)
+{
+    if (e->timerId() == m_timerId)
+        writeBytes("$QGC\r\n");
+    else
+        QObject::timerEvent(e);
 }
 
 void UDPLink::_disconnect(void)
@@ -213,6 +212,8 @@ bool UDPLink::_hardwareConnect()
         
         connect(m_socket, &QUdpSocket::readyRead, this, &UDPLink::readBytes);
         emit linkConnected(true);
+        if (m_timerId < 0)
+            m_timerId = startTimer(2000);
     }
     else
     {
@@ -285,7 +286,7 @@ void UDPLink::_deregisterZeroconf()
 UDPCommand::UDPCommand(QObject *p) : LinkCommand(p)
 , m_rcvPort(-1)
 {
-    loadSettings(*Application::Instance()->GetSettings(), "udpLinkConfig");
+    loadSettings("udpLinkConfig");
 }
 
 UDPCommand::~UDPCommand()
@@ -325,8 +326,12 @@ LinkInterface * UDPCommand::CreateLink()
 
 void UDPCommand::setHost(const QString host, uint16_t port)
 {
+    if (host == m_hostName && port == m_localPort)
+        return;
+
     m_hostName = host;
     m_localPort = port;
+    saveSettings("udpLinkConfig");
     emit hostChanged(host);
     emit localPortChanged(port);
     emit nameChanged(getName());
@@ -370,20 +375,29 @@ bool UDPCommand::IsValid() const
     return m_localPort > 0 && !m_hostName.isEmpty();
 }
 
-void UDPCommand::saveSettings(QSettings& settings, const QString& root)
+void UDPCommand::saveSettings(const QString& root)
 {
-    settings.beginGroup(root);
-    settings.setValue("localPort", m_localPort);
-    settings.setValue("ip", m_hostName);
-    settings.endGroup();
+    if (QSettings *settings = Application::Instance()->GetSettings())
+    {
+        settings->beginGroup(root);
+        settings->setValue("localPort", m_localPort);
+        settings->setValue("ip", m_hostName);
+        settings->endGroup();
+    }
 }
 
-void UDPCommand::loadSettings(QSettings& settings, const QString& root)
+void UDPCommand::loadSettings(const QString& root)
 {
-    settings.beginGroup(root);
-    m_localPort = (quint16)settings.value("localPort", QGC_UDP_LOCAL_PORT).toUInt();
-    m_hostName = settings.value("ip", "127.0.0.1").toString();
-    settings.endGroup();
+    if (QSettings *settings = Application::Instance()->GetSettings())
+    {
+        settings->beginGroup(root);
+        m_localPort = (quint16)settings->value("localPort", QGC_UDP_LOCAL_PORT).toUInt();
+        m_hostName = settings->value("ip", "0.0.0.0").toString();
+        settings->endGroup();
+
+        m_rcvHost = "255.255.255.255";
+        m_rcvPort = m_localPort + 1;
+    }
 }
 
 void UDPCommand::updateSettings()

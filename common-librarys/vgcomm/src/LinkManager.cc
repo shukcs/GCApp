@@ -33,10 +33,9 @@ Q_DECLARE_LOGGING_CATEGORY(LinkManagerVerboseLog)
 #endif
 
 
-LinkManager::LinkManager(QObject *parent) : QObject(parent)
-, m_mavlinkChannelsUsedBitMask(0), m_tmLinkCheck(-1)
-, m_mavlinkProtocol(NULL), m_bConnectUAV(false)
-, m_bBleAutoLink(false), m_UAVRadioBaud(57600)
+LinkManager::LinkManager(QObject *parent) : QObject(parent), m_mavlinkChannelsUsedBitMask(0)
+, m_tmLinkCheck(-1), m_mavlinkProtocol(NULL), m_bConnectUAV(false), m_bBleAutoLink(false)
+, m_bCheckPx4(false), m_UAVRadioBaud(57600)
 {
     m_mavlinkProtocol = new MAVLinkProtocol(this);
     m_tmLinkCheck = startTimer(AutoconnectUpdateTimerMSecs);
@@ -58,22 +57,16 @@ void LinkManager::_checkUdpLink()
     if (!m_bOpenUdp)
         return;
 
-    bool foundUDP = false;
     for (LinkCommand *cmd : m_linkCmds)
     {
         if (cmd->type() == LinkCommand::TypeUdp)
-        {
-            foundUDP = true;
-            break;
-        }
+            return;
     }
-    if (!foundUDP)
-    {
-        UDPCommand *udpConfig = new UDPCommand(this);
-        m_linkCmds.append(udpConfig);
-        udpConfig->connectLink();
-        _addLink(udpConfig->link());
-    }
+
+    auto udpConfig = LinkCommand::createSettings(LinkCommand::TypeUdp, this);
+    m_linkCmds.append(udpConfig);
+    udpConfig->connectLink();
+    _addLink(udpConfig->link());
 }
 
 void LinkManager::_checkBleLink()
@@ -153,7 +146,7 @@ void LinkManager::_updateAutoSerialLinks(QStringList &currentPorts)
                     pSerialCmd = new SerialCommand();
                     break;
                 case SerialPortInfo::BoardType3drRadio:
-                    pSerialCmd = new SerialCommand();
+                    pSerialCmd = new SerialCommand(this);
                     pSerialCmd->setStopBits(1);
                     pSerialCmd->setFlowControl(0);
                     pSerialCmd->setDataBits(8);
@@ -205,23 +198,21 @@ void LinkManager::_addLink(LinkInterface *link)
             qWarning() << "Ran out of mavlink channels";
     }
 
-    connect(link, &LinkInterface::bytesReceived,        m_mavlinkProtocol,   &MAVLinkProtocol::receiveBytes, Qt::UniqueConnection);
+    connect(link, &LinkInterface::bytesReceived, m_mavlinkProtocol, &MAVLinkProtocol::receiveBytes, Qt::UniqueConnection);
     connect(link, &LinkInterface::communicationError, this, &LinkManager::communicationError, Qt::UniqueConnection);
-    connect(link->getLinkCommand(), &LinkCommand::linkDestroy, this, &LinkManager::onCommandDeleted, Qt::UniqueConnection);
     m_mavlinkProtocol->resetMetadataForLink(link);
 }
  
 void LinkManager::DeleteLink(LinkInterface *link)
 {
     LinkCommand *cmd = link ? link->getLinkCommand() : NULL;
-    if (!link || !cmd || !m_linkCmds.contains(cmd) || !cmd->link())
+    if (!cmd || cmd->type() ==LinkCommand::TypeUdp)
         return;
 
-    m_linkCmds.removeAll(cmd);
-    if (m_autolinkCmds.contains((SerialCommand*)cmd))
-        m_autolinkCmds.removeAll((SerialCommand*)cmd);
+    if (m_linkCmds.removeAll(cmd) + m_autolinkCmds.removeAll((SerialCommand*)cmd) < 1)
+        return;
 
-    m_mavlinkChannelsUsedBitMask &= ~(1 << cmd->link()->getMavlinkChannel());
+    m_mavlinkChannelsUsedBitMask &= ~(1 << link->getMavlinkChannel());
     cmd->deleteLater();
 }
 
@@ -288,24 +279,21 @@ void LinkManager::_updateAutoConnectLinks(void)
     _checkUdpLink();
 #ifndef __ios__
     QStringList currentPorts;
-    _updateAutoSerialLinks(currentPorts);
+    if (m_bCheckPx4)
+        _updateAutoSerialLinks(currentPorts);
+
     _checkBleLink();
     for (SerialCommand *linkCmd : m_autolinkCmds)
     {
-        if (linkCmd)
+        if (!linkCmd)
+            continue;
+
+        if (!currentPorts.contains(linkCmd->getName()))
         {
-            if (!currentPorts.contains(linkCmd->getName()))
-            {
-                if (linkCmd->isConnect() && linkCmd->link()->IsActive())
-                {
-                    if (!m_linkCmds.contains(linkCmd))
-                        m_linkCmds << linkCmd;
+            if (linkCmd->isConnect() && linkCmd->link()->IsActive())
+                continue;
 
-                    continue;
-                }
-
-                linkCmd->deleteLater();
-            }
+            DeleteLink(linkCmd->link());
         }
     }
 #endif // !__ios__
@@ -331,35 +319,20 @@ QStringList LinkManager::linkTypeStrings(void) const
 
 void LinkManager::_updateSerialPorts()
 {
-    m_commPortList.clear();
     m_commPortDisplayList.clear();
 #ifndef __ios__
     QList<QSerialPortInfo> portList = QSerialPortInfo::availablePorts();
-    foreach (const QSerialPortInfo &info, portList)
+    for (const QSerialPortInfo &info : portList)
     {
-        QString port = info.systemLocation().trimmed();
-        m_commPortList += port;
-        m_commPortDisplayList += SerialCommand::cleanPortDisplayname(port);
+        m_commPortDisplayList += SerialCommand::cleanPortDisplayname(info.systemLocation().trimmed());
     }
+    emit commPortsChanged();
 #endif
-}
-
-QStringList LinkManager::serialPortStrings(void)
-{
-    if(!m_commPortDisplayList.size())
-    {
-        _updateSerialPorts();
-    }
-    return m_commPortDisplayList;
 }
 
 QStringList LinkManager::serialPorts(void)
 {
-    if(!m_commPortList.size())
-    {
-        _updateSerialPorts();
-    }
-    return m_commPortList;
+    return m_commPortDisplayList;
 }
 
 bool LinkManager::containsLink(LinkInterface *link)const
@@ -395,7 +368,7 @@ LinkCommand *LinkManager::createLinkCmd(int tp)
     if(tp == LinkCommand::TypeSerial)
         _updateSerialPorts();
 #endif
-    return LinkCommand::createSettings(tp);
+    return LinkCommand::createSettings(tp, this);
 }
 
 void LinkManager::endCreateLinkCmd(LinkCommand *cmd, bool bLink)
@@ -432,6 +405,20 @@ void LinkManager::shutdown(int tp)
     emit _shutdown(_getLinkCmds((LinkCommand::LinkType)tp));
 }
 
+bool LinkManager::IsAutoLinkPX4() const
+{
+    return m_bCheckPx4;
+}
+
+void LinkManager::SetAutoLinkPX4(bool b)
+{
+    if (m_bCheckPx4 != b)
+    {
+        m_bCheckPx4 = b;
+        emit autoLinkPX4Changed();
+    }
+}
+
 QList<LinkCommand *> LinkManager::_getLinkCmds(LinkCommand::LinkType tp)
 {
     if (tp == LinkCommand::TypeLast)
@@ -451,6 +438,7 @@ void LinkManager::timerEvent(QTimerEvent *e)
     if (e->timerId() == m_tmLinkCheck)
     {
         _updateAutoConnectLinks();
+        _updateSerialPorts();
         return;
     }
     QObject::timerEvent(e);

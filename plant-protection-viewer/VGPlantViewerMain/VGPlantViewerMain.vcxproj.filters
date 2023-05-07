@@ -144,9 +144,6 @@
     <ClCompile Include="VGPlantViewerUI\land\VGLandPolygon.cpp">
       <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
     </ClCompile>
-    <ClCompile Include="VGPlantViewerUI\land\VGOutline.cpp">
-      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
-    </ClCompile>
     <ClCompile Include="VGPlantViewerUI\land\VGPolylineMapItem.cpp">
       <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
     </ClCompile>
@@ -212,6 +209,9 @@
     </ClCompile>
     <ClCompile Include="VGPlantViewerUI\plant\VGBlock.cpp">
       <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="VGPlantViewerUI\land\VGLandPolyline.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -293,9 +293,6 @@
     <QtMoc Include="VGPlantViewerUI\land\VGLandPolygon.h">
       <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
     </QtMoc>
-    <QtMoc Include="VGPlantViewerUI\land\VGOutline.h">
-      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
-    </QtMoc>
     <QtMoc Include="VGPlantViewerUI\land\VGPolylineMapItem.h">
       <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
     </QtMoc>
@@ -349,6 +346,9 @@
     </QtMoc>
     <QtMoc Include="VGPlantViewerUI\plant\VGBlock.h">
       <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </QtMoc>
+    <QtMoc Include="VGPlantViewerUI\land\VGLandPolyline.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

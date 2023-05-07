@@ -382,7 +382,7 @@ void VGApplication::_initSettings()
 
         m_setting->beginGroup("udpLinkConfig");
         m_setting->setValue("open", IsPcApp());
-        m_setting->setValue("ip", "127.0.0.1");
+        m_setting->setValue("ip", "0.0.0.0");
         m_setting->setValue("localPort", 14550);
         m_setting->endGroup();
     }

@@ -199,6 +199,18 @@ double VGCoordinate::AzimuthTo(const VGCoordinate &oth) const
     return m_coordinate.azimuthTo(oth.m_coordinate);
 }
 
+
+void VGCoordinate::SetLatitude(double lat)
+{
+    m_coordinate.setLatitude(lat);
+}
+
+
+void VGCoordinate::SetLongitude(double lon)
+{
+    m_coordinate.setLongitude(lon);
+}
+
 void VGCoordinate::SetAltitude(double altitude)
 {
     return m_coordinate.setAltitude(altitude);

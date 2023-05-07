@@ -66,6 +66,7 @@ public:
     Q_INVOKABLE void setParameterIndex(const QString &id, int idx);
     Q_INVOKABLE QString getParamValue(const QString &key) const;
     Q_INVOKABLE int getParamIndex(const QString &key) const;
+    Q_INVOKABLE void clear();
 
     void    startQueryMyPlaneStatus();
     void    stopQueryMyPlaneStatus();
@@ -175,8 +176,9 @@ protected:
     void _prcsQXSdkCmd(VGPlantInformation &p, const mavlink_message_t &m);
     void _prcsRcChannels(VGPlantInformation &p, const mavlink_message_t &m);
     void _prcsSupport(VGPlantInformation &p, const mavlink_message_t &msg);
+    void _prcsSprayVal(VGPlantInformation &p, const mavlink_message_t &msg);
 private:
-    QList <VGPlantInformation *>    m_palnts;
+    QList <VGPlantInformation *>    m_plants;
     VGPlantInformation              *m_plantSurvey;                //当前踩点飞机
     VGPlantInformation              *m_plantCur;                   //当前飞机
     bool                            m_bExistBound;

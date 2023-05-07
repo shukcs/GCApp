@@ -6,7 +6,7 @@
 #include "VGFlyRoute.h"
 #include "VGCoordinate.h"
 #include "VGPlantManager.h"
-#include "VGOutline.h"
+#include "VGLandPolyline.h"
 #include "VGGlobalFun.h"
 #include "VGLandManager.h"
 #include "VGPlanningWorker.h"
@@ -722,7 +722,7 @@ void VGVehicleMission::onItemDestoyed(QObject *obj)
 
 void VGVehicleMission::_generateMission(VGFlyRoute *fr)
 {
-    VGOutline *ol = fr->allMissionRoute();
+    VGLandPolyline *ol = fr->allMissionRoute();
     if (ol && ol->coordinateCount()>0 && m_beg)
     {
         if (m_end <= 0)
@@ -805,7 +805,7 @@ void VGVehicleMission::_genMissionItem(const QList<VGCoordinate*> &coors)
 int VGVehicleMission::_getLinePntIndex(int nline, bool bStart /*= true*/)
 {
 
-    VGOutline *ol = NULL;
+    VGLandPolyline *ol = NULL;
     if (VGFlyRoute *fr = GetFlyRoute())
         ol = fr->allMissionRoute();
 
@@ -882,7 +882,7 @@ void VGVehicleMission::_calculatLength()
     emit lengthChanged(m_length);
 }
 
-void VGVehicleMission::_genTipPoint(VGOutline *ol, int beg, int end)
+void VGVehicleMission::_genTipPoint(VGLandPolyline *ol, int beg, int end)
 {
     if (0<=beg && beg<end && end<ol->coordinateCount())
     {

@@ -13,7 +13,7 @@ class VGLandInformation;
 class VGLandBoundary;
 class VGLandPolygon;
 class VGCoordinate;
-class VGOutline;
+class VGLandPolyline;
 class VGFlyRoute;
 
 class VGDbManager : public QObject
@@ -43,9 +43,6 @@ private:
     bool    createTables();
     bool    updateTables();  //在数据库表结构升级后，兼容老版本数据库，自动添加或者删除表新列
 
-    QString polygon2String(const VGLandPolygon &lstCoordinate);  //轮廓点转换成字符串
-    QString polyline2String(const VGOutline &polyLine);  //轮廓点转换成字符串
-    QString coordinateToString(const VGCoordinate &coor);
     bool    isExistTable(QString tableName);        //判断数据库某表是否存在
 
     bool _createTableSurvey();
@@ -63,9 +60,12 @@ private:
     void _processBoundary(QSqlQuery &query);
     void _processRoute(QSqlQuery &query);
 private:
-    static bool initalCoordinateByString(VGCoordinate &coor, const QString &str);
-    static bool initalPolygonByString(VGLandPolygon &plg, const QString &str);
-    static bool initalPolylineByString(VGOutline &plg, const QString &str);
+    static QByteArray polygonSeriers(const VGLandPolygon &lstCoordinate);  //轮廓点转换成字符串
+    static QByteArray polylineSeriers(const VGLandPolyline &polyLine);  //轮廓点转换成字符串
+    static QByteArray coordinateSeriers(const VGCoordinate &coor);
+    static bool initalCoordinate(VGCoordinate &coor, QDataStream &st);
+    static bool initalPolygon(VGLandPolygon &plg, QDataStream &st);
+    static bool initalPolyline(VGLandPolyline &plg, QDataStream &str);
 signals:
     void _saveItem(MapAbstractItem *item);
     void _deleteItem(const DescribeMap &dsc);

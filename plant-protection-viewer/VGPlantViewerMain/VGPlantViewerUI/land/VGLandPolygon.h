@@ -41,7 +41,7 @@ class VGLandPolygon : public MapAbstractItem
     Q_OBJECT
 
     //Quick中path对象，经纬度点
-    Q_PROPERTY(QVariantList path READ path NOTIFY pathChanged)
+    Q_PROPERTY(QVariantList path READ GetPath NOTIFY pathChanged)
     Q_PROPERTY(int countCoor READ CountCoordinate NOTIFY countCoorChanged)
 public:
     enum Type{
@@ -53,6 +53,7 @@ public:
         SafeBoundary,
         FlyRoute,
         RoutePlanning,
+        FreePlan,
 
         Unknow,
     };
@@ -61,8 +62,8 @@ public:
     VGLandPolygon(VGLandPolygon &polygon);
     ~VGLandPolygon();
 
-    QVariantList path()const;
-    void setPath(const QVariantList &path, const QList<VGCoordinate *> &coors = QList<VGCoordinate *>());
+    QVariantList GetPath()const;
+    void SetPath(const QVariantList &path, const QList<VGCoordinate *> &coors = QList<VGCoordinate *>());
     void AddCoordinate(const QGeoCoordinate &coor, int nSat = 0, VGCoordinate *c=NULL);
     void AddCoordinate(const VGCoordinate &coor);
     QList <VGCoordinate *> GetCoordinates()const;
@@ -77,6 +78,7 @@ public:
     int ItemIndex(const MapAbstractItem *item)const;
     bool IsValid()const;
     void Clear();
+    bool IsFreePlan()const;
 private slots :
     void onIdChange(int id);
     void onPointDelete();

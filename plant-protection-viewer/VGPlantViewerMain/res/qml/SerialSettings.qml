@@ -44,7 +44,7 @@ Rectangle {
         VGComboBox {
             id:                     commPortCombo
             width:                  root.width/4
-            model:                  linkManager.serialPortStrings
+            model:                  linkManager.serialPorts
             onActivated: {
                 if (index != -1) {n
                     serialCmd.ame = linkManager.serialPorts[index]

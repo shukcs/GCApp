@@ -7,7 +7,7 @@
 #include "VGMapManager.h"
 #include "VGLandBoundary.h"
 #include "VGCoordinate.h"
-#include "VGOutline.h"
+#include "VGLandPolyline.h"
 #include "VGLandPolygon.h"
 #include "VGLandManager.h"
 #include "VGGetGpsLocation.h"
@@ -16,11 +16,11 @@
 
 #define DOUBLELIIM 1000000
 #define ISEQDouble(f1, f2) (int)((f1)*DOUBLELIIM)==(int)((f2)*DOUBLELIIM)
-///////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //VGLandInformation
-///////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 VGLandInformation::VGLandInformation(QObject *parent) : SingleTriggerItem<MapAbstractItem>(parent, 1)
-, m_bUploaded(false), m_bSaveLocal(false), m_typeSurvey(Survey_DrawMap), m_bRemoveDB(false)
+, m_typeSurvey(Survey_DrawMap), m_bUploaded(false), m_bSaveLocal(false), m_bRemoveDB(false)
 , m_time(0), m_precision(1)
 {                        
     qRegisterMetaType<QGeoCoordinate>("QGeoCoordinate");
@@ -28,10 +28,10 @@ VGLandInformation::VGLandInformation(QObject *parent) : SingleTriggerItem<MapAbs
 }
 
 VGLandInformation::VGLandInformation(const VGLandInformation &info) : SingleTriggerItem<MapAbstractItem>(info.parent(), 1)
+, m_time(info.m_time), m_precision(info.m_precision), m_typeSurvey(info.m_typeSurvey)
 , m_bUploaded(info.m_bUploaded), m_bSaveLocal(info.m_bSaveLocal), m_userId(info.m_userId)
-, m_actualSurveyId(info.m_actualSurveyId), m_time(info.m_time), m_owner(info.m_owner)
-, m_precision(info.m_precision), m_bRemoveDB(false), m_adress(info.m_adress)
-, m_typeSurvey(info.m_typeSurvey)
+, m_actualSurveyId(info.m_actualSurveyId), m_owner(info.m_owner)
+, m_bRemoveDB(false), m_adress(info.m_adress)
 {
 	SetItemColor(QColor(255 * 0.4, 255 * 0.9, 255 * 0.4, 127), QColor(255, 127, 127, 127));
     foreach (VGCoordinate *itr, info.m_coorsSurvey)
@@ -95,7 +95,7 @@ void VGLandInformation::clearCoors()
 
 bool VGLandInformation::save(bool bCloud)
 {
-    if (m_typeSurvey == Survey_DrawMap)
+    if (GetSurveyType() == Survey_DrawMap)
         disconnect(VGLandManager::GetGps(), &VGGetGpsLocation::sigGetGpsCoordinate, this, &VGLandInformation::sltGetGpsCoordinate);
 
     if (m_time == 0)
@@ -107,6 +107,19 @@ bool VGLandInformation::save(bool bCloud)
 VGLandInformation::OwnerStruct * VGLandInformation::owner()
 {
     return &m_owner;
+}
+
+bool VGLandInformation::IsFreePoint() const
+{
+    return 0 != (m_typeSurvey & Survey_FreePoint);
+}
+
+void VGLandInformation::SetFreePoint(bool b)
+{
+    if (b)
+        m_typeSurvey |= Survey_FreePoint;
+    else
+        m_typeSurvey &= ~Survey_FreePoint;
 }
 
 void VGLandInformation::setOwnerName(const QString &param)
@@ -248,8 +261,8 @@ void VGLandInformation::SetSurveyType(SurveyType tp)
     if (tp > Survey_Vehicle || tp < Survey_Plant)
         return;
 
-    m_typeSurvey = tp;
-    if (tp == Survey_DrawMap)
+    m_typeSurvey = (tp&0xff) | (m_typeSurvey&Survey_Vehicle);
+    if (GetSurveyType() == Survey_DrawMap)
     {
         VGLandManager *mgr = qvgApp->landManager();
         if (mgr && !mgr->isGPSOpened())
@@ -259,17 +272,22 @@ void VGLandInformation::SetSurveyType(SurveyType tp)
             connect(gps, &VGGetGpsLocation::sigGetGpsCoordinate, this, &VGLandInformation::sltGetGpsCoordinate);
     }
 
-    emit surveyTypeChanged(tp);
+    emit surveyTypeChanged(GetSurveyType());
 }
 
-VGLandInformation::SurveyType VGLandInformation::GetSurveyType() const
+uint32_t VGLandInformation::GetSurvey()
 {
     return m_typeSurvey;
 }
 
+VGLandInformation::SurveyType VGLandInformation::GetSurveyType() const
+{
+    return (SurveyType)(m_typeSurvey&0xff);
+}
+
 void VGLandInformation::sltGetGpsCoordinate(double lat, double lon, double alt, int sig)
 {
-    if (m_typeSurvey == Survey_DrawMap)
+    if (GetSurveyType() == Survey_DrawMap)
         _addOneBoundaryPoint(QGeoCoordinate(lat, lon, alt), sig);
 }
 

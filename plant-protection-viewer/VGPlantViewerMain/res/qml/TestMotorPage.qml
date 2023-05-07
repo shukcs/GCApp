@@ -48,19 +48,21 @@ Rectangle
         VGRadioButton {
             id:			kg20
             text:       qsTr("20Kg")
+            checked:    true
             ftText:     vgMainPage.font()
             exclusiveGroup: vcType
-            checked:    true
         }
         VGRadioButton {
             id:			kg10
             text:       qsTr("10Kg")
+            checked: false
             ftText:     vgMainPage.font()
             exclusiveGroup: vcType
         }
         VGRadioButton {
             id:			kg5
             text:       qsTr("5Kg")
+            checked:    false
             ftText:     vgMainPage.font()
             exclusiveGroup: vcType
         }
@@ -108,7 +110,7 @@ Rectangle
         anchors {top: sep2.bottom; horizontalCenter: parent.horizontalCenter}
         Label{
             anchors {verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 20}
-            text:                       qsTr("Rotate Speed(Hz):")//qsTr("转动速度(Hz):")
+            text:                       qsTr("PWM width(uS):")//PWM脉宽(uS):
             font:                       vgMainPage.font()
             color:                      "gray"
         }
@@ -142,53 +144,54 @@ Rectangle
                 anchors    {left:cw2.left; top:parent.verticalCenter; topMargin: -colMt.impRule/2}
                 icSz:       38
                 iconName:   "ccw"
-                strText:    qsTr("Motor 1")//qsTr("电机1")
+                strText:    qsTr("Motor 3")//qsTr("电机1")
             }
             VGParamView{
                 anchors{top: ccw4.top; left: parent.horizontalCenter; leftMargin: -colMt.impRule/2}
                 icSz:       38
                 iconName:   "cw"
-                strText:   qsTr("Motor 3")
+                strText:   qsTr("Motor 2")
             }
             VGParamView{
                 anchors{left:cw2.left; bottom: parent.verticalCenter; bottomMargin: -colMt.impRule/2}
                 icSz:       38
                 iconName:   "ccw"
-                strText:   qsTr("Motor 5")
+                strText:   qsTr("Motor 4")
             }
             VGParamView{
+                opacity: 0.8
                 anchors{top: ccw4.top; right: parent.horizontalCenter; rightMargin: -colMt.impRule/2}
                 icSz:       38
                 iconName:   "cw"
-                strText:   qsTr("Motor 7")
+                strText:   qsTr("Motor 1")
             }
             VGParamView{
                 id:     cw2
                 anchors{horizontalCenter: parent.horizontalCenter; top:parent.verticalCenter; topMargin: -colMt.impRule/4}
                 icSz:       38
                 iconName:   "cw"
-                strText:   qsTr("Motor 2")
+                strText:   qsTr("Motor 7")
             }
             VGParamView{
                 id:     ccw4
                 anchors {verticalCenter:parent.verticalCenter; left:parent.horizontalCenter; leftMargin: -colMt.impRule/4}
                 icSz:       38
                 iconName:   "ccw"
-                strText:   qsTr("Motor 4")
+                strText:   qsTr("Motor 6")
             }
             VGParamView{
                 id:     cw6
                 anchors{left:cw2.left; bottom: parent.verticalCenter; bottomMargin: -colMt.impRule/4}
                 icSz:       38
                 iconName:   "cw"
-                strText:   qsTr("Motor 6")
+                strText:   qsTr("Motor 8")
             }
             VGParamView{
                 id:     ccw8
                 anchors {top: ccw4.top; right:parent.horizontalCenter; rightMargin: -colMt.impRule/4}
                 icSz:       38
                 iconName:   "ccw"
-                strText:   qsTr("Motor 8")
+                strText:   qsTr("Motor 5")
             }
         }
         Rectangle {
@@ -200,38 +203,38 @@ Rectangle
                 anchors {top:parent.top; topMargin:10; right: parent.horizontalCenter;rightMargin:(colMt.impRule-20)/4-width/2}
                 icSz:       38
                 iconName:   "cw"
-                strText:   qsTr("Motor 2")
+                strText:   qsTr("Motor 3")
             }
             VGParamView{
                 id:     cw10_1
                 anchors{top:cw10_2.top; left: parent.horizontalCenter; leftMargin:(colMt.impRule-20)/4-width/2}
                 icSz:       38
                 iconName:   "ccw"
-                strText:   qsTr("Motor 1")
+                strText:   qsTr("Motor 5")
             }
             VGParamView{
                 anchors{bottom:parent.bottom; bottomMargin:10; left: cw10_2.left}
                 icSz:       38
                 iconName:   "cw"
-                strText:   qsTr("Motor 4")
+                strText:   qsTr("Motor 6")
             }
             VGParamView{
                 anchors{bottom:parent.bottom; bottomMargin:10; left: cw10_1.left}
                 icSz:       38
                 iconName:   "ccw"
-                strText:   qsTr("Motor 5")
+                strText:   qsTr("Motor 4")
             }
             VGParamView{
                 anchors{verticalCenter:parent.verticalCenter; left:parent.horizontalCenter; leftMargin: (colMt.impRule-20)/2-width/2}
                 icSz:       38
                 iconName:   "cw"
-                strText:   qsTr("Motor 6")
+                strText:   qsTr("Motor 1")
             }
             VGParamView{
                 anchors{verticalCenter:parent.verticalCenter; right:parent.horizontalCenter; rightMargin: (colMt.impRule-20)/2-width/2}
                 icSz:       38
                 iconName:   "ccw"
-                strText:   qsTr("Motor 3")
+                strText:   qsTr("Motor 2")
             }
         }
         Rectangle {
@@ -250,13 +253,13 @@ Rectangle
                 anchors{top: parent.verticalCenter;right: parent.horizontalCenter; rightMargin: colMt.impRule/6; topMargin: colMt.impRule/6}
                 icSz:       38
                 iconName:   "ccw"
-                strText:   qsTr("Motor 3")
+                strText:   qsTr("Motor 2")
             }
             VGParamView{
                 anchors{top:ccw1.top; left: ccw3.left}
                 icSz:       38
                 iconName:   "cw"
-                strText:   qsTr("Motor 2")
+                strText:   qsTr("Motor 3")
             }
             VGParamView{
                 anchors{top:ccw3.top; left: ccw1.left}

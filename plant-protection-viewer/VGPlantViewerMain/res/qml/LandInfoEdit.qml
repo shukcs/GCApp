@@ -39,6 +39,7 @@ Rectangle {
         land.ownerName = txtOwner.text
         land.ownerPhone = txtPhone.text
         land.surveyType = cbbSurveyType.currentIndex
+        land.freePoint = cbFreef.checked
         emit:clickedOK(txtDestribe.text, land)
     }
 
@@ -61,6 +62,11 @@ Rectangle {
                     text:                       qsTr("Land information")//qsTr("地块信息")
                     font:                       vgMainPage.font(true)
                     color: "#0b81ff"
+                }
+                VGCheckBox {
+                    id: cbFreef
+                    anchors {verticalCenter: parent.verticalCenter; right: parent.right; rightMargin: 20}
+                    text:                       qsTr("Free point")//qsTr("自由飞行")
                 }
                 Rectangle{
                     height: 1

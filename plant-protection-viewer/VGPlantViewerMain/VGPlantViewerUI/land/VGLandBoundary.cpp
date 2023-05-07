@@ -8,7 +8,7 @@
 #include "VGApplication.h"
 #include "VGMapManager.h"
 #include "VGCoordinate.h"
-#include "VGOutline.h"
+#include "VGLandPolyline.h"
 #include "VGLandPolygon.h"
 #include "VGLandManager.h"
 #include "VGPlanningWorker.h"
@@ -18,27 +18,18 @@
 //VGLandBoundary
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 VGLandBoundary::VGLandBoundary(QObject *info) : SingleTriggerItem<MapAbstractItem>(qobject_cast<VGLandInformation *>(info))
-, m_bSaveLocal(false), m_safeArea(NULL)
-, m_bUploaded(false), m_time(0)
-, m_area(0), m_curBlock(-1)
-, m_bSafeEdited(false)
+, m_bSaveLocal(false), m_bUploaded(false), m_time(0)
+, m_area(0), m_curBlock(-1), m_bSafeEdited(false)
 {
     m_bShowBelonged = false;
 }
 
 VGLandBoundary::VGLandBoundary(const VGLandBoundary &oth) : SingleTriggerItem<MapAbstractItem>(oth)
-, m_bSaveLocal(oth.m_bSaveLocal), m_safeArea(NULL)
-, m_bUploaded(oth.m_bUploaded), m_bSafeEdited(true)
-, m_curBlock(-1), m_area(oth.m_area), m_time(oth.m_time)
-, m_strDescribe(oth.m_strDescribe), m_cloudID(oth.m_cloudID)
+, m_bSaveLocal(oth.m_bSaveLocal), m_bUploaded(oth.m_bUploaded), m_bSafeEdited(true)
+, m_curBlock(-1), m_area(oth.m_area), m_time(oth.m_time), m_strDescribe(oth.m_strDescribe)
+, m_cloudID(oth.m_cloudID)
 {
     SetShowBelonged(oth.IsShowBelonged());
-    if (oth.m_safeArea)
-    {
-        m_safeArea = new VGLandPolygon(*oth.m_safeArea);
-        m_safeArea->SetParentItem(this);
-        m_safeArea->SetVisible(GetVisible());
-    }
 
     foreach(VGLandPolygon *itr, oth.m_polygons)
     {
@@ -178,9 +169,6 @@ void VGLandBoundary::SetBoundaryId(const QString &str)
 
 void VGLandBoundary::showContent(bool b)
 {
-    if (m_safeArea)
-        m_safeArea->Show(b);
-
     foreach(VGLandPolygon *itr, m_polygons)
     {
         itr->Show(b);
@@ -298,11 +286,15 @@ VGLandBoundary *VGLandBoundary::adjust()
 
 VGLandPolygon *VGLandBoundary::_addBoundary(int tp)
 {
-    if (tp != VGLandPolygon::Boundary && tp != VGLandPolygon::BlockBoundary)
+    if (tp != VGLandPolygon::Boundary && tp != VGLandPolygon::BlockBoundary && tp != VGLandPolygon::FreePlan)
         return NULL;
 
+    
     if (VGLandPolygon *tmp = new VGLandPolygon(this, tp))
     {
+        if (tp==VGLandPolygon::Boundary && IsFreePoint())
+            tmp->SetId(VGLandPolygon::FreePlan);
+
         tmp->Show(GetVisible());
         m_polygons << tmp;
         connect(tmp, &VGLandPolygon::pathChanged, this, &VGLandBoundary::onBoundaryChange);
@@ -312,11 +304,6 @@ VGLandPolygon *VGLandBoundary::_addBoundary(int tp)
     return NULL;
 }
 
-void VGLandBoundary::_addSafeAreaPoint(const QGeoCoordinate &coor)
-{
-    if (m_safeArea && coor.isValid())
-        m_safeArea->AddCoordinate(coor, VGCoordinate::Boundary);
-}
 
 VGLandManager *VGLandBoundary::GetLandManager() const
 {
@@ -327,6 +314,15 @@ MapAbstractItem::SurveyType VGLandBoundary::GetSurveyType() const
 {
     if (VGLandInformation *land = GetBelongedLand())
         return land->GetSurveyType();
+
+    return MapAbstractItem::Survey_DrawMap;
+}
+
+
+uint32_t VGLandBoundary::GetSurvey() const
+{
+    if (VGLandInformation *land = GetBelongedLand())
+        return land->GetSurvey();
 
     return MapAbstractItem::Survey_DrawMap;
 }
@@ -488,6 +484,13 @@ bool VGLandBoundary::IsSaveLocal() const
 	return m_bSaveLocal;
 }
 
+
+bool VGLandBoundary::IsFreePoint() const
+{
+    VGLandInformation *land = GetBelongedLand();
+    return land ? land->IsFreePoint() : false;
+}
+
 void VGLandBoundary::SetSaveLocal(bool bSl)
 {
 	if (bSl == m_bSaveLocal)
@@ -515,7 +518,7 @@ void VGLandBoundary::SetUploaded(bool bUpload)
 bool VGLandBoundary::_isBoundaryEdited() const
 {
     if (VGLandPolygon *plg = GetBoundaryPolygon())
-        return plg->CountCoordinate() > 2;
+        return plg->GetId()==VGLandPolygon::Boundary ? plg->CountCoordinate() > 2 : plg->CountCoordinate() > 0;
 
     return false;
 }
@@ -524,7 +527,8 @@ VGLandPolygon *VGLandBoundary::GetBoundaryPolygon()const
 {
     foreach(VGLandPolygon *itr, m_polygons)
     {
-        if (itr->GetId() == VGLandPolygon::Boundary)
+        auto id = itr->GetId();
+        if (VGLandPolygon::Boundary==id || VGLandPolygon::FreePlan==id)
             return itr;
     }
 
@@ -635,7 +639,7 @@ const QList<double> & VGLandBoundary::GetBoundarys()
     if (m_boundarys.count() == 4 || !GetBoundaryPolygon())
         return m_boundarys;
 
-    foreach(const QVariant &itr, GetBoundaryPolygon()->path())
+    for(const QVariant &itr : GetBoundaryPolygon()->GetPath())
     {
         QGeoCoordinate coor = itr.value<QGeoCoordinate>();
         if (coor.isValid())
@@ -694,12 +698,6 @@ void VGLandBoundary::_calDistance()
 bool VGLandBoundary::operator==(const MapAbstractItem &item) const
 {
     if (item.ItemType() != ItemType())
-        return false;
-
-    const VGLandBoundary &bound = *(VGLandBoundary*)&item;
-    if (*m_safeArea == *bound.m_safeArea)
-        return false;
-    if (m_safeArea && *m_safeArea != *bound.m_safeArea)
         return false;
 
     return true;

@@ -143,7 +143,7 @@ void MAVLinkProtocol::resetMetadataForLink(const LinkInterface *link)
  * @param link The interface to read from
  * @see LinkInterface
  **/
-void MAVLinkProtocol::receiveBytes(LinkInterface* link, QByteArray b)
+void MAVLinkProtocol::receiveBytes(LinkInterface* link, const QByteArray &b)
 {
     if (!_linkMgr->containsLink(link))
         return;
@@ -161,6 +161,10 @@ void MAVLinkProtocol::receiveBytes(LinkInterface* link, QByteArray b)
     for (int position = 0; position < b.size(); position++)
     {
         unsigned int decodeState = mavlink_parse_char(mavlinkChannel, (uint8_t)(b[position]), &message, &status);
+        if (message.msgid == 220)
+        {
+            decodeState = decodeState;
+        }
         if (decodeState == 0 && !link->IsDecodedMavlink())
         {
             nonmavlinkCount++;

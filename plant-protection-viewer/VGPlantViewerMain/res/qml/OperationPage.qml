@@ -152,8 +152,11 @@ Page {
                 var page = bltSettingsCom.createObject(root)
                 vgMainPage.curQmlPage = page
             }
+            else if (txt === "clear") {
+                plantManager.clear()
+            }
             else if (txt === "mission") {
-                if (!routeEdit && plantManager.connected && curPlant && curPlant.vm) {
+                if (!routeEdit && curPlant) {
                     plantManager.mission = true
                     enterMission(true)
                     missionCtrl.enterVMission()
@@ -743,6 +746,7 @@ Page {
         }
         Component.onCompleted: {
             addBtn("blueTooth", "")
+            addBtn("clear", "clear")
             addBtn("mission", "plant")
             addBtn("operation", "routePlan")
             addBtn("shutdown", "shutdown")

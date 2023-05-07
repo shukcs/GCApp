@@ -10,7 +10,7 @@ HEADERS += \
     $$PWD/land/VGLandManager.h \
     $$PWD/land/VGCoordinate.h \
     $$PWD/land/VGPolylineMapItem.h \
-    $$PWD/land/VGOutline.h \
+    $$PWD/land/VGLandPolyline.h \
     $$PWD/land/VGLandPolygon.h \
     $$PWD/land/VGFlyRoute.h \
     $$PWD/land/VGLandBoundary.h \
@@ -47,7 +47,7 @@ SOURCES += \
     $$PWD/land/VGLandManager.cpp \
     $$PWD/land/VGCoordinate.cpp \
     $$PWD/land/VGPolylineMapItem.cpp \
-    $$PWD/land/VGOutline.cpp \
+    $$PWD/land/VGLandPolyline.cpp \
     $$PWD/land/VGLandPolygon.cpp \
     $$PWD/land/VGFlyRoute.cpp \
     $$PWD/land/VGLandBoundary.cpp \

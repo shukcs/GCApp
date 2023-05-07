@@ -62,7 +62,7 @@ protected:
     virtual bool _connect(void) = 0;
     virtual void _disconnect(void) = 0;
 signals:
-    void bytesReceived(LinkInterface* link, QByteArray data);
+    void bytesReceived(LinkInterface* link, const QByteArray &data);
     void linkConnected(bool b);
     void communicationError(const QString& title, const QString& error);
 private:

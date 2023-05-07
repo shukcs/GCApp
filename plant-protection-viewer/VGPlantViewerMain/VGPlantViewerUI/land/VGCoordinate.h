@@ -56,6 +56,8 @@ public:
     double          DistanceTo(const VGCoordinate &oth)const;
     double          DistanceToCoor(const QGeoCoordinate &c)const;
     double          AzimuthTo(const VGCoordinate &oth)const;
+    void            SetLatitude(double);
+    void            SetLongitude(double);
     void            SetAltitude(double altitude);
     double          GetLatitude()const;
     double          GetLongitude()const;

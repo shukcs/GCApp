@@ -33,6 +33,7 @@ class VGLandInformation : public SingleTriggerItem<MapAbstractItem>
     Q_PROPERTY(QString ownerPhone READ ownerPhone WRITE setOwnerPhone NOTIFY ownerPhoneChanged)
     Q_PROPERTY(QString actualSurveyId READ actualSurveyId WRITE setActualSurveyId NOTIFY actualSurveyIdIdChanged)
     Q_PROPERTY(SurveyType surveyType READ GetSurveyType WRITE SetSurveyType NOTIFY surveyTypeChanged)//测绘状态
+    Q_PROPERTY(bool freePoint READ IsFreePoint WRITE SetFreePoint NOTIFY freePointChanged)//测绘状态
 public:
     class OwnerStruct
     {
@@ -92,6 +93,7 @@ public:
     bool operator==(const MapAbstractItem &li)const;
 
     void showContent(bool b);
+    uint32_t GetSurvey();
     SurveyType  GetSurveyType() const;
 
     MapAbstractItem *Clone(QObject *parent)const;
@@ -102,6 +104,8 @@ public:
     void clearCoors(); 
     bool save(bool bCloud);
     OwnerStruct *owner();
+    bool IsFreePoint()const;
+    void SetFreePoint(bool);
 protected:
     //只允许qml调用
     void SetSurveyType(SurveyType tp);
@@ -113,35 +117,35 @@ private:
     void _addOneBoundaryPoint(const QGeoCoordinate &coor, int nSat);
 signals:
 	void precisionChanged(int precision);
-    void surveyTimeChanged(qint64 time);
-	void userIdChanged(const QString & user);
-	void coordChanged(const QGeoCoordinate &coor);
-    void addressChanged(const QString &param);
-    void ownerNameChanged(const QString &param);
-    void ownerBirthdayChanged(const QString &param);
-	void ownerAddrChanged(const QString &param);
-	void ownerPhoneChanged(const QString &param);
-	void actualSurveyIdIdChanged(const QString &id);
-    void surveyTypeChanged(SurveyType tp);
+    void surveyTimeChanged(qint64);
+	void userIdChanged(const QString & );
+	void coordChanged(const QGeoCoordinate &);
+    void addressChanged(const QString &);
+    void ownerNameChanged(const QString &);
+    void ownerBirthdayChanged(const QString &);
+	void ownerAddrChanged(const QString &);
+	void ownerPhoneChanged(const QString &);
+	void actualSurveyIdIdChanged(const QString &);
+    void surveyTypeChanged(SurveyType);
+    void freePointChanged(bool);
 private:
     friend  VGDbManager;
     friend  VGNetManager;
+                  //地块地址
+    qint64                         m_time;                     //测绘时间
+    uint32_t                       m_precision;                //测绘精度
+    uint32_t                       m_typeSurvey;               //圈地类型
+    bool                           m_bUploaded;                //是否该地块信息已经上传到云平台
+    bool                           m_bSaveLocal;               //该地块是否保存
+    bool                           m_bRemoveDB;
 
-    QString                                     m_actualSurveyId;           //地块测绘信息id（服务器）
-    QString                                     m_userId;                   //测绘人员id
-    QString                                     m_adress;                   //地块地址
-    qint64                                      m_time;                     //测绘时间
-    OwnerStruct                                 m_owner;
-    int                                         m_precision;                //测绘精度
-
-    QList<VGCoordinate*>                        m_coorsSurvey;              //测绘点
-    QList<VGLandBoundary*>                      m_boundarys;                //他的地边
-    QGeoCoordinate                              m_centerCoordinate;
-
-    bool                                        m_bUploaded;                //是否该地块信息已经上传到云平台
-    bool                                        m_bSaveLocal;               //该地块是否保存
-    bool                                        m_bRemoveDB;
-    SurveyType                                  m_typeSurvey;               //圈地类型
+    OwnerStruct                    m_owner;
+    QList<VGCoordinate*>           m_coorsSurvey;              //测绘点
+    QList<VGLandBoundary*>         m_boundarys;                //他的地边
+    QGeoCoordinate                 m_centerCoordinate;
+    QString                        m_actualSurveyId;           //地块测绘信息id（服务器）
+    QString                        m_userId;                   //测绘人员id
+    QString                        m_adress;
 };
 
 #endif // __VGLANDINFORMATION_H__

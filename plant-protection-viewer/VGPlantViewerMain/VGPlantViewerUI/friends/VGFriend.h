@@ -1,5 +1,5 @@
-#ifndef VGFRIEND_H
-#define VGFRIEND_H
+﻿#ifndef __VGFRIEND_H__
+#define __VGFRIEND_H__
 
 #include "MapAbstractItem.h"
 
@@ -93,4 +93,4 @@ private:
     QString             m_strFriend;
 };
 
-#endif // VGFRIEND_H
+#endif // __VGFRIEND_H__

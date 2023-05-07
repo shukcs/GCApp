@@ -246,7 +246,6 @@ Rectangle {
             id:         udpSettings
             width:      parent.width
             color:      "white"
-            visible:    vgMainPage.showSrSt
             fontTitle:  vgMainPage.biggerFont(false)
         }
     }

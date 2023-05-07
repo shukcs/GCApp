@@ -19,7 +19,6 @@ VGValueShow {
     onBoundaryInfoChanged: {
         if (!boundaryInfo)
             return
-        strHeader = boundaryInfo.address
         addValue(qsTr("Owner"), boundaryInfo.owner, editInfo)//qsTr("主人")
         addValue(qsTr("Phone No"), boundaryInfo.ownerPhone, editInfo)//qsTr("联系方式")
         addValue(qsTr("Area"), boundaryInfo.landArea.toFixed(2), editInfo)//qsTr("亩数")
@@ -29,7 +28,9 @@ VGValueShow {
         addValue(qsTr("Create time"), boundaryInfo.editTime)//创建时间
         addValue(qsTr("Notes"), boundaryInfo.describe, editInfo)//备注
 
+        strHeader = boundaryInfo.address
         if (bCanEdit) {
+			strHeader += "("+boundaryInfo.boundaryId+")"
             addButton(qsTr("Boundary adjust"), "#0b81ff")//边界点调整
             addButton(qsTr("Delete"), "#E64331")//删除
         }

@@ -8,7 +8,7 @@
 
 class QTimer;
 class VGLandPolygon;
-class VGOutline;
+class VGLandPolyline;
 class QmlObjectListModel;
 
 class VGMapManager : public QObject
@@ -62,7 +62,7 @@ public slots:
     void  sltSetMapCenter(double lat, double lon);
 public:
     static void CalcBoundaryByCoor(QList<double> &ls, const QGeoCoordinate &coordinate); 
-    static void CalcBoundaryByCoor(QList<double> &ls, const VGOutline &ol);
+    static void CalcBoundaryByCoor(QList<double> &ls, const VGLandPolyline &ol);
 protected:
     Q_INVOKABLE void  saveConfig();
     Q_INVOKABLE QmlObjectListModel *getSpecItems(int tp);

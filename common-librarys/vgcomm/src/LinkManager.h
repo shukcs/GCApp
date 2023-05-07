@@ -18,7 +18,8 @@ class VGCOMMSHARED_EXPORT LinkManager : public QObject
     Q_PROPERTY(bool        bleAutotLink      READ IsBleAutotLink    WRITE SetBleAutotLink NOTIFY bleAutotLinkChanged)
     Q_PROPERTY(bool        openUdp           READ IsOpenUdp         WRITE SetOpenUdp      NOTIFY openUdpChanged)
     Q_PROPERTY(QStringList serialBaudRates   READ serialBaudRates   CONSTANT)
-    Q_PROPERTY(QStringList serialPortStrings READ serialPortStrings NOTIFY commPortStringsChanged)
+    Q_PROPERTY(bool        autoLinkPX4       READ IsAutoLinkPX4     WRITE SetAutoLinkPX4  NOTIFY autoLinkPX4Changed)
+    Q_PROPERTY(bool        openUdp           READ IsOpenUdp         WRITE SetOpenUdp      NOTIFY openUdpChanged)
     Q_PROPERTY(QStringList serialPorts       READ serialPorts       NOTIFY commPortsChanged)
     /// Unit Test has access to private constructor/destructor
 public:
@@ -27,7 +28,6 @@ public:
     bool IsBleAvailable(void)const;
     QStringList linkTypeStrings(void) const;
     QStringList serialBaudRates(void);
-    QStringList serialPortStrings(void);
     QStringList serialPorts(void);
 
     bool containsLink(LinkInterface *link)const;
@@ -49,6 +49,8 @@ protected:
     Q_INVOKABLE void endCreateLinkCmd(LinkCommand* cmd, bool bLink=true);
     Q_INVOKABLE bool isLinked(const QString &name, int tp);
     Q_INVOKABLE void shutdown(int tp);
+    bool IsAutoLinkPX4()const;
+    void SetAutoLinkPX4(bool b);
 
     QList<LinkCommand *> _getLinkCmds(LinkCommand::LinkType tp);
     void timerEvent(QTimerEvent *);
@@ -65,6 +67,7 @@ signals:
     void communicationError(const QString& title, const QString& error);
     void _shutdown(const QList<LinkCommand*> &cmds);
     void bleAutotLinkChanged();
+    void autoLinkPX4Changed();
 private slots:
     void onShutdown(const QList<LinkCommand*> &cmds);
     void onCommandDeleted(LinkInterface *link);
@@ -92,12 +95,12 @@ private:                 ///< true: Link configurations have been loaded
     bool            m_bConnectUAV;
     bool            m_bOpenUdp;
     bool            m_bBleAutoLink;
+    bool            m_bCheckPx4;
     long            m_UAVRadioBaud;         //波特率
 
     QList<LinkCommand *> m_linkCmds;
     QList<SerialCommand *> m_autolinkCmds;
     QMap<QString, int>  m_autoconnectWaitList;   ///< key: SerialPortInfo.systemLocation, value: wait count
-    QStringList m_commPortList;
     QStringList m_commPortDisplayList;
 };
 

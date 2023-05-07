@@ -7,7 +7,7 @@
 #include "VGLandInformation.h"
 #include "VGLandBoundary.h"
 #include "VGFlyRoute.h"
-#include "VGOutline.h"
+#include "VGLandPolyline.h"
 #include "VGCoordinate.h"
 #include "VGPlantManager.h"
 #include "VGSelectEdge.h"
@@ -60,7 +60,7 @@ VGUIInstance::VGUIInstance(QObject* parent) : QObject(parent)
     qmlRegisterUncreatableType<QmlObjectListModel>("VGGroundControl", 1, 0, "QmlObjectListModel", "Reference only");
     qmlRegisterUncreatableType<MapAbstractItem>("VGGroundControl", 1, 0, "MapAbstractItem", "Reference only");
     qmlRegisterUncreatableType<VGCoordinate>("VGGroundControl", 1, 0, "VGCoordinate", "Reference only");
-    qmlRegisterUncreatableType<VGOutline>("VGGroundControl", 1, 0, "VGOutline", "Reference only");
+    qmlRegisterUncreatableType<VGLandPolyline>("VGGroundControl", 1, 0, "VGLandPolyline", "Reference only");
     qmlRegisterUncreatableType<VGLandPolygon>("VGGroundControl", 1, 0, "VGLandPolygon", "Reference only");
     qmlRegisterUncreatableType<VGLandBoundary>("VGGroundControl", 1, 0, "VGLandBoundary", "Reference only");
     qmlRegisterUncreatableType<VGFlyRoute>("VGGroundControl", 1, 0, "VGFlyRoute", "Reference only");
@@ -130,8 +130,7 @@ void VGUIInstance::createQml()
     m_qmlEngine->rootContext()->setContextProperty("controller", qvgApp->controller());
     m_qmlEngine->rootContext()->setContextProperty("missionHistory", m_missionHistory);
 
-
-	m_qmlEngine->load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
+	m_qmlEngine->load(QUrl("qrc:/qml/main.qml"));
 
     m_plantManager->InitialNetWork(m_vgNetManager);
     m_landManager->InitialNetWork(m_vgNetManager);

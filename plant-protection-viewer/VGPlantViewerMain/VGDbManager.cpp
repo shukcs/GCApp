@@ -7,7 +7,7 @@
 #include "VGCoordinate.h"
 #include "VGLandBoundary.h"
 #include "VGFlyRoute.h"
-#include "VGOutline.h"
+#include "VGLandPolyline.h"
 #include "VGApplication.h"
 #include "VGGlobalFun.h"
 
@@ -26,6 +26,12 @@ enum {
     DB_UPDATE,
     DB_DELETE,
     DB_QUERY,
+};
+
+enum {
+    SRS_Coor = 0xfecb0001,
+    SRS_Polyline = 0xfecb0002,
+    SRS_Polygon = 0xfecb0002,
 };
 
 static QString describeMap2Condition(const DescribeMap &des)
@@ -179,7 +185,7 @@ void VGDbManager::_saveLand(VGLandInformation &land)
     QString coors;
     foreach(VGCoordinate *itr, land.m_coorsSurvey)
     {
-        coors += coors.isEmpty() ? coordinateToString(*itr) : ";" + coordinateToString(*itr);
+        coors += coors.isEmpty() ? coordinateSeriers(*itr) : ";" + coordinateSeriers(*itr);
     }
 
     QString strSql = QString::fromLocal8Bit("insert into VGLandSurveys(actualId, surveyUser, owner, address, "
@@ -215,23 +221,16 @@ void VGDbManager::_saveBoundary(VGLandBoundary &boundary)
 	if (!land)
 		return;
 
-    QString strOutlines;
-    QString strBlocklines;
-    QString strSafeArea;
+    QByteArray outlines;
     foreach(VGLandPolygon *itr, boundary.m_polygons)
     {
-        if (itr->GetId() == VGLandPolygon::Boundary)
-            strOutlines = polygon2String(*itr);
-        else
-            strBlocklines += strBlocklines.isEmpty() ? polygon2String(*itr) : "#" + polygon2String(*itr);
+        outlines += polygonSeriers(*itr);
     }
-    if (boundary.m_safeArea)
-        strSafeArea = polygon2String(*boundary.m_safeArea);
 
     QString  strSql = QString::fromLocal8Bit("insert into VGLandBuandarys(boundaryId, surveyUser, surveyTime, editTime, "
-        "uploaded, describe, boundary, blocksCoordinates, safaArea) "
+        "uploaded, describe, boundary) "
         "VALUES (:boundaryId, :surveyUser, :surveyTime, :editTime, :uploaded, "
-        ":describe, :boundary, :blocksCoordinates, :safaArea)");
+        ":describe, :boundary)");
 
     if (boundary.m_time == 0)
         boundary.m_time = QDateTime::currentMSecsSinceEpoch();
@@ -244,9 +243,7 @@ void VGDbManager::_saveBoundary(VGLandBoundary &boundary)
 	query.bindValue(":editTime", boundary.m_time);
     query.bindValue(":uploaded", boundary.m_bUploaded);
     query.bindValue(":describe", boundary.m_strDescribe);
-    query.bindValue(":boundary", strOutlines.replace("nan", "0"));
-    query.bindValue(":blocksCoordinates", strBlocklines);
-    query.bindValue(":safaArea", strSafeArea);
+    query.bindValue(":boundary", outlines.toBase64());
 
     if (!query.exec())
     {
@@ -265,37 +262,34 @@ void VGDbManager::_saveRoute(VGFlyRoute &route)
     if (!land || !bdr)
         return;
 
-    QString strOutlines;
-    QString strSupplies;
-
-    if (VGOutline *itr = route.allMissionRoute())   
-        strOutlines = polyline2String(*itr);
+    QByteArray strSupplies;
 
     QString  strSql = QString::fromLocal8Bit("insert into VGFlyRoutes(describe, surveyUser, surveyTime, editTime, routeTime, uploaded, "
-        "operationHeight, routeInfo, totalVoyage, transVoyage, operateVoyage, routes, supplies) "
+        "operationHeight, routeInfo, anti, totalVoyage, transVoyage, operateVoyage, routes, supplies) "
         "VALUES (:describe, :surveyUser, :surveyTime, :editTime, :routeTime, :uploaded, "
-        ":operationHeight, :routeInfo, :totalVoyage, :transVoyage, :operateVoyage, :routes, :supplies)");
+        ":operationHeight, :routeInfo, :anti, :totalVoyage, :transVoyage, :operateVoyage, :routes, :supplies)");
 
     if (route.m_time == 0)
         route.m_time = QDateTime::currentMSecsSinceEpoch();
 
-    QSqlQuery query(*m_dbase);
-    query.prepare(strSql);
-    query.bindValue(":describe", route.m_strDescribe);
-    query.bindValue(":surveyUser", land->m_userId);
-    query.bindValue(":surveyTime", land->m_time);
-    query.bindValue(":editTime", bdr->m_time);
-    query.bindValue(":routeTime", route.m_time);
-    query.bindValue(":uploaded", route.m_bUploaded);
-    query.bindValue(":operationHeight", route.m_operationHeight);
-    query.bindValue(":routeInfo", route.GetInfoString());
-    query.bindValue(":totalVoyage", route.m_totalVoyage);
-    query.bindValue(":transVoyage", route.m_transVoyage);
-    query.bindValue(":operateVoyage", route.m_operateVoyage);
-    query.bindValue(":routes", strOutlines);
-    query.bindValue(":supplies", strSupplies);
+    QSqlQuery insert(*m_dbase);
+    insert.prepare(strSql);
+    insert.bindValue(":describe", route.m_strDescribe);
+    insert.bindValue(":surveyUser", land->m_userId);
+    insert.bindValue(":surveyTime", land->m_time);
+    insert.bindValue(":editTime", bdr->m_time);
+    insert.bindValue(":routeTime", route.m_time);
+    insert.bindValue(":uploaded", route.m_bUploaded);
+    insert.bindValue(":operationHeight", route.m_operationHeight);
+    insert.bindValue(":routeInfo", route.GetInfoString());
+    insert.bindValue(":anti", route.m_bAnti);
+    insert.bindValue(":totalVoyage", route.m_totalVoyage);
+    insert.bindValue(":transVoyage", route.m_transVoyage);
+    insert.bindValue(":operateVoyage", route.m_operateVoyage);
+    insert.bindValue(":routes", polylineSeriers(*route.allMissionRoute()).toBase64());
+    insert.bindValue(":supplies", strSupplies);
 
-    if (!query.exec())
+    if (!insert.exec())
     {
         emit sigSqlResult(DB_ADDERROR);
         return;
@@ -379,18 +373,13 @@ void VGDbManager::_processSurveys(QSqlQuery &query)
         infoLand->m_owner.ParseString(query.value("owner").toString());
         infoLand->m_typeSurvey = (MapAbstractItem::SurveyType)query.value("surveyType").toInt();
 
-        QString coors = query.value("plantCoordinates").toString();
-
-        if (!coors.isEmpty())
+        auto coors = QByteArray::fromBase64(query.value("plantCoordinates").toByteArray());
+        QDataStream st(coors);
+        while (!st.atEnd())
         {
-            foreach(const QString &str, coors.split(";", QString::SkipEmptyParts))
-            {
-                VGCoordinate *tmp = new VGCoordinate();
-                if (initalCoordinateByString(*tmp, str))
-                    infoLand->m_coorsSurvey.append(tmp);
-                else
-                    delete tmp;
-            }
+            VGCoordinate *tmp = new VGCoordinate();
+            if (initalCoordinate(*tmp, st))
+                infoLand->m_coorsSurvey.append(tmp);
         }
         infoLand->m_bSaveLocal = true;
         emit sigQueryItem(infoLand);
@@ -415,34 +404,20 @@ void VGDbManager::_processBoundary(QSqlQuery &query)
         infoDes->m_bUploaded = query.value("uploaded").toBool();
         infoDes->m_strDescribe = query.value("describe").toString();
 
-        QString strOutLine = query.value("boundary").toString();
-        if (!strOutLine.isEmpty())
+        auto boundarys = QByteArray::fromBase64(query.value("boundary").toByteArray());
+        if (!boundarys.isEmpty())
         {
-            VGLandPolygon *tmp = new VGLandPolygon(infoDes, VGLandPolygon::Boundary);
-            initalPolygonByString(*tmp, strOutLine);
-            infoDes->m_polygons.append(tmp);
-        }
-        QString strBlocks = query.value("blocksCoordinates").toString();
-        if (!strBlocks.isEmpty())
-        {
-            foreach(const QString &str, strBlocks.split("#", QString::SkipEmptyParts))
+            QDataStream st(boundarys);
+            while (!st.atEnd())
             {
                 VGLandPolygon *tmp = new VGLandPolygon(infoDes, VGLandPolygon::BlockBoundary);
-                if (initalPolygonByString(*tmp, str))
+                if (initalPolygon(*tmp, st))
                     infoDes->m_polygons.append(tmp);
                 else
                     delete tmp;
             }
         }
-        QString strSafaArea = query.value("safaArea").toString();
-        if (!strSafaArea.isEmpty())
-        {
-            VGLandPolygon *tmp = new VGLandPolygon(infoDes, VGLandPolygon::BlockBoundary);
-            if (initalPolygonByString(*tmp, strSafaArea))
-                infoDes->m_safeArea = tmp;
-            else
-                delete tmp;
-        }
+
         infoDes->m_bSaveLocal = true;
         emit sigQueryItem(infoDes, dsc);
     }
@@ -470,31 +445,33 @@ void VGDbManager::_processRoute(QSqlQuery &query)
         infoDes->m_totalVoyage = query.value("totalVoyage").toDouble();
         infoDes->m_transVoyage = query.value("transVoyage").toDouble();
         infoDes->m_operateVoyage = query.value("operateVoyage").toDouble();
+        infoDes->m_bAnti = query.value("anti").toBool();
 
-        QString strOutLine = query.value("routes").toString();
+        auto strOutLine = QByteArray::fromBase64(query.value("routes").toByteArray());
         if (!strOutLine.isEmpty())
         {
-            foreach(const QString &str, strOutLine.split("#"))
+            QDataStream st(strOutLine);
+            while (!st.atEnd())
             {
-                VGOutline *tmp = new VGOutline(infoDes, VGLandPolygon::FlyRoute);
-                if (initalPolylineByString(*tmp, str))
+                VGLandPolyline *tmp = new VGLandPolyline(infoDes, VGLandPolygon::FlyRoute);
+                if (initalPolyline(*tmp, st))
                     infoDes->m_route = tmp;
                 else
                     delete tmp;
                 infoDes->_calculateAnggle(tmp);
             }
         }
-        QString strSupplys = query.value("supplies").toString();
+        auto strSupplys = query.value("supplies").toByteArray();
         if (!strSupplys.isEmpty())
         {
-            QStringList strLs = strSupplys.split(",", QString::SkipEmptyParts);
-            if (strLs.count() < 3)
-                continue;
-
+            QDataStream st(strSupplys);
+            double tmp;
             QGeoCoordinate coordinate;
-            coordinate.setLongitude(strLs.at(0).toDouble());
-            coordinate.setLatitude(strLs.at(1).toDouble());
-            coordinate.setAltitude(strLs.at(2).toDouble());
+            st >> tmp;
+            coordinate.setLongitude(tmp);
+            st >> tmp;
+            coordinate.setLatitude(tmp);
+            st >> tmp;
         }
         infoDes->m_bSaveLocal = true;
         emit sigQueryItem(infoDes, dsc);
@@ -509,11 +486,11 @@ bool VGDbManager::_createTableSurvey()
         QString strSql = "CREATE TABLE IF NOT EXISTS VGLandSurveys("
             "actualId varchar(32) PRIMARY KEY, "
             "surveyUser varchar(50) NOT NULL, "
-			"address varchar(100), "
+			"address varchar(64), "
 			"surveyTime BIGINT NOT NULL, "
 			"surveyPrecision INT NOT NULL DEFAULT 1, "
             "uploaded BOOL, "
-            "owner TEXT, "
+            "owner varchar(64), "
             "surveyType INTEGER NOT NULL, "
 			"plantCoordinates TEXT)";
 
@@ -540,9 +517,7 @@ bool VGDbManager::_createTableBoundary()
 			"editTime BIGINT NOT NULL, "
 			"uploaded BOOL, "
 			"describe varchar(50), "
-			"boundary TEXT, "
-			"blocksCoordinates TEXT, "
-			"safaArea TEXT)";
+            "boundary TEXT)";
 
         if (!query.exec(strSql))
         {
@@ -567,13 +542,14 @@ bool VGDbManager::_createTableRoute()
             "editTime BIGINT NOT NULL, "
             "routeTime BIGINT NOT NULL, "
 			"uploaded BOOL, "
+			"anti BOOL, "
             "operationHeight DOUBLE, "
             "routeInfo TEXT, "
             "totalVoyage DOUBLE,"
             "transVoyage DOUBLE,"
             "operateVoyage DOUBLE,"
 			"routes TEXT,"
-            "supplies TEXT)";
+            "supplies varchar(50))";
 
         if (!query.exec(strSql))
         {
@@ -620,41 +596,6 @@ bool VGDbManager::createTables()
         return false;
 
     return true;
-}
-
-QString VGDbManager::polygon2String(const VGLandPolygon &lstCoordinate)
-{
-    QString strOutlines = "";
-	foreach (VGCoordinate *itr, lstCoordinate.GetCoordinates())
-	{
-		if (!strOutlines.isEmpty())
-			strOutlines += ";";
-
-		strOutlines += coordinateToString(*itr);
-	}
-	return strOutlines;
-}
-
-QString VGDbManager::polyline2String(const VGOutline &polyLine)
-{
-    QString strOutlines = "";
-    foreach (VGCoordinate *itr, polyLine.GetCoordinates())
-    {
-        if (!strOutlines.isEmpty())
-            strOutlines += ";";
-
-        strOutlines += coordinateToString(*itr);
-    }
-    return strOutlines;
-}
-
-QString VGDbManager::coordinateToString(const VGCoordinate &coor)
-{
-    QGeoCoordinate co = coor.GetCoordinate();
-    QString strCoordinate = QString("%1,%2,%3,%4").arg(QString::number(co.longitude(), 'g', 9)).arg(QString::number(co.latitude(), 'g', 9))
-        .arg(QString::number(co.altitude(), 'g', 9)).arg(coor.GetId());
-
-    return strCoordinate;
 }
 
 bool VGDbManager::updateTables()
@@ -770,60 +711,113 @@ void VGDbManager::queryItems(const DescribeMap &condition)
         _processRoute(query);
 }
 
-bool VGDbManager::initalCoordinateByString(VGCoordinate &coor, const QString &str)
+QByteArray VGDbManager::polygonSeriers(const VGLandPolygon &plg)
 {
-    QStringList strLs = str.split(",", QString::SkipEmptyParts);
-    if (strLs.count() < 3)
+    QByteArray arry(sizeof(int32_t) * 3, 0);
+    QDataStream st(&arry, QIODevice::ReadWrite);;
+    st << (int32_t)SRS_Polygon;
+    st << (int32_t)plg.GetId();
+    st << (int32_t)plg.CountCoordinate();
+    foreach(VGCoordinate *itr, plg.GetCoordinates())
+    {
+        arry += coordinateSeriers(*itr);
+    }
+    return arry;
+}
+
+QByteArray VGDbManager::polylineSeriers(const VGLandPolyline &polyLine)
+{
+    QByteArray arry(sizeof(int32_t) * 3, 0);
+    QDataStream st(&arry, QIODevice::ReadWrite);;
+    st << (int32_t)SRS_Polyline;
+    st << (int32_t)polyLine.GetId();
+    st << (int32_t)polyLine.coordinateCount();
+    foreach(VGCoordinate *itr, polyLine.GetCoordinates())
+    {
+        arry += coordinateSeriers(*itr);
+    }
+    return arry;
+}
+
+QByteArray VGDbManager::coordinateSeriers(const VGCoordinate &coor)
+{
+    QByteArray arry(sizeof(int32_t)*2 + sizeof(double)*3, 0);
+    QDataStream st(&arry, QIODevice::ReadWrite);
+    st << (int32_t)SRS_Coor;
+    st << (int32_t)coor.GetId();
+    st << coor.GetLatitude();
+    st << coor.GetLongitude();
+    st << coor.GetAltitude();
+    return arry;
+}
+
+bool VGDbManager::initalCoordinate(VGCoordinate &coor, QDataStream &st)
+{
+    int sig = 0;
+    while (sig != SRS_Coor && !st.atEnd())
+    {
+        st >> sig;
+    }
+    if (sig != SRS_Coor)
         return false;
-
-    QGeoCoordinate coordinate;
-    coordinate.setLongitude(strLs.at(0).toDouble());
-    coordinate.setLatitude(strLs.at(1).toDouble());
-    coordinate.setAltitude(strLs.at(2).toDouble());
-
-    int sig = strLs.count() >= 4 ? strLs.at(3).toInt() : 0;
-    coor.SetCoordinate(coordinate);
+    st >> sig;
     coor.SetId(sig);
+    double tmp;
+    st >> tmp;
+    coor.SetLatitude(tmp);
+    st >> tmp;
+    coor.SetLongitude(tmp);
+    st >> tmp;
+    coor.SetAltitude(tmp);
+
     return true;
 }
 
-bool VGDbManager::initalPolygonByString(VGLandPolygon &plg, const QString &str)
+bool VGDbManager::initalPolygon(VGLandPolygon &plg, QDataStream &st)
 {
-    foreach(const QString &strItr, str.split(";", QString::SkipEmptyParts))
+    int32_t sig = 0;
+    while (sig != SRS_Polygon && !st.atEnd())
     {
-        QStringList strLs = strItr.split(",", QString::SkipEmptyParts);
-        if (strLs.count() < 3)
-            continue;
+        st >> sig;
+    }
+    if (sig != SRS_Polygon)
+        return false;
 
-        QGeoCoordinate coordinate;
-        coordinate.setLongitude(strLs.at(0).toDouble());
-        coordinate.setLatitude(strLs.at(1).toDouble());
-        coordinate.setAltitude(strLs.at(2).toDouble());
+    st >> sig;
+    plg.SetId(sig);
 
-        int sig = strLs.count() >= 4 ? strLs.at(3).toInt() : 0;
-        plg.AddCoordinate(coordinate, sig);
+    st >> sig;
+    for (int i = 0; i < sig; ++i)
+    {
+        VGCoordinate coor;
+        initalCoordinate(coor, st);
+        plg.AddCoordinate(coor);
     }
 
-    return plg.CountCoordinate()>=3;
+    return plg.CountCoordinate()>0;
 }
 
-bool VGDbManager::initalPolylineByString(VGOutline &plg, const QString &str)
+bool VGDbManager::initalPolyline(VGLandPolyline &pll, QDataStream &st)
 {
-    QStringList strLsPnt = str.split(";", QString::SkipEmptyParts);
-    foreach(const QString &strItr, strLsPnt)
+    int sig = 0;
+    while (sig != SRS_Polyline && !st.atEnd())
     {
-        QStringList strLs = strItr.split(",", QString::SkipEmptyParts);
-        if (strLs.count() < 3)
-            continue;
+        st >> sig;
+    }
+    if (sig != SRS_Polyline)
+        return false;
 
-        QGeoCoordinate coordinate;
-        coordinate.setLongitude(strLs.at(0).toDouble());
-        coordinate.setLatitude(strLs.at(1).toDouble());
-        coordinate.setAltitude(strLs.at(2).toDouble());
+    st >> sig;
+    pll.SetId(sig);
 
-        int sig = strLs.count() >= 4 ? strLs.at(3).toInt() : 0;
-        plg.addCoordinate(coordinate, sig);
+    st >> sig;
+    for (int i = 0; i < sig; ++i)
+    {
+        VGCoordinate coor;
+        initalCoordinate(coor, st);
+        pll.addCoordinate(coor.GetCoordinate(), coor.GetId());
     }
 
-    return plg.coordinateCount()>0;
+
+    return true;
 }

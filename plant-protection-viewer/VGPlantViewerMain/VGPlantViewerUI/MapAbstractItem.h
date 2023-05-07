@@ -57,6 +57,8 @@ public:
         Survey_DrawMap,           //地图描点
         Survey_BanLv,             //北斗伴侣
         Survey_Vehicle,           //测绘仪
+
+        Survey_FreePoint = 0x100,
     };
     enum MapItemType
     {

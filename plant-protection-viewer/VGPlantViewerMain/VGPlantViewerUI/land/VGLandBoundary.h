@@ -71,6 +71,7 @@ public:
     QString GetLandActId()const;
     bool save(bool bCloud);
     bool IsSaveLocal() const;
+    bool IsFreePoint()const;
 protected:
     void SetBoundaryId(const QString &str);
     QString GetAddress()const; 
@@ -95,6 +96,7 @@ protected:
 
     VGLandManager *GetLandManager()const;
     SurveyType GetSurveyType()const;
+    uint32_t GetSurvey()const;
     void processSaveReslt(const DescribeMap &result);
     MapAbstractItem *FindParentByProperty(const DescribeMap &dsc)const;
 signals:
@@ -114,7 +116,6 @@ protected slots:
     void onBoundaryCoorsChanged(int count);
 private:
     bool _isBoundaryEdited()const;
-    void _addSafeAreaPoint(const QGeoCoordinate &coor);
     void _calcArea();
     VGLandPolygon *_addBoundary(int tp);
     bool _isLastBlockValid()const;
@@ -127,7 +128,6 @@ private:
 
     QString                 m_cloudID;          //服务器上ID
     QList<VGLandPolygon*>   m_polygons;         //边界图
-    VGLandPolygon           *m_safeArea;        //安全区
     QList<double>           m_boundarys;
 
     //VGCoordinate      *m_APoint;

@@ -14,7 +14,7 @@
 
 class MissionManager;
 class VGVehicleMission;
-class VGOutline;
+class VGLandPolyline;
 class VGCoordinate;
 class MissionItem;
 
@@ -80,6 +80,7 @@ protected:
     void _prcsParameters();
     void _removeParam(const QString &key);
     void _sendMavCommandAgain();
+    void _connectionLostTimeout(void);   //连接超时
 protected slots:
     void    _mavlinkMessageReceived(LinkInterface* link, const mavlink_message_t &message);
     void    _onMissionSych(bool bError);
@@ -92,7 +93,6 @@ protected slots:
     void    _linkConnected(bool b);
     void    _sendMessage(const mavlink_message_t &message);
     void    _sendMessageOnLink(LinkInterface* link, const mavlink_message_t &message);
-    void    _connectionLostTimeout(void);          //连接超时定时器
 private:
     /// Sends a message to the specified link
     /// @return true: message sent, false: Link no longer connected
@@ -119,7 +119,6 @@ private:
     void _handleLogData(const mavlink_message_t& message);
     void _handleParameter(const mavlink_message_t& message);
     void _handleCommandAck(const mavlink_message_t& message);
-    void _handleSpray(const mavlink_message_t& message);
     void _handleSupport(const mavlink_message_t& message);
     void _handleInterrupt(const mavlink_message_t& message);
 signals:
@@ -142,8 +141,6 @@ signals:
     void    sysAvalibleChanged(bool b);
     void    posTypeChanged(VGVehicle *v, int fix);
     void    sychMissionFinish(bool suc);
-    void    sprayGot(VGVehicle *v, double speed, double vol, uint8_t stat, uint8_t mode);
-	void	vehicleCog(int);
     void	sysStatus(uint8_t st);
     void    recvSuspend(const QGeoCoordinate &c, int type);
     void    recvMavlink(VGVehicle *v, const mavlink_message_t& msg);
@@ -157,6 +154,7 @@ private:
     MAV_AUTOPILOT   m_firewareType;		    ///固件类型
     quint64         m_onboardTimeOffset;
     qint64          m_tmLastRtcm;
+    qint64          m_tmLastMav;
 
     int             m_nSatellites;          ///GPS可用星数
     double          m_distance;             ///离home点的距离
@@ -169,8 +167,8 @@ private:
     uint16_t		    m_voltage;
 	uint32_t			m_customMode;
     // Lost connection handling
-    bool                m_connectionLost;            ///连接是否丢失
     bool                m_connectionLostEnabled;     ///是否启用断线检测
+    bool                m_bConnnected;
     uint32_t            m_countNoGPos;
     bool                m_autoDisconnect;            ///是否自动清除link
 	bool			    m_bMissionItemInt;
@@ -179,7 +177,6 @@ private:
     int                 m_mavCommandRetryCount;
     QGeoCoordinate      m_homePosition;             ///home坐标
     QString             m_uavID;
-    QTimer              m_connectionLostTimer;
     QList<LinkInterface*>           m_links;
     QList<MavCommandQueueEntry_t>   m_mavCommandQueue;
     QList<PairParameter>            m_mavParameterQue;

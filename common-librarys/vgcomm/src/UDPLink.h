@@ -33,8 +33,8 @@ public:
 
     Q_INVOKABLE void setHost(const QString host, uint16_t port);
 
-    void        loadSettings    (QSettings& settings, const QString& root);
-    void        saveSettings    (QSettings& settings, const QString& root);
+    void        loadSettings    (const QString& root);
+    void        saveSettings    (const QString& root);
     void        updateSettings();
     LinkType    type()const;
     void        connectLink();
@@ -70,7 +70,9 @@ public slots:
     void writeBytes(const QByteArray &array);
 protected slots:
     void readBytes();
-    void sendUdp();
+    void OnSendUdp(const QByteArray &array);
+protected:
+    void timerEvent(QTimerEvent *event);
 private:
     // Links are only created/destroyed by LinkManager so constructor/destructor is not public
     UDPLink(UDPCommand* config);
@@ -84,17 +86,16 @@ private:
 
     void _registerZeroconf(uint16_t port, const std::string& regType);
     void _deregisterZeroconf();
-    bool _dequeBytes();
     UDPCommand * udpCommand()const;
 signals:
-    void _sendUdp();
+    void sendUdp(const QByteArray &array);
 private:
     friend class UDPCommand;
 
     QUdpSocket          *m_socket;
     QThread             *m_thread;
     bool                m_connectState;
-    QList<QByteArray>   m_outQueue;
+    int                 m_timerId;
 #if defined(QGC_ZEROCONF_ENABLED)
     DNSServiceRef  _dnssServiceRef;
 #endif

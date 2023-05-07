@@ -6,7 +6,7 @@
 #include "VGLandInformation.h"
 #include "VGCoordinate.h"
 #include "VGLandPolygon.h"
-#include "VGOutline.h"
+#include "VGLandPolyline.h"
 #include "VGFlyRoute.h"
 #include "VGLandBoundary.h"
 #include "VGApplication.h"
@@ -39,38 +39,6 @@ static void _toPolygon(const Outline &ol, VGLandPolygon &plg)
         plg.AddCoordinate(coordinate, tp);
     }
 }
-
-static SurveryPrecision transform2Precision(MapAbstractItem::SurveyType tp)
-{
-    switch (tp)
-    {
-    case MapAbstractItem::Survey_BanLv:
-        return MEDIUM;
-    case MapAbstractItem::Survey_Vehicle:
-        return HIGH;
-    case MapAbstractItem::Survey_Plant:
-        return MAYBE;
-    default:
-        break;
-    }
-    return LOW;
-}
-
-static MapAbstractItem::SurveyType transform2SurveyType(SurveryPrecision t)
-{
-    switch (t)
-    {
-    case HIGH:
-        return MapAbstractItem::Survey_Vehicle;
-    case MEDIUM:
-        return MapAbstractItem::Survey_BanLv;
-    case MAYBE:
-        return MapAbstractItem::Survey_Plant;
-    default:
-        break;
-    }
-    return MapAbstractItem::Survey_DrawMap;
-}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //VGNetManager
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -99,9 +67,13 @@ VGNetManager::VGNetManager() :QObject(), m_tcpClient(new VGTcpClient)
 
 VGNetManager::~VGNetManager()
 {
-    m_thread->terminate();
-    delete m_thread;
-    delete m_tcpClient;
+    if (m_tcpClient)
+        m_tcpClient->deleteLater();
+    if (m_thread)
+    {
+        m_thread->terminate();
+        m_thread->deleteLater();
+    }
 }
 
 void VGNetManager::readConfig()
@@ -1236,7 +1208,7 @@ ParcelSurveyInformation *VGNetManager::_boundaryToParcelSurvey(const VGLandBound
 
     psi->set_surverytime(bdr->GetMsTime());
     psi->set_surveryorid(bdr->GetUser().toUtf8().data());
-    psi->set_sp(transform2Precision(bdr->GetSurveyType()));
+    psi->set_stype(bdr->GetSurvey());
 
     if (!bdr->m_cloudID.isEmpty())
         psi->set_id(bdr->m_cloudID.toUtf8().data());
@@ -1293,7 +1265,7 @@ VGLandBoundary *VGNetManager::parseLand(const ParcelDescription &pDes)
     land->m_actualSurveyId = pDes.id().c_str();
     const ParcelSurveyInformation &psi = pDes.psi();
     land->m_adress = pDes.name().c_str();
-    land->m_typeSurvey = transform2SurveyType(psi.sp());
+    land->m_typeSurvey = psi.stype();
     const ParcelContracter &owner = pDes.pc();
     land->m_owner.strName = owner.name().c_str();
     land->m_owner.strAddress = owner.address().c_str();

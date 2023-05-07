@@ -6,7 +6,7 @@
 #include "base.h"
 #include "MissionManager.h"
 #include "VGMacro.h"
-#include "VGOutline.h"
+#include "VGLandPolyline.h"
 #include "VGVehicleMission.h"
 #include "VGGlobalFun.h"
 #include "VGMavLinkCode.h"
@@ -23,12 +23,11 @@
 //VGVehicle
 ////////////////////////////////////////////////////////////////////////////////////////
 VGVehicle::VGVehicle(QObject *parent) : QObject(parent), m_sysID(0), m_countTimer(0)
-, m_timerId(-1), m_vehicleType(MAV_TYPE_QUADROTOR), m_onboardTimeOffset(0)
-, m_nSatellites(0), m_connectionLostEnabled(true), m_autoDisconnect(true)
-, m_connectionLost(true), m_altitude(0), m_altitudeRelative(0), m_firewareType(MAV_AUTOPILOT_PX4)
-, m_bArm(false), m_bMissionItemInt(false), m_voltage(0), m_mgrMission(new MissionManager(this))
-, m_homePosition(0.0, 0.0), m_mavCommandRetryCount(0), m_countNoGPos(0)
-, m_tmLastRtcm(QDateTime::currentMSecsSinceEpoch())
+, m_timerId(-1), m_vehicleType(MAV_TYPE_QUADROTOR), m_onboardTimeOffset(0), m_nSatellites(0)
+, m_connectionLostEnabled(true), m_bConnnected(false), m_autoDisconnect(true), m_altitude(0)
+, m_altitudeRelative(0), m_firewareType(MAV_AUTOPILOT_PX4), m_bArm(false), m_bMissionItemInt(false)
+, m_voltage(0), m_mgrMission(new MissionManager(this)), m_mavCommandRetryCount(0), m_countNoGPos(0)
+, m_tmLastRtcm(QDateTime::currentMSecsSinceEpoch()), m_tmLastMav(m_tmLastRtcm)
 {
     m_timerId = startTimer(500);
     connect(m_mgrMission, &MissionManager::sendComplete, this, &VGVehicle::_onMissionSych);
@@ -36,10 +35,11 @@ VGVehicle::VGVehicle(QObject *parent) : QObject(parent), m_sysID(0), m_countTime
 
 VGVehicle::VGVehicle(LinkInterface *link, int vehicleId, MAV_AUTOPILOT firmwareType, MAV_TYPE vehicleType)
 : QObject(NULL), m_countTimer(0), m_timerId(-1), m_sysID(vehicleId), m_vehicleType(vehicleType)
-, m_onboardTimeOffset(0), m_nSatellites(0), m_connectionLostEnabled(true), m_autoDisconnect(true)
-, m_connectionLost(true), m_altitude(0), m_altitudeRelative(0), m_firewareType(firmwareType)
-, m_bMissionItemInt(true), m_mgrMission(new MissionManager(this)), m_voltage(0), m_homePosition(0.0, 0.0)
-, m_bArm(false), m_countNoGPos(0), m_mavCommandRetryCount(0)
+, m_onboardTimeOffset(0), m_nSatellites(0), m_connectionLostEnabled(true), m_bConnnected(true)
+, m_autoDisconnect(true), m_altitude(0), m_altitudeRelative(0), m_firewareType(firmwareType)
+, m_bMissionItemInt(true), m_mgrMission(new MissionManager(this)), m_voltage(0), m_bArm(false)
+, m_countNoGPos(0), m_tmLastRtcm(QDateTime::currentMSecsSinceEpoch()), m_tmLastMav(m_tmLastRtcm)
+, m_mavCommandRetryCount(0)
 {
     _addLink(link);
     m_timerId = startTimer(500);
@@ -47,11 +47,6 @@ VGVehicle::VGVehicle(LinkInterface *link, int vehicleId, MAV_AUTOPILOT firmwareT
     connect(m_mgrMission, &MissionManager::sendComplete, this, &VGVehicle::_onMissionSych);
     connect(m_mgrMission, &MissionManager::error,        this, &VGVehicle::onMissionError);
     connect(this, &VGVehicle::_sendMessageOnLinkOnThread, this, &VGVehicle::_sendMessageOnLink, Qt::QueuedConnection);
-
-    // Connection Lost time
-    m_connectionLostTimer.setInterval(3000);
-    m_connectionLostTimer.setSingleShot(true);
-    connect(&m_connectionLostTimer, &QTimer::timeout, this, &VGVehicle::_connectionLostTimeout);
 }
 
 VGVehicle::~VGVehicle()
@@ -91,21 +86,19 @@ void VGVehicle::_linkConnected(bool b)
 
 void VGVehicle::_mavlinkMessageReceived(LinkInterface *link, const mavlink_message_t &message)
 {
-    if (message.sysid != m_sysID && message.sysid != 0) 
+    if (message.sysid != m_sysID && message.sysid != 0 && message.msgid!=MAVLINK_MSG_ID_PARAM_VALUE)
         return;
 
     if (!_containsLink(link))
         _addLink(link);
 
-    m_connectionLostTimer.stop();
-    m_connectionLostTimer.start();
-
-    if (m_connectionLost)
+    if (!m_bConnnected)
     {
-        m_connectionLost = false;
-        emit connectionLostChanged(m_connectionLost);
+        m_bConnnected = true;
+        emit connectionLostChanged(false);
         emit sysAvalibleChanged(isMissionIdle());
     }
+    m_tmLastMav = QDateTime::currentMSecsSinceEpoch();
 
     switch (message.msgid)
     {
@@ -134,6 +127,8 @@ void VGVehicle::_mavlinkMessageReceived(LinkInterface *link, const mavlink_messa
     case MAVLINK_MSG_ID_ASSIST_POSITION:
     case MAVLINK_MSG_ID_MISSION_CURRENT:
         emit recvMavlink(this, message); break;
+    case MAVLINK_MSG_ID_SPRAY_VALUE:
+        emit recvMavlink(this, message); break;
     case MAVLINK_MSG_ID_VFR_HUD://HUD速率等
         _handleVfrHud(message); break;
     case MAVLINK_MSG_ID_ATTITUDE_TARGET:
@@ -154,8 +149,6 @@ void VGVehicle::_mavlinkMessageReceived(LinkInterface *link, const mavlink_messa
         _handleLogData(message); break;
     case MAVLINK_MSG_ID_PARAM_VALUE:
         _handleParameter(message); break;
-    case MAVLINK_MSG_ID_SPRAY_VALUE:
-        _handleSpray(message); break;
     case MAVLINK_MSG_ID_INTERRUPT_POINT:
         _handleInterrupt(message); break;
     default:
@@ -297,14 +290,14 @@ void VGVehicle::setAutoDisconnect(bool autoDisconnect)
 
 void VGVehicle::_connectionLostTimeout(void)
 {
-    if (m_connectionLostEnabled && !m_connectionLost)
+    if (m_connectionLostEnabled && QDateTime::currentMSecsSinceEpoch()-m_tmLastMav>3000)
     {
-        m_connectionLost = true;
         qDebug() << "_connectionLostTimeout";
         if (m_autoDisconnect)
             disconnectInactiveVehicle();
-      
-        emit connectionLostChanged(m_connectionLost);
+
+        m_bConnnected = false;
+        emit connectionLostChanged(true);
         emit sysAvalibleChanged(false);
         m_countTimer = 0;
     }
@@ -389,6 +382,7 @@ void VGVehicle::_sendMavCommandAgain()
     {
         emit mavCommandResult(queuedCommand.command, false);
         m_mavCommandQueue.removeFirst();
+        m_mavCommandRetryCount = 0;
         _sendMavCommandAgain();
         return;
     }
@@ -488,8 +482,10 @@ void VGVehicle::timerEvent(QTimerEvent *evt)
     if (m_timerId != evt->timerId())
         return QObject::timerEvent(evt);
 
+    if (m_bConnnected)
+        _connectionLostTimeout();
     ++m_countTimer;
-    if (m_countTimer % 5 == 0 && m_mavCommandQueue.size()>0)
+    if (m_mavCommandRetryCount>0 && m_countTimer % 5 == 0 && m_mavCommandQueue.size()>0)
         _sendMavCommandAgain();
     else if (m_mavParameterQue.size() > 0)
         _prcsParameters();
@@ -758,8 +754,7 @@ void VGVehicle::_handleGpsSatellite(const mavlink_message_t& message)
     QGeoCoordinate newPosition;
     uint8_t fix;
     double pre;
-	uint16_t cnt;
-    if (VGMavLinkCode::DecodeGpsSatlate(message, newPosition, m_nSatellites, fix, pre, cnt))
+    if (VGMavLinkCode::DecodeGpsSatlate(message, newPosition, m_nSatellites, fix, pre))
     {
         if (MAVTYPESURVEY == vehicleType())
         {
@@ -768,7 +763,6 @@ void VGVehicle::_handleGpsSatellite(const mavlink_message_t& message)
             m_altitude = newPosition.altitude();
             emit altitudeChanged(this, m_altitude);
         }
-		emit vehicleCog(cnt);
         emit precisionChanged(this, pre);
         emit posTypeChanged(this, fix);
         emit postionChanged(m_latitude, m_longitude, m_altitudeRelative, m_nSatellites);
@@ -863,20 +857,13 @@ void VGVehicle::_handleCommandAck(const mavlink_message_t& message)
     MAV_RESULT result = MAV_RESULT_ACCEPTED;
     if (VGMavLinkCode::DecodeCommandAck(message, cmd, result))
     {
-        bool bSuc = result == MAV_RESULT_ACCEPTED;
-        emit mavCommandResult((MAV_CMD)cmd, bSuc);
+        emit mavCommandResult((MAV_CMD)cmd, result == MAV_RESULT_ACCEPTED);
+        if (m_mavCommandQueue.size() > 0)
+            m_mavCommandQueue.removeFirst();
+
+        m_mavCommandRetryCount = 0;
         _sendMavCommandAgain();
     }
-}
-
-void VGVehicle::_handleSpray(const mavlink_message_t& message)
-{
-    double speed;
-    double vol;
-    uint8_t stat;
-    uint8_t mode;
-    if (VGMavLinkCode::DecodeSpray(message, speed, vol, stat, mode))
-        emit sprayGot(this, speed, vol, stat, mode);
 }
 
 void VGVehicle::_handleInterrupt(const mavlink_message_t& message)

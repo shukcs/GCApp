@@ -5,7 +5,7 @@
 #include "VGCoordinate.h"
 #include "RouteStruct.h"
 #include "VGLandPolygon.h"
-#include "VGOutline.h"
+#include "VGLandPolyline.h"
 #include "VGApplication.h"
 #include "VGMapManager.h"
 #include "VGPlantManager.h"
@@ -17,13 +17,13 @@
 #include "MissionItem.h"
 #include "VGMainPage.h"
 
-static bool ComparePolyLineList(const QList<VGOutline*> &ls1, const QList<VGOutline*> &ls2)
+static bool ComparePolyLineList(const QList<VGLandPolyline*> &ls1, const QList<VGLandPolyline*> &ls2)
 {
     if (ls1.count() != ls2.count())
         return false;
 
-    QList<VGOutline*>::const_iterator itr = ls1.begin();
-    QList<VGOutline*>::const_iterator itr2 = ls2.begin();
+    QList<VGLandPolyline*>::const_iterator itr = ls1.begin();
+    QList<VGLandPolyline*>::const_iterator itr2 = ls2.begin();
     for (; itr != ls1.end(); ++itr, ++itr2)
     {
         if (**itr != **itr2)
@@ -63,7 +63,7 @@ VGFlyRoute::VGFlyRoute(const VGFlyRoute &oth) : SingleTriggerItem<MapAbstractIte
 , m_nCurEdge(oth.m_nCurEdge), m_lsOutlineSafe(oth.m_lsOutlineSafe)
 , m_fSafeDis(oth.m_fSafeDis), m_bSingleShrink(oth.m_bSingleShrink)
 {
-    if (oth.m_route && (m_route = new VGOutline(*oth.m_route)))
+    if (oth.m_route && (m_route = new VGLandPolyline(*oth.m_route)))
     {
         for (VGCoordinate *itr : m_route->GetCoordinates())
         {
@@ -176,7 +176,7 @@ bool VGFlyRoute::IsValide() const
     return !m_bErrorPlan && m_route!=NULL;
 }
 
-VGOutline *VGFlyRoute::allMissionRoute() const
+VGLandPolyline *VGFlyRoute::allMissionRoute() const
 {
     return m_route;
 }
@@ -603,7 +603,7 @@ void VGFlyRoute::_adjustOperateAttitude(double alt)
     }
 }
 
-void VGFlyRoute::_calculateAnggle(VGOutline *rt)
+void VGFlyRoute::_calculateAnggle(VGLandPolyline *rt)
 {
     if (!rt)
         return;
@@ -715,7 +715,7 @@ void VGFlyRoute::showPlanningResult(const VGRoute &result, VGFlyRoute *rt)
     m_ridgeOper = 0;
     if (!m_route)
     {
-        if (m_route = new VGOutline(this, VGLandPolygon::FlyRoute))
+        if (m_route = new VGLandPolyline(this, VGLandPolygon::FlyRoute))
         {
             m_route->SetShowType(Show_LineAndPoint);
             m_route->SetWidth(1);

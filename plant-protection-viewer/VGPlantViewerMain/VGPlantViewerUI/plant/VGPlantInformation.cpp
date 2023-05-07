@@ -6,7 +6,7 @@
 #include "VGVehicleMission.h"
 #include "VGGlobalFun.h"
 #include "VGCoordinate.h"
-#include "VGOutline.h"
+#include "VGLandPolyline.h"
 #include "VGMavLinkCode.h"
 #include "VGLandInformation.h"
 #include "VGLandPolygon.h"
@@ -28,7 +28,7 @@
 #define TMOUT_CONNECT   5000
 #define MINVTGFORMS   3.7
 
-enum SupportStat
+enum OperateStat
 {
     NoOperator = 0,
     SetSupport = 1,
@@ -38,6 +38,10 @@ enum SupportStat
     UAVGetHome = UAVSetHome << 1,
     GetSupport = UAVGetHome << 1,
     GetHomeAndSupport = UAVGetHome | GetSupport,
+
+    NoArm = 0,
+    OpSetArm,
+    OpSetDisarm,
 };
 
 static QString getStringFormBool(bool b)
@@ -50,7 +54,7 @@ static QString getStatDescribe(int stat, MAV_CMD cmd)
 {
     if (cmd == MAV_CMD_SET_START_POINT)
     {
-        SupportStat stTmp = SupportStat(stat & 0xff);
+        OperateStat stTmp = OperateStat(stat & 0xff);
         if (SetSupport == stTmp)
             return VGPlantInformation::tr("setting enter support");//"设置起飞辅助点"
         else if (ClearSupport == stTmp)
@@ -59,7 +63,7 @@ static QString getStatDescribe(int stat, MAV_CMD cmd)
     else if (cmd == MAV_CMD_SET_END_POINT)
     {
         stat >>= 8;
-        SupportStat stTmp = SupportStat(stat & 0xff);
+        OperateStat stTmp = OperateStat(stat & 0xff);
         if (SetSupport == stTmp)
             return VGPlantInformation::tr("setting return support");//设置返航辅助点"
         else if (ClearSupport == stTmp)
@@ -95,15 +99,14 @@ float VGPlantInformation::BlockInfo::GetDistance() const
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //VGPlantInformation
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-VGPlantInformation::VGPlantInformation(QObject *parent) : MapAbstractItem(parent)
-, m_status(UnConnect), m_bBind(0), m_distance(0), m_bDirectLink(false), m_bLanded(true)
-, m_satNum(0), m_horSpeed(0), m_verSpeed(0), m_relativeAltitude(0), m_compassAngle(0)
-, m_rollAngle(0), m_pitchAngle(0), m_powerPercent(0), m_medicineSpeed(0), m_medicineVol(0)
-, m_precision(0), m_uploadVm(NULL), m_bMonitor(false), m_lastTime(0), m_lat(0), m_lon(0)
-, m_lastLacalTime(QDateTime::currentMSecsSinceEpoch()), m_bMissionValible(false)
-, m_tpPos(0), m_homeCoor(NULL), m_cntnCoor(NULL), m_planMissionLine(NULL), m_acc(0)
-, m_baseMode(0), m_bSetArm(false), m_bSychUav(false), m_gndHeight(0), m_bSys(false)
-, m_powerGrade(0), m_medicineGrade(0), m_voltage(0), m_bWlcLose(true), m_bRestrain(false)
+VGPlantInformation::VGPlantInformation(QObject *parent) : MapAbstractItem(parent), m_status(UnConnect)
+, m_bBind(0), m_distance(0), m_bDirectLink(false), m_bLanded(true), m_satNum(0), m_horSpeed(0)
+, m_verSpeed(0), m_relativeAltitude(0), m_compassAngle(0), m_rollAngle(0), m_pitchAngle(0)
+, m_powerPercent(0), m_medicineSpeed(0), m_medicineVol(0), m_precision(0), m_uploadVm(NULL)
+, m_bMonitor(false), m_lastTime(0), m_lat(0), m_lon(0), m_lastLacalTime(QDateTime::currentMSecsSinceEpoch())
+, m_lastPosChgTm(m_lastLacalTime),  m_bMissionValible(false), m_tpPos(0), m_homeCoor(NULL), m_cntnCoor(NULL)
+, m_planMissionLine(NULL), m_acc(0), m_baseMode(0), m_bSetArm(false), m_bSychUav(false), m_gndHeight(0)
+, m_bSys(false), m_powerGrade(0), m_medicineGrade(0), m_voltage(0), m_bWlcLose(true), m_bRestrain(false)
 , m_bArmOp(false), m_missionCount(0), m_bDownMs(false), m_rtl(NULL), m_devType(-1)
 , m_statSupport(GetHomeAndSupport),m_aPointCoor(NULL),m_bPointCoor(NULL)
 {
@@ -117,11 +120,11 @@ VGPlantInformation::VGPlantInformation(const VGPlantInformation &oth) : MapAbstr
 , m_relativeAltitude(oth.m_relativeAltitude), m_compassAngle(oth.m_compassAngle)
 , m_rollAngle(oth.m_rollAngle), m_pitchAngle(oth.m_pitchAngle), m_powerPercent(oth.m_powerPercent)
 , m_medicineSpeed(oth.m_medicineSpeed), m_precision(0), m_status(oth.m_status), m_bMonitor(oth.m_bMonitor)
-, m_lastLacalTime(oth.m_lastLacalTime), m_homeCoor(NULL), m_cntnCoor(NULL), m_bMissionValible(false)
-, m_tpPos(oth.m_tpPos), m_bSychUav(false), m_planMissionLine(NULL), m_acc(oth.m_acc), m_bSetArm(false)
-, m_baseMode(oth.m_baseMode), m_gndHeight(oth.m_gndHeight), m_bSys(false), m_powerGrade(0), m_bRestrain(false)
-, m_medicineGrade(0), m_voltage(oth.m_voltage), m_bWlcLose(true), m_bArmOp(false), m_missionCount(0)
-, m_bDownMs(false), m_devType(-1), m_rtl(NULL), m_statSupport(GetHomeAndSupport)
+, m_lastLacalTime(oth.m_lastLacalTime), m_lastPosChgTm(m_lastLacalTime), m_homeCoor(NULL), m_cntnCoor(NULL)
+, m_bMissionValible(false), m_tpPos(oth.m_tpPos), m_bSychUav(false), m_planMissionLine(NULL), m_acc(oth.m_acc)
+, m_bSetArm(false), m_baseMode(oth.m_baseMode), m_gndHeight(oth.m_gndHeight), m_bSys(false), m_powerGrade(0)
+, m_bRestrain(false), m_medicineGrade(0), m_voltage(oth.m_voltage), m_bWlcLose(true), m_bArmOp(false)
+, m_missionCount(0), m_bDownMs(false), m_devType(-1), m_rtl(NULL), m_statSupport(GetHomeAndSupport)
 ,m_aPointCoor(NULL),m_bPointCoor(NULL)
 {
     if (oth.m_homeCoor)
@@ -285,9 +288,9 @@ void VGPlantInformation::SetLanded(bool isLanded)
 
 void VGPlantInformation::setCoordinate(const QGeoCoordinate &coor)
 {
+    auto tm = QDateTime::currentMSecsSinceEpoch();
     bool bValidLast = m_lastPosition.isValid();
     bool bValid = coor.isValid();
-
     m_lat = coor.latitude();
     m_lon = coor.longitude();
     m_lastPosition = bValid ? VGGlobalFunc::gpsCorrect(coor) : QGeoCoordinate();
@@ -299,8 +302,11 @@ void VGPlantInformation::setCoordinate(const QGeoCoordinate &coor)
         emit gpsTipChanged();
     }
 
-    if (IsShowWay(m_lastPosition))
+    if (IsShowWay(m_lastPosition, tm - m_lastPosChgTm))
+    {
         m_planMissionLine->addCoordinate(m_lastPosition);
+        m_lastPosChgTm = tm;
+    }
 }
 
 QGeoCoordinate VGPlantInformation::lastCoordinate() const
@@ -621,7 +627,7 @@ void VGPlantInformation::SetHome(const QGeoCoordinate &c, bool bRcv)
         m_homeCoor->Show(true);
 }
 
-void VGPlantInformation::CommandRes(unsigned short cmd, bool res)
+void VGPlantInformation::PrcsCommandRes(unsigned short cmd, bool res)
 {
     switch (cmd)
     {
@@ -1119,7 +1125,6 @@ void VGPlantInformation::SetQxSdkAccount(const QString &key, const QString &secr
     emit devidChanged();
     emit devtypeChanged();
 
-
     if (bSend)
     {
         if (m_bDirectLink)
@@ -1185,7 +1190,7 @@ void VGPlantInformation::PrcsBlocks(const QList<VGPlantInformation::BlockInfo> &
             (*itr)->SetId(idx++);
             ++itr;
         }
-        else if (VGBlock *tmp = new VGBlock(blk.GetCoordinate(), blk.GetAngle(), blk.GetDistance(), this))
+        else if (VGBlock *tmp = new VGBlock(blk.GetCoordinate(), blk.GetDistance(), blk.GetAngle(), this))
         {
             tmp->SetId(idx++);
             m_blocks.append(tmp);
@@ -1205,6 +1210,12 @@ void VGPlantInformation::PrcsBlocks(const QList<VGPlantInformation::BlockInfo> &
 VGVehicleMission *VGPlantInformation::GetPrepareMission() const
 {
     return m_prepareVm;
+}
+
+void VGPlantInformation::ClearWay()
+{
+    if (m_planMissionLine)
+        m_planMissionLine->clear();
 }
 
 void VGPlantInformation::reqMissionFromNet(int idx)
@@ -1315,17 +1326,14 @@ bool VGPlantInformation::IsRestrain() const
     return m_bRestrain;
 }
 
-bool VGPlantInformation::IsShowWay(const QGeoCoordinate &coor) const
+bool VGPlantInformation::IsShowWay(const QGeoCoordinate &coor, uint32_t tm) const
 {
-    if (m_planMissionLine && !IsLanded() && (m_gps == 2 || m_gps == 3))
+    if (m_planMissionLine && !IsLanded() && coor.isValid())
     {
-        if (!coor.isValid())
-            return false;
-
         if (m_planMissionLine->coordinateCount() < 1)
             return true;
-
-        return coor.distanceTo(m_planMissionLine->lastCoordinate()) < 1e3;
+        auto dis = coor.distanceTo(m_planMissionLine->lastCoordinate());
+        return ((tm>200 && dis < 1e3) || tm>5000) &&  dis > 0.1;
     }
 
     return false;
@@ -1567,6 +1575,8 @@ void VGPlantInformation::SetArm(bool b)
         return;
     }
 
+    qDeleteAll(m_blocks);
+    m_blocks.clear();
     if(b)
     {
         m_bSetArm = b;
@@ -1586,8 +1596,7 @@ bool VGPlantInformation::IsMissionValible() const
 
 QString VGPlantInformation::GetPosTip() const
 {
-    
-    if (GetStatus() == Connected && lastCoordinate().isValid())
+    if (GetStatus()==Connected && lastCoordinate().isValid())
         return VGGlobalFunc::GetPosTypeTip(m_tpPos);
 
     return tr("N/A");
@@ -1653,7 +1662,8 @@ void VGPlantInformation::_arm(bool bArm)
         VGMavLinkCode::EncodeCommands(msg, 0, MAV_CMD_COMPONENT_ARM_DISARM, NULL, 0, 0, bArm ? 1.0 : 0);
         nm->SendControlUav(m_planeId, msg);
     }
-    m_bArmOp = !bArm;
+    m_statSupport |= (uint32_t(bArm ? OpSetArm : OpSetDisarm) << 24);
+    m_bArmOp = bArm;
     if (bArm)
         CheckConnect(m_lastLacalTime);
 }
@@ -1698,7 +1708,7 @@ void VGPlantInformation::setMissionRun()
     _showContinue(GetSelected());
     if (!m_planMissionLine && (bMission || m_flightMode==GetFlightModeDscb(ABPMod)))
     {
-        m_planMissionLine = new VGOutline(this, VGLandPolygon::NoPoint);
+        m_planMissionLine = new VGLandPolyline(this, VGLandPolygon::NoPoint);
         m_planMissionLine->SetBorderColor(QColor("#F01010"));//"#F01010"
         m_planMissionLine->SetShowType(Show_Line);
     }
@@ -1796,12 +1806,12 @@ void VGPlantInformation::prcsSupportAndHome()
     if ((m_statSupport&SetHomePos) && m_homeCoor && m_homeCoor->GetId() == VGCoordinate::HomeSet)
         sendSetHome(false, VGGlobalFunc::toGps(m_homeCoor->GetCoordinate()));
 
-    SupportStat stTmp1 = SupportStat(m_statSupport & 0xff);
+    OperateStat stTmp1 = OperateStat(m_statSupport & 0xff);
     if (SetSupport == stTmp1 && m_uploadVm && m_uploadVm->GetSupportEnter())
         SendSupport(true, m_uploadVm->GetSupportEnter());
     else if (ClearSupport == stTmp1)
         SendSupport(true, NULL);
-    SupportStat stTmp2 = SupportStat((m_statSupport >> 8) & 0xff);
+    OperateStat stTmp2 = OperateStat((m_statSupport >> 8) & 0xff);
     if (SetSupport == stTmp1 && m_uploadVm && m_uploadVm->GetSupportReturn())
         SendSupport(false, m_uploadVm->GetSupportReturn());
     else if (ClearSupport == stTmp2)
@@ -1831,17 +1841,23 @@ void VGPlantInformation::requestFromUav(uint32_t mavType)
 
 void VGPlantInformation::_prcsArmOrDisarm(bool res)
 {
-    QString str = tr("UAV %1 %2").arg(m_bArmOp ? tr("disarm") : tr("arm")).arg(getStringFormBool(res));
-    qvgApp->SetQmlTip(str, !res);
-    m_bSetArm = false;
+    auto st = m_statSupport >> 24;
+    if (OpSetArm==st || OpSetDisarm==st)
+    {
+        QString str = tr("UAV %1 %2").arg(st==OpSetArm ? tr("arm") : tr("disarm")).arg(getStringFormBool(res));
+        qvgApp->SetQmlTip(str, !res);
+        m_bSetArm = false;
+    }
+    m_statSupport &= 0xffffff;
 
     VGFlyRoute *rt = m_uploadVm ? m_uploadVm->GetFlyRoute() : NULL;
-    if(!m_bArmOp && res && rt)
+    if(m_bArmOp && res && rt)
     {
         float tmp = rt->GetMedPerAcre() * 1000;
         if (GetParamValue("SPRAY_QUAN") != tmp)
             SetPlantParammeter("SPRAY_QUAN", tmp);
     }
+    m_bArmOp = !m_bArmOp;
 }
 
 void VGPlantInformation::_prcsFligtMode(bool res)

@@ -148,7 +148,7 @@ bool VGPlanningWorker::_genPlanBoudary(VGFlyRoute *rt)
 void VGPlanningWorker::TrancePlygon(const QGeoCoordinate &home, const VGLandPolygon &ldPlg, VGPolygon &plg)
 {
     plg.Clear();
-    for(const QVariant &var : ldPlg.path())
+    for (const QVariant &var : ldPlg.GetPath())
     {
         double x, y;
         VGCoordinate::transCoor2XY(home, var.value<QGeoCoordinate>(), x, y);

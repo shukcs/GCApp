@@ -1,4 +1,4 @@
-#include "VGFriend.h"
+﻿#include "VGFriend.h"
 #include "VGApplication.h"
 #include "VGFriendsManager.h"
 #include "QmlObjectListModel.h"

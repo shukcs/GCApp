@@ -6,7 +6,7 @@
 #include <QVariant>
 
 class VGCoordinate;
-class VGOutline;
+class VGLandPolyline;
 class VGLandInformation;
 
 class VGSupportPolyline : public MapAbstractItem

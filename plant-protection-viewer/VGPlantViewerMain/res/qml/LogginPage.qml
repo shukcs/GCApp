@@ -20,6 +20,11 @@ Page {
         id: registerPageCom
         RegisterPage { anchors.fill: parent }
     }
+    Rectangle {
+        anchors {left: parent.left; right: parent.right; top: parent.top}
+        color: "#182750"
+        height: settingsImg.height +10;
+    }
     Image {
         anchors {left: parent.left; right: parent.right; top: parent.top}
         fillMode:       Image.PreserveAspectFit

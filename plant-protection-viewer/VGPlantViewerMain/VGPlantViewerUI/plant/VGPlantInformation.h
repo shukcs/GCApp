@@ -14,7 +14,7 @@ class VGVehicle;
 class VGFlyRoute;
 class VGVehicleMission;
 class VGCoordinate;
-class VGOutline;
+class VGLandPolyline;
 class VGLandInformation;
 class QVariant;
 class MissionItem;
@@ -173,7 +173,7 @@ public:
     bool operator==(const MapAbstractItem &item)const;
     MapItemType ItemType()const;
 
-    void CommandRes(unsigned short cmd, bool res);
+    void PrcsCommandRes(unsigned short cmd, bool res);
     QString GetFlightMode()const;
     void ChangeFlightMode(const QString &mod);
     void SetFlightMode(const QString &mod);
@@ -219,6 +219,7 @@ public:
     void ClearQxSdkAccount(bool bSend=true);
     void PrcsBlocks(const QList<BlockInfo> &blocks);
     VGVehicleMission *GetPrepareMission()const;
+    void ClearWay();
 public:
     static QString GetFlightModeDscb(const QString &str);
     static QString GetQxStatDscb(int stat);
@@ -249,7 +250,7 @@ protected:
     QString GetDevid() const;
     int GetDevtype() const;
     bool IsRestrain()const;
-    bool IsShowWay(const QGeoCoordinate &coor)const;
+    bool IsShowWay(const QGeoCoordinate &coor, uint32_t tm)const;
     double GetLat()const;
     double GetLon()const;
     Q_INVOKABLE VGVehicleMission *beginOperation(VGFlyRoute *fr);
@@ -356,6 +357,7 @@ private:
     qint64          m_bindTime;         //解绑、绑定时间
     qint64          m_lastTime;         //最后在线时间
     qint64          m_lastLacalTime;    //无数据计时
+    qint64          m_lastPosChgTm;    //无数据计时
 
     QString         m_planeId;          //飞机ID
     QString         m_master;           //绑定者
@@ -373,7 +375,7 @@ private:
     VGCoordinate            *m_cntnCoor;  //中断点
     VGCoordinate            *m_aPointCoor;  //AB点的A
     VGCoordinate            *m_bPointCoor;  //AB点的B
-    VGOutline               *m_planMissionLine;
+    VGLandPolyline               *m_planMissionLine;
     unsigned                m_baseMode;
     uint32_t                m_statSupport;
     VGSupportPolyline       *m_rtl;

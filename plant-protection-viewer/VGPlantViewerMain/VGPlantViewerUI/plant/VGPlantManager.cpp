@@ -81,7 +81,10 @@ VGPlantManager::VGPlantManager(QObject *parent /*= 0*/) : QObject(parent)
 
 VGPlantManager::~VGPlantManager()
 {
-    qDeleteAll(m_palnts);
+    for (auto p : m_plants)
+    {
+        p->deleteLater();
+    }
 }
 
 bool VGPlantManager::IsConnected() const
@@ -120,7 +123,7 @@ void VGPlantManager::addNewPlant(const QString &planeId, bool bMnt)
 
 void VGPlantManager::clearTmpPlant()
 {
-    foreach(VGPlantInformation *planeInfo, m_palnts)
+    foreach(VGPlantInformation *planeInfo, m_plants)
     {
         if (planeInfo->isDirectLink() || m_mntPants.contains(planeInfo->planeId()))
             continue;
@@ -143,7 +146,7 @@ void VGPlantManager::remove(VGPlantInformation *pl)
 
     if (!pl->isDirectLink())
     {
-        m_palnts.removeAll(pl);
+        m_plants.removeAll(pl);
         m_mntPants.removeAll(pl->planeId());
         emit mntPantsChanged();
 
@@ -243,6 +246,12 @@ int VGPlantManager::getParamIndex(const QString &key) const
     return ret;
 }
 
+void VGPlantManager::clear()
+{
+    if (m_plantCur)
+        m_plantCur->ClearWay();
+}
+
 void VGPlantManager::writeConfig()
 {
      _writeConfig();
@@ -306,18 +315,19 @@ void VGPlantManager::processOperationInformation(const das::proto::PostOperation
 void VGPlantManager::processMavlink(const das::proto::PostStatus2GroundStation &mav)
 {
     mavlink_message_t msg = { 0 };
-    auto p = GetPlantById(mav.uavid().c_str());
+    auto info = GetPlantById(mav.uavid().c_str());
     int count = mav.data_size();
     for (int i = 0; i < count; ++i)
     {
-        const ::std::string &dt = mav.data(i);
+        const std::string &dt = mav.data(i);
         if (dt.size() < 3)
             return;
 
-        msg.msgid = *(uint16_t*)dt.c_str();
+        const char* p = dt.c_str();
+        msg.msgid = *(uint16_t*)p;
         msg.len = uint8_t(dt.size()) - sizeof(uint16_t);
-        memcpy(msg.payload64, dt.c_str() + sizeof(uint16_t), msg.len);
-        prcsUavMavlink(p, msg, i==count-1);
+        memcpy((char*)msg.payload64, p + sizeof(uint16_t), msg.len);
+        prcsUavMavlink(info, msg, i==count-1);
     }
 }
 
@@ -488,7 +498,7 @@ void VGPlantManager::startQueryMyPlaneStatus()
      {
          killTimer(m_idTimerQureryPlant);
          m_idTimerQureryPlant = -1;
-         foreach(VGPlantInformation *planeInfo, m_palnts)
+         foreach(VGPlantInformation *planeInfo, m_plants)
          {
              if (!planeInfo->isDirectLink())
                  planeInfo->SetStatus(VGPlantInformation::UnConnect);
@@ -498,8 +508,8 @@ void VGPlantManager::startQueryMyPlaneStatus()
 
  VGPlantInformation *VGPlantManager::GetPlantViaDrect() const
  {
-     if (m_palnts.count() && m_palnts.first()->isDirectLink())
-         return m_palnts.first();
+     if (m_plants.count() && m_plants.first()->isDirectLink())
+         return m_plants.first();
 
      return NULL;
  }
@@ -522,14 +532,14 @@ void VGPlantManager::startQueryMyPlaneStatus()
 
  void VGPlantManager::RemoveViaCloudPlant(const QString &planeId)
  {
-     foreach(VGPlantInformation *itr, m_palnts)
+     foreach(VGPlantInformation *itr, m_plants)
      {
          if (itr->isDirectLink())
              continue;
 
          if (itr->planeId() == planeId)
          {
-             m_palnts.removeAll(itr);
+             m_plants.removeAll(itr);
              itr->deleteLater();
          }
      }
@@ -540,7 +550,7 @@ void VGPlantManager::startQueryMyPlaneStatus()
      if (id.isEmpty())
          return NULL;
 
-     foreach(VGPlantInformation *itr, m_palnts)
+     foreach(VGPlantInformation *itr, m_plants)
      {
          if (id.compare(itr->planeId(), Qt::CaseInsensitive) == 0)
              return itr;
@@ -550,16 +560,16 @@ void VGPlantManager::startQueryMyPlaneStatus()
 
  void VGPlantManager::Insert(VGPlantInformation *info, int i)
  {
-     if (!info || m_palnts.contains(info))
+     if (!info || m_plants.contains(info))
          return;
 
      info->setParent(this);
-     if (i > m_palnts.count() || i < 0)
-         m_palnts.append(info);
+     if (i > m_plants.count() || i < 0)
+         m_plants.append(info);
      else
-         m_palnts.insert(i, info);
+         m_plants.insert(i, info);
      
-     info->LoadFromVehicle();
+     //info->LoadFromVehicle();
 
      connect(info, &QObject::destroyed, this, &VGPlantManager::onChildDestroyed);
      connect(info, &VGPlantInformation::statusChanged, this, &VGPlantManager::onPlantConnectChanged);
@@ -628,8 +638,6 @@ void VGPlantManager::prcsGpsInfo(const QString &id, const GpsInformation &gps)
         info->SetMedicineGrade(gpsAdt.sprayState);
         info->SetDownMisson(gpsAdt.stDown);
         info->SetQxwzStat(gpsAdt.qxwzStat);
-        if (gpsAdt.gpsJam)
-            qvgApp->SetQmlTip(tr("UAV %1 GPS jam,please landing  immediately!"), true);//"飞机%1 GPS干扰,请尽快降落!"
 
         if (gpsAdt.missionRes < MAV_MISSION_RESULT_ENUM_END)
             info->SychFinish(gpsAdt.missionRes == MAV_MISSION_ACCEPTED);
@@ -749,6 +757,8 @@ void VGPlantManager::prcsUavMavlink(VGPlantInformation *info, const mavlink_mess
         _prcsSupport(*info, msg);  break;
     case MAVLINK_MSG_ID_RC_CHANNELS:
         _prcsRcChannels(*info, msg); break;
+    case MAVLINK_MSG_ID_SPRAY_VALUE:
+        _prcsSprayVal(*info, msg); break;
     default:
         break;
     }
@@ -783,7 +793,7 @@ void VGPlantManager::timerEvent(QTimerEvent *event)
         return QObject::timerEvent(event);
 
     qint64 curMs = QDateTime::currentMSecsSinceEpoch();
-    foreach(VGPlantInformation *planeInfo, m_palnts)
+    foreach(VGPlantInformation *planeInfo, m_plants)
     {
         if (!planeInfo->isDirectLink())
             planeInfo->CheckConnect(curMs);
@@ -844,7 +854,7 @@ VGPlantInformation * VGPlantManager::GetCurrentPlant() const
 
 VGPlantInformation *VGPlantManager::_getPlantByIdAndUser(const QString &id, const QString &user)
 {
-    foreach(VGPlantInformation *itr, m_palnts)
+    foreach(VGPlantInformation *itr, m_plants)
     {
         if (itr->master() == user && itr->planeId() == id)
             return itr;
@@ -1074,9 +1084,9 @@ bool VGPlantManager::IsVoiceSat() const
 
 void VGPlantManager::onChildDestroyed(QObject *obj)
 {
-    int idx = m_palnts.indexOf((VGPlantInformation *)obj);
+    int idx = m_plants.indexOf((VGPlantInformation *)obj);
     if (idx >= 0)
-        m_palnts.removeAt(idx);
+        m_plants.removeAt(idx);
 
     if (m_plantCur == obj)
         SetCurrentPlant(NULL);
@@ -1138,7 +1148,7 @@ void VGPlantManager::_prcsCmdAck(VGPlantInformation &p, const mavlink_message_t 
     uint16_t cmd;
     MAV_RESULT result;
     if (VGMavLinkCode::DecodeCommandAck(m, cmd, result))
-        p.CommandRes(cmd, result == MAV_RESULT_ACCEPTED);
+        p.PrcsCommandRes(cmd, result == MAV_RESULT_ACCEPTED);
 }
 
 void VGPlantManager::_prcsMissionCur(VGPlantInformation &p, const mavlink_message_t &m)
@@ -1274,6 +1284,21 @@ void VGPlantManager::_prcsSupport(VGPlantInformation &p, const mavlink_message_t
     int ret = VGMavLinkCode::DecodeSupport(msg, cE, cR);
     if (ret >= 0)
         p.ReceiveSupports(cE, cR, ret);
+}
+
+
+void VGPlantManager::_prcsSprayVal(VGPlantInformation &p, const mavlink_message_t &msg)
+{
+    double speed;
+    double vol;
+    uint8_t stat;
+    uint8_t mode;
+    if (VGMavLinkCode::DecodeSpray(msg, speed, vol, stat, mode))
+    {
+        p.SetMedicineSpeed(speed);
+        p.SetMedicineVol(vol);
+        p.SetMedicineGrade(stat);
+    }
 }
 
 void VGPlantManager::_prcsQXAccount(VGPlantInformation &plant, const mavlink_message_t &msg)

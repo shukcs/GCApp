@@ -155,12 +155,10 @@ Rectangle{
                 }
                 Label {
                     id: labelMonth
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.right: prevMonth.left
-                    anchors.rightMargin: 15
-                    //注意Date原本的月份是0开始
+                    anchors {verticalCenter: parent.verticalCenter; right: prevMonth.left; rightMargin: 15}
+                    ///注意Date原本的月份是0开始
                     text: (control.visibleMonth+1)+qsTr('月')
-                    //elide: Text.ElideRight
+                    ///elide: Text.ElideRight
                     horizontalAlignment: Text.AlignRight
                     font.pixelSize: 14
                     font.family: "SimSun"

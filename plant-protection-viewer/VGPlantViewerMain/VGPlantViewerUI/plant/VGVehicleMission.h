@@ -9,7 +9,7 @@ class MissionItem;
 class VGFlyRoute;
 class VGLandBoundary;
 class VGCoordinate;
-class VGOutline;
+class VGLandPolyline;
 class VGLandInformation;
 class VGSupportPolyline;
 class VGPlanningWorker;
@@ -178,7 +178,7 @@ private:
     void _adjustSequence(int beg=0);
     void _supportSegChanged(bool bEnter);
     void _calculatLength();
-    void _genTipPoint(VGOutline *ol, int beg, int end);
+    void _genTipPoint(VGLandPolyline *ol, int beg, int end);
     void _sendSupport(bool bEnter, VGCoordinate *pnt);
     bool _checkSupport(const QGeoCoordinate &c);
     bool _checkSupportHeight(double f);

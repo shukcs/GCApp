@@ -53,11 +53,10 @@ private slots:
     void onMissionPrcs(double par, bool b);
     void onVehicleUavIdChanged(VGVehicle *v, const QString &uavid);
     void onSyschFinish(bool error);
-    void onSprayGot(VGVehicle *v, double speed, double vol, uint8_t stat, uint8_t mode);
-	void onVehicleCog(int cog);
     void onSysStatus(uint8_t st);
     void onRecvSuspend(const QGeoCoordinate &c, int type);
     void OnRecvMavlink(VGVehicle *v, const mavlink_message_t &msg);
+    void onVehicleDestroyed(QObject *v);
 private:
     QList<VGVehicle*>   _vehicles;
     VGVehicle*          _activeVehicle;                     ///< Currently active vehicle

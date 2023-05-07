@@ -39,10 +39,14 @@ VGVehicleManager::VGVehicleManager(QObject *parent) : QObject(parent)
 
 void VGVehicleManager::onHeartbeat(LinkInterface *link, int vehicleId, int, int vehicleFirmwareType, int vehicleType)
 {
-    if(getVehicleById(vehicleId))
-        return;
-
     bool bVehivle = vehicleType != MAVTYPESURVEY;
+    if (auto v = getVehicleById(vehicleId))
+    {
+        if (bVehivle)
+            setActiveVehicle(v);
+        return;
+    }
+
     VGVehicle* vehicle = new VGVehicle(link, vehicleId, (MAV_AUTOPILOT)vehicleFirmwareType, (MAV_TYPE)vehicleType);
     vehicle->setAutoDisconnect(true);
     connect(this, &VGVehicleManager::sigMavlinkMessageReceived, vehicle, &VGVehicle::_mavlinkMessageReceived);
@@ -70,11 +74,10 @@ void VGVehicleManager::onHeartbeat(LinkInterface *link, int vehicleId, int, int 
         connect(mm, &MissionManager::newMissionItemsAvailable, this, &VGVehicleManager::onNewMissionItemsAvailable);
         connect(mm, &MissionManager::progressPct, this, &VGVehicleManager::onMissionPrcs);
         connect(mm, &MissionManager::sendComplete, this, &VGVehicleManager::onSyschFinish);
-        connect(vehicle, &VGVehicle::sprayGot, this, &VGVehicleManager::onSprayGot);
-        connect(vehicle, &VGVehicle::vehicleCog, this, &VGVehicleManager::onVehicleCog);
         connect(vehicle, &VGVehicle::sysStatus, this, &VGVehicleManager::onSysStatus);
         connect(vehicle, &VGVehicle::recvSuspend, this, &VGVehicleManager::onRecvSuspend);
         connect(vehicle, &VGVehicle::recvMavlink, this, &VGVehicleManager::OnRecvMavlink);
+        connect(vehicle, &QObject::destroyed, this, &VGVehicleManager::onVehicleDestroyed);
 
         setActiveVehicle(vehicle);
     }
@@ -129,7 +132,7 @@ void VGVehicleManager::setActiveVehicle(VGVehicle* vehicle)
 
         // See explanation in _deleteVehiclePhase1
         _vehicleBeingSetActive = vehicle;
-        QTimer::singleShot(20, this, &VGVehicleManager::sltSetActiveVehiclePhase2);
+        QTimer::singleShot(50, this, &VGVehicleManager::sltSetActiveVehiclePhase2);
     }
 }
 
@@ -167,7 +170,7 @@ void VGVehicleManager::sltSetActiveVehiclePhase2(void)
 
 void VGVehicleManager::sltSendVGHeartbeat()
 {
-    foreach (VGVehicle* vehicle, _vehicles)
+    for (VGVehicle* vehicle : _vehicles)
     {
         mavlink_message_t message;
         mavlink_msg_heartbeat_pack(qvgApp->mavLink()->getSystemId(),
@@ -185,15 +188,20 @@ void VGVehicleManager::sltSendVGHeartbeat()
 void VGVehicleManager::onConnectionLostChanged(bool b)
 {
     VGVehicle *v = qobject_cast<VGVehicle *>(sender());
-    if (_activeVehicle == v)
+    if (_activeVehicle == v && v)
     {
-        if (b)
-            qvgApp->SetQmlTip(tr("Link timeout,communicate break"), true);//"链接超时，断开通信"
-        else
-            qvgApp->SetQmlTip(tr("Device linked"));//"设备已连接"
+        qvgApp->SetQmlTip(b ? tr("Link timeout,communicate break") : tr("Device linked"), b);//"链接超时，断开通信"
 
         if (VGPlantInformation *plant = qvgApp->plantManager()->GetPlantViaDrect())
-            plant->SetStatus(!b? VGPlantInformation::Connected : VGPlantInformation::UnConnect);
+            plant->SetStatus(!b ? VGPlantInformation::Connected : VGPlantInformation::UnConnect);
+
+        if (b)
+        {
+            _activeVehicle = NULL;
+            _activeVehicleAvailable = false;
+            emit sigActiveVehicleAvailableChanged(false);
+        }
+
     }
     else if (v == surveyVehicle())
     {
@@ -231,7 +239,7 @@ void VGVehicleManager::onMavCommandResult(MAV_CMD cmd, bool res)
     if (_activeVehicle == sender())
     {
         if (VGPlantInformation *plant = qvgApp->plantManager()->GetPlantViaDrect())
-            plant->CommandRes(cmd, res);
+            plant->PrcsCommandRes(cmd, res);
     }
 }
 
@@ -263,28 +271,6 @@ void VGVehicleManager::onSyschFinish(bool error)
         if (VGPlantInformation *plant = mgr->GetPlantViaDrect())
             plant->SychFinish(!error);
     }
-}
-
-void VGVehicleManager::onSprayGot(VGVehicle *v, double speed, double vol, uint8_t stat, uint8_t)
-{
-    if (!v || v != _activeVehicle)
-        return;
-
-    if (VGPlantInformation *plant = qvgApp->plantManager()->GetPlantViaDrect())
-    {
-        plant->SetMedicineSpeed(speed);
-        plant->SetMedicineVol(vol);
-        plant->SetMedicineGrade(stat);
-    }
-}
-
-void VGVehicleManager::onVehicleCog(int cog)
-{
-    if(3 == (cog&7))
-	    qvgApp->SetQmlTip(tr("magic un-expect, please correct"), true);//"磁异常,需要校磁"
-
-    if (cog & 8)
-        qvgApp->SetQmlTip(tr("GPS jam, please landing immediately"), true);//GPS干扰,请尽快降落!
 }
 
 void VGVehicleManager::onSysStatus(uint8_t st)
@@ -319,6 +305,18 @@ void VGVehicleManager::OnRecvMavlink(VGVehicle *v, const mavlink_message_t &msg)
         processSurveysMavLink(msg);
     else if (VGPlantInformation *plant = qvgApp->plantManager()->GetPlantViaDrect())
         qvgApp->plantManager()->prcsUavMavlink(plant, msg, true);
+}
+
+void VGVehicleManager::onVehicleDestroyed(QObject *v)
+{
+    for (VGVehicle* vehicle : _vehicles)
+    {
+        if (v == vehicle)
+        {
+            _vehicles.removeAll(vehicle);
+            break;
+        }
+    }
 }
 
 void VGVehicleManager::onVehicelAltitudeChanged(VGVehicle *vehicle, double altitude)

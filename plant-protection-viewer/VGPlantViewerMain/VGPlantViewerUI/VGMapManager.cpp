@@ -9,7 +9,7 @@
 #include "VGGlobalFun.h"
 #include "VGApplication.h"
 #include "VGCoordinate.h"
-#include "VGOutline.h"
+#include "VGLandPolyline.h"
 #include "QmlObjectListModel.h"
 #include "QGCMapEngine.h"
 
@@ -516,7 +516,7 @@ void VGMapManager::CalcBoundaryByCoor(QList<double> &ls, const QGeoCoordinate &c
     }
 }
 
-void VGMapManager::CalcBoundaryByCoor(QList<double> &ls, const VGOutline &ol)
+void VGMapManager::CalcBoundaryByCoor(QList<double> &ls, const VGLandPolyline &ol)
 {
     foreach (VGCoordinate *itr, ol.GetCoordinates())
     {

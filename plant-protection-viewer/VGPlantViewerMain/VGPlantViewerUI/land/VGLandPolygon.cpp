@@ -29,12 +29,12 @@ VGLandPolygon::~VGLandPolygon()
     qDeleteAll(m_coors);
 }
 
-QVariantList VGLandPolygon::path() const
+QVariantList VGLandPolygon::GetPath() const
 {
     return m_path;
 }
 
-void VGLandPolygon::setPath(const QVariantList &path, const QList<VGCoordinate *> &coors)
+void VGLandPolygon::SetPath(const QVariantList &path, const QList<VGCoordinate *> &coors)
 {
     foreach(const QVariant &itr, path)
     {
@@ -101,7 +101,7 @@ double VGLandPolygon::CalculateArea() const
 
 MapAbstractItem::MapItemType VGLandPolygon::ItemType() const
 {
-    return m_path.count() > 2 ? Type_Polygon : Type_PolyLine;
+    return m_path.count()>2&&!IsFreePlan() ? Type_Polygon : Type_PolyLine;
 }
 
 void VGLandPolygon::Show(bool b)
@@ -154,6 +154,11 @@ void VGLandPolygon::Clear()
     emit pathChanged(m_path);
 }
 
+bool VGLandPolygon::IsFreePlan() const
+{
+    return GetId() == FreePlan;
+}
+
 bool VGLandPolygon::operator==(const MapAbstractItem &item) const
 {
     if (item.ItemType() != ItemType() || GetId()!=item.GetId())
@@ -181,6 +186,7 @@ void VGLandPolygon::onIdChange(int id)
     switch (id)
     {
     case Outline:
+    case FreePlan:
         SetBorderColor(QColor(255 * 0.9, 255 * 0.4, 255 * 0.4, 255));
         break;
     case Block:
@@ -284,7 +290,9 @@ void VGLandPolygon::_insertCoor(VGCoordinate *item, VGCoordinate *behind)
     }
     emit countCoorChanged(m_coors.size());
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//VGLandDis
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 VGLandDis::VGLandDis(const QGeoCoordinate &coor, double dis,QObject *parent):MapAbstractItem(parent)
   ,m_coor(coor),m_dis(dis)
 {

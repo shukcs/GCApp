@@ -9,6 +9,7 @@
 
 #define LINK_SETTING_ROOT "LinkCommand"
 
+LinkCommand *LinkCommand::m_udpCmd = NULL;
 LinkCommand::LinkCommand(QObject *p):QObject(p), m_link(NULL)
 , m_autoConnect(false), m_stLink(St_Disconnected)
 {
@@ -23,10 +24,7 @@ void LinkCommand::onLinkConnected(bool b)
 LinkCommand::~LinkCommand()
 {
     if (m_link)
-	{
-		emit linkDestroy(m_link);
 		m_link->deleteLater();
-	}
 }
 
 LinkInterface* LinkCommand::link(void)
@@ -77,25 +75,25 @@ void LinkCommand::disconnectLink()
     }
 }
 
-LinkCommand *LinkCommand::createSettings(int type)
+LinkCommand *LinkCommand::createSettings(int type, QObject *p)
 {
-    LinkCommand *ret = NULL;
-    switch(type) {
+    switch(type)
+    {
 #ifndef __ios__
-        case LinkCommand::TypeSerial:
-            ret = new SerialCommand();
-            break;
+    case LinkCommand::TypeSerial:
+        return new SerialCommand(p);
 #endif
-        case LinkCommand::TypeUdp:
-            ret = new UDPCommand();
-            break;
+    case LinkCommand::TypeUdp:
+        if (m_udpCmd == NULL)
+            m_udpCmd = new UDPCommand(p);
+        return  m_udpCmd;
 #ifdef QGC_ENABLE_BLUETOOTH
     case LinkCommand::TypeBluetooth:
-        ret = new BluetoothCommand();
+        return new BluetoothCommand(p);
         break;
 #endif
     }
-    return ret;
+    return NULL;
 }
 
 bool LinkCommand::IsAutoConnect() const

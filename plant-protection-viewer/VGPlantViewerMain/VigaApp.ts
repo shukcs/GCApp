@@ -560,17 +560,17 @@
 <context>
     <name>LinkManager</name>
     <message>
-        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="321"/>
+        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="309"/>
         <source>Serial</source>
         <translation>串口</translation>
     </message>
     <message>
-        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="323"/>
+        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="311"/>
         <source>UDP</source>
         <translation>UDP</translation>
     </message>
     <message>
-        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="326"/>
+        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="314"/>
         <source>BlueTooth</source>
         <translation>蓝牙</translation>
     </message>
@@ -634,87 +634,87 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="85"/>
+        <location filename="res/qml/LogginPage.qml" line="90"/>
         <source>Server port:</source>
         <oldsource>服务器Port:</oldsource>
         <translation>服务器Port:</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="53"/>
+        <location filename="res/qml/LogginPage.qml" line="58"/>
         <source>My site</source>
         <translation>个人中心</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="72"/>
+        <location filename="res/qml/LogginPage.qml" line="77"/>
         <source>Server IP:</source>
         <translation>服务器IP:</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="99"/>
+        <location filename="res/qml/LogginPage.qml" line="104"/>
         <source>Account:</source>
         <translation>账号:</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="111"/>
+        <location filename="res/qml/LogginPage.qml" line="116"/>
         <source>Password:</source>
         <translation>密码:</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="127"/>
+        <location filename="res/qml/LogginPage.qml" line="132"/>
         <source>Auto loggin</source>
         <translation>自动登录</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="159"/>
+        <location filename="res/qml/LogginPage.qml" line="164"/>
         <source>&lt;u&gt;Hide Server&lt;/u&gt;</source>
         <oldsource>&lt;u&gt;隐藏服务器&lt;/u&gt;</oldsource>
         <translation>&lt;u&gt;隐藏服务器&lt;/u&gt;</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="159"/>
+        <location filename="res/qml/LogginPage.qml" line="164"/>
         <source>&lt;u&gt;Show Server&lt;/u&gt;</source>
         <translation>&lt;u&gt;显示服务器&lt;/u&gt;</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="175"/>
-        <location filename="res/qml/LogginPage.qml" line="250"/>
-        <location filename="res/qml/LogginPage.qml" line="256"/>
-        <location filename="res/qml/LogginPage.qml" line="270"/>
+        <location filename="res/qml/LogginPage.qml" line="180"/>
+        <location filename="res/qml/LogginPage.qml" line="255"/>
+        <location filename="res/qml/LogginPage.qml" line="261"/>
+        <location filename="res/qml/LogginPage.qml" line="275"/>
         <source>Loggin</source>
         <translation>登陆</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="185"/>
+        <location filename="res/qml/LogginPage.qml" line="190"/>
         <source>Please input server and account conpletely!</source>
         <translation>请输入完整的服务器信息和账户信息！</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="204"/>
+        <location filename="res/qml/LogginPage.qml" line="209"/>
         <source>&lt;u&gt;Register&lt;/u&gt;</source>
         <translation>&lt;u&gt;注册新用户&lt;/u&gt;</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="234"/>
+        <location filename="res/qml/LogginPage.qml" line="239"/>
         <source>Loggin, wait...</source>
         <translation>正在登陆，请稍候...</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="235"/>
+        <location filename="res/qml/LogginPage.qml" line="240"/>
         <source>Cancle</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="241"/>
+        <location filename="res/qml/LogginPage.qml" line="246"/>
         <source>Loggin sucess</source>
         <translation>登陆成功</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="243"/>
+        <location filename="res/qml/LogginPage.qml" line="248"/>
         <source>Loggin out</source>
         <translation>注销</translation>
     </message>
     <message>
-        <location filename="res/qml/LogginPage.qml" line="255"/>
+        <location filename="res/qml/LogginPage.qml" line="260"/>
         <source>Loggin fail,check account and net status?</source>
         <translation>登陆失败，请检查服务器信息和账户\r\n信息是否正确，网络是否正常？</translation>
     </message>
@@ -911,115 +911,115 @@
         <translation>校准过程中,飞机将自动起飞,在空中水平转动校准磁罗盘,请处于安全区域!</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="167"/>
+        <location filename="res/qml/OperationPage.qml" line="170"/>
         <source>Uav reboot, Do you confirm?</source>
         <translation>是否确认重启飞控？</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="171"/>
-        <location filename="res/qml/OperationPage.qml" line="749"/>
+        <location filename="res/qml/OperationPage.qml" line="174"/>
+        <location filename="res/qml/OperationPage.qml" line="753"/>
         <source>Test pump</source>
         <translation>测试水泵</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="174"/>
-        <location filename="res/qml/OperationPage.qml" line="750"/>
+        <location filename="res/qml/OperationPage.qml" line="177"/>
+        <location filename="res/qml/OperationPage.qml" line="754"/>
         <source>Test motor</source>
         <translation>测试电机</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="177"/>
-        <location filename="res/qml/OperationPage.qml" line="751"/>
+        <location filename="res/qml/OperationPage.qml" line="180"/>
+        <location filename="res/qml/OperationPage.qml" line="755"/>
         <source>Disarm</source>
         <translation>加锁</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="179"/>
+        <location filename="res/qml/OperationPage.qml" line="182"/>
         <source>Is Uav disarm?</source>
         <translation>是否确认加锁？</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="183"/>
-        <location filename="res/qml/OperationPage.qml" line="752"/>
+        <location filename="res/qml/OperationPage.qml" line="186"/>
+        <location filename="res/qml/OperationPage.qml" line="756"/>
         <source>Return</source>
         <translation>返航</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="187"/>
-        <location filename="res/qml/OperationPage.qml" line="753"/>
+        <location filename="res/qml/OperationPage.qml" line="190"/>
+        <location filename="res/qml/OperationPage.qml" line="757"/>
         <source>Hold</source>
         <translation>悬停</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="191"/>
-        <location filename="res/qml/OperationPage.qml" line="756"/>
+        <location filename="res/qml/OperationPage.qml" line="194"/>
+        <location filename="res/qml/OperationPage.qml" line="760"/>
         <source>Parameter setting</source>
         <translation>参数设置</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="194"/>
-        <location filename="res/qml/OperationPage.qml" line="754"/>
+        <location filename="res/qml/OperationPage.qml" line="197"/>
+        <location filename="res/qml/OperationPage.qml" line="758"/>
         <source>Imitation setting</source>
         <translation>仿地设置</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="197"/>
-        <location filename="res/qml/OperationPage.qml" line="755"/>
+        <location filename="res/qml/OperationPage.qml" line="200"/>
+        <location filename="res/qml/OperationPage.qml" line="759"/>
         <source>Auto magic correct</source>
         <translation>空中校磁</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="586"/>
+        <location filename="res/qml/OperationPage.qml" line="589"/>
         <source>Do u let Uav no rtk excute mission?</source>
         <translation>是否单点执行作业任务？</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="590"/>
+        <location filename="res/qml/OperationPage.qml" line="593"/>
         <source>Position of Uav is not prepair, do u set param permision arming?</source>
         <translation>飞机未就绪，是否设置参数允许解锁？</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="729"/>
+        <location filename="res/qml/OperationPage.qml" line="732"/>
         <source>blocks</source>
         <translation>障碍物</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="729"/>
+        <location filename="res/qml/OperationPage.qml" line="732"/>
         <source>:angle:</source>
         <translation>:角度:</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="730"/>
+        <location filename="res/qml/OperationPage.qml" line="733"/>
         <source>degree;distance:</source>
         <translation>°;距离:</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="730"/>
+        <location filename="res/qml/OperationPage.qml" line="733"/>
         <source>M</source>
         <translation>m</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="543"/>
+        <location filename="res/qml/OperationPage.qml" line="546"/>
         <source>Do you drop current plan？</source>
         <translation>确认取消创建任务？</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="584"/>
+        <location filename="res/qml/OperationPage.qml" line="587"/>
         <source>Do u let Uav excute mission?</source>
         <translation>是否执行作业任务？</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="618"/>
+        <location filename="res/qml/OperationPage.qml" line="621"/>
         <source>Precision:</source>
         <translation>航向精度:</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="687"/>
+        <location filename="res/qml/OperationPage.qml" line="690"/>
         <source>00000000</source>
         <translation>00000000</translation>
     </message>
     <message>
-        <location filename="res/qml/OperationPage.qml" line="695"/>
+        <location filename="res/qml/OperationPage.qml" line="698"/>
         <source>Unnamed</source>
         <translation>未命名</translation>
     </message>
@@ -1616,7 +1616,7 @@
     <name>TestMotorPage</name>
     <message>
         <location filename="res/qml/TestMotorPage.qml" line="32"/>
-        <location filename="res/qml/TestMotorPage.qml" line="272"/>
+        <location filename="res/qml/TestMotorPage.qml" line="275"/>
         <source>Test motor</source>
         <translation>测试电机</translation>
     </message>
@@ -1631,67 +1631,67 @@
         <translation>10Kg</translation>
     </message>
     <message>
-        <location filename="res/qml/TestMotorPage.qml" line="63"/>
+        <location filename="res/qml/TestMotorPage.qml" line="64"/>
         <source>5Kg</source>
         <translation>5Kg</translation>
     </message>
     <message>
-        <location filename="res/qml/TestMotorPage.qml" line="81"/>
+        <location filename="res/qml/TestMotorPage.qml" line="83"/>
         <source>Rotate time(s):</source>
         <translation>&quot;转动时间(S):</translation>
     </message>
     <message>
-        <location filename="res/qml/TestMotorPage.qml" line="111"/>
-        <source>Rotate Speed(Hz):</source>
-        <translation>转动速度(Hz):</translation>
-    </message>
-    <message>
-        <location filename="res/qml/TestMotorPage.qml" line="145"/>
-        <location filename="res/qml/TestMotorPage.qml" line="210"/>
-        <location filename="res/qml/TestMotorPage.qml" line="246"/>
+        <location filename="res/qml/TestMotorPage.qml" line="166"/>
+        <location filename="res/qml/TestMotorPage.qml" line="231"/>
+        <location filename="res/qml/TestMotorPage.qml" line="249"/>
         <source>Motor 1</source>
         <translation>电机1</translation>
     </message>
     <message>
-        <location filename="res/qml/TestMotorPage.qml" line="151"/>
-        <location filename="res/qml/TestMotorPage.qml" line="234"/>
-        <location filename="res/qml/TestMotorPage.qml" line="253"/>
+        <location filename="res/qml/TestMotorPage.qml" line="147"/>
+        <location filename="res/qml/TestMotorPage.qml" line="206"/>
+        <location filename="res/qml/TestMotorPage.qml" line="262"/>
         <source>Motor 3</source>
         <translation>电机3</translation>
     </message>
     <message>
-        <location filename="res/qml/TestMotorPage.qml" line="157"/>
-        <location filename="res/qml/TestMotorPage.qml" line="222"/>
+        <location filename="res/qml/TestMotorPage.qml" line="194"/>
+        <location filename="res/qml/TestMotorPage.qml" line="213"/>
         <source>Motor 5</source>
         <translation>电机5</translation>
     </message>
     <message>
-        <location filename="res/qml/TestMotorPage.qml" line="163"/>
+        <location filename="res/qml/TestMotorPage.qml" line="173"/>
         <source>Motor 7</source>
         <translation>电机7</translation>
     </message>
     <message>
-        <location filename="res/qml/TestMotorPage.qml" line="170"/>
-        <location filename="res/qml/TestMotorPage.qml" line="203"/>
-        <location filename="res/qml/TestMotorPage.qml" line="259"/>
+        <location filename="res/qml/TestMotorPage.qml" line="113"/>
+        <source>PWM width(uS):</source>
+        <translation>PWM脉宽(uS):</translation>
+    </message>
+    <message>
+        <location filename="res/qml/TestMotorPage.qml" line="153"/>
+        <location filename="res/qml/TestMotorPage.qml" line="237"/>
+        <location filename="res/qml/TestMotorPage.qml" line="256"/>
         <source>Motor 2</source>
         <translation>电机2</translation>
     </message>
     <message>
-        <location filename="res/qml/TestMotorPage.qml" line="177"/>
-        <location filename="res/qml/TestMotorPage.qml" line="216"/>
-        <location filename="res/qml/TestMotorPage.qml" line="265"/>
+        <location filename="res/qml/TestMotorPage.qml" line="159"/>
+        <location filename="res/qml/TestMotorPage.qml" line="225"/>
+        <location filename="res/qml/TestMotorPage.qml" line="268"/>
         <source>Motor 4</source>
         <translation>电机4</translation>
     </message>
     <message>
-        <location filename="res/qml/TestMotorPage.qml" line="184"/>
-        <location filename="res/qml/TestMotorPage.qml" line="228"/>
+        <location filename="res/qml/TestMotorPage.qml" line="180"/>
+        <location filename="res/qml/TestMotorPage.qml" line="219"/>
         <source>Motor 6</source>
         <translation>电机6</translation>
     </message>
     <message>
-        <location filename="res/qml/TestMotorPage.qml" line="191"/>
+        <location filename="res/qml/TestMotorPage.qml" line="187"/>
         <source>Motor 8</source>
         <translation>电机8</translation>
     </message>
@@ -1858,7 +1858,7 @@
         <translation>年</translation>
     </message>
     <message>
-        <location filename="res/qml/VGCalendarBox.qml" line="162"/>
+        <location filename="res/qml/VGCalendarBox.qml" line="160"/>
         <source>月</source>
         <translation>月</translation>
     </message>
@@ -1939,7 +1939,7 @@
 <context>
     <name>VGFlyRoute</name>
     <message>
-        <location filename="VGPlantViewerUI/land/VGFlyRoute.cpp" line="757"/>
+        <location filename="VGPlantViewerUI/land/VGFlyRoute.cpp" line="749"/>
         <source>Can not Plan,please modify parameters!</source>
         <oldsource>Can not Plan,please modify parameters</oldsource>
         <translation>地块无法规划，请尝试修改参数!</translation>
@@ -2094,57 +2094,57 @@
 <context>
     <name>VGLandManager</name>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="96"/>
+        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="97"/>
         <source>Open GPS denied</source>
         <translation>无打开GPS的权限</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="99"/>
+        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="100"/>
         <source>GPS unserver</source>
         <translation>GPS定位服务未开启</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="102"/>
+        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="103"/>
         <source>Open GPS fail</source>
         <translation>打开GPS设备失败</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="105"/>
+        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="106"/>
         <source>Open GPS success</source>
         <translation>打开GPS成功</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="108"/>
+        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="109"/>
         <source>Open GPS timeout</source>
         <translation>打开GPS设备超时</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="111"/>
+        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="112"/>
         <source>No GPS is valid</source>
         <translation>无可用GPS设备</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="114"/>
+        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="115"/>
         <source>Open GPS fail,used or other</source>
         <translation>打开GPS设备失败，被占用或者其它错误</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="117"/>
+        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="118"/>
         <source>Open position device timeout</source>
         <translation>打开定位设备超时</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="120"/>
+        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="121"/>
         <source>Open position device channel error</source>
         <translation>打开定位设备通道错误</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="123"/>
+        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="124"/>
         <source>Close position device error</source>
         <translation>关闭定位设备错误</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="126"/>
+        <location filename="VGPlantViewerUI/land/VGLandManager.cpp" line="127"/>
         <source>No survey link</source>
         <translation>没有连接测绘设备</translation>
     </message>
@@ -2309,37 +2309,37 @@
 <context>
     <name>VGNetManager</name>
     <message>
-        <location filename="VGNetManager.cpp" line="166"/>
+        <location filename="VGNetManager.cpp" line="170"/>
         <source>User not fit</source>
         <translation>用户名不合法</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="168"/>
+        <location filename="VGNetManager.cpp" line="172"/>
         <source>server error</source>
         <translation>服务器出错</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="170"/>
+        <location filename="VGNetManager.cpp" line="174"/>
         <source>User exist</source>
         <translation>用户名已存在</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="172"/>
+        <location filename="VGNetManager.cpp" line="176"/>
         <source>User OK</source>
         <translation>用户名可用</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="174"/>
+        <location filename="VGNetManager.cpp" line="178"/>
         <source>letter,number,_ combine(3-24)</source>
         <translation>字母,数字,_组合(3-24)</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="459"/>
+        <location filename="VGNetManager.cpp" line="463"/>
         <source>Code error</source>
         <translation>验证码错误</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="730"/>
+        <location filename="VGNetManager.cpp" line="734"/>
         <source>Register success</source>
         <translation>注册成功</translation>
     </message>
@@ -2395,324 +2395,324 @@
 <context>
     <name>VGPlantInformation</name>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="45"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="49"/>
         <source>success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="46"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="50"/>
         <source>fail</source>
         <translation>失败</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="55"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="59"/>
         <source>setting enter support</source>
         <translation>设置起飞辅助点</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="57"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="61"/>
         <source>clear enter support</source>
         <translation>清除起飞辅助点</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="64"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="68"/>
         <source>setting return support</source>
         <translation>设置返航辅助点</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="66"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="70"/>
         <source>clear return support</source>
         <translation>清除返航辅助点</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="282"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="285"/>
         <source>disarmed</source>
         <translation>已加锁</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="282"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="285"/>
         <source>armed</source>
         <translation>已解锁</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1374"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1382"/>
         <source>ABPoint</source>
         <translation>AB点</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="332"/>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1450"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="338"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1458"/>
         <source>height:%1</source>
         <translation>高度:%1</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="355"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="361"/>
         <source>satellites:%1</source>
         <translation>星数:%1</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="372"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="378"/>
         <source>Speed:%1</source>
         <translation>速度:%1</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="447"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="453"/>
         <source>electric charge too low, please return hurry</source>
         <translation>可用电量过低，请及时返航</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="463"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="469"/>
         <source>Speed of flow:%1</source>
         <translation>流速:%1</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="552"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="558"/>
         <source>Mission support 100 items at most!</source>
         <translation>飞机每次任务最多支持100航路点！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="557"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="563"/>
         <source>Point of boundary and block less than 100!</source>
         <translation>边界点加障碍物点不能超过100！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="562"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="568"/>
         <source>Upload mission unsafe while armed!</source>
         <translation>飞行中上传航线不安全！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="715"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="721"/>
         <source>Navigate is un-difference, please land hurry</source>
         <translation>导航非差分，请尽快就近降落</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="827"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="833"/>
         <source>please upload mission first!</source>
         <oldsource>please upload mission first</oldsource>
         <translation>请先上传航线再设置辅助点！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="943"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="949"/>
         <source>Download safe route completely!</source>
         <translation>下载飞机避障路线完成！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1358"/>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1380"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1366"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1388"/>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1360"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1368"/>
         <source>deny</source>
         <translation>禁飞</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1362"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1370"/>
         <source>Mission</source>
         <translation>任务</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1364"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1372"/>
         <source>Manual</source>
         <translation>手动</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1366"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1374"/>
         <source>Hold</source>
         <translation>悬停</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1368"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1376"/>
         <source>Return</source>
         <translation>返航</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1370"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1378"/>
         <source>Magic correct</source>
         <translation>校磁</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1372"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1380"/>
         <source>Landing</source>
         <translation>着陆</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1382"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1390"/>
         <source>QXWZSOCK UNINIT</source>
         <translation>千寻未初始化</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1384"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1392"/>
         <source>QXWZTASK BEGIN</source>
         <translation>千寻开始运行</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1386"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1394"/>
         <source>QXWZ READGPS</source>
         <translation>千寻读GPS有效信号</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1388"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1396"/>
         <source>QXWZ NBEGIN</source>
         <translation>千寻进入ntrip模式</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1390"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1398"/>
         <source>QXWZ NGETACC</source>
         <translation>千寻读ntrip账号密码</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1392"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1400"/>
         <source>QXWZ NNOSOCK</source>
         <translation>千寻ntrip方式创建sock</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1394"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1402"/>
         <source>QXWZ NCONNECT</source>
         <translation>千寻ntrip方式connect</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1396"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1404"/>
         <source>QXWZ NLOGIN</source>
         <translation>千寻ntrip方式登录</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1398"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1406"/>
         <source>QXWZ NUNAUTHORIZD</source>
         <translation>千寻ntrip方式账号未授权</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1400"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1408"/>
         <source>QXWZ NRECRTCM</source>
         <translation>千寻ntrip方式账号未授权</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1402"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1410"/>
         <source>QXWZ NSENDGGA</source>
         <translation>千寻ntrip方式正发送GGA</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1404"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1412"/>
         <source>QXWZ SDKBEGIN</source>
         <translation>千寻进入SDK模式</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1406"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1414"/>
         <source>QXWZ SDKGETACC</source>
         <translation>千寻读SDK账号密码</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1408"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1416"/>
         <source>QXWZ SDKNOSOCK</source>
         <translation>千寻SDK方式创建sock</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1410"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1418"/>
         <source>QXWZ SDKCONNECT</source>
         <translation>千寻SDK方式connect</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1412"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1420"/>
         <source>QXWZ SDKLOGIN</source>
         <translation>千寻SDK方式登录</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1414"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1422"/>
         <source>QXWZ SDKUNAUTHORIZD</source>
         <translation>千寻SDK方式账号未授权</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1416"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1424"/>
         <source>QXWZ SDKEXPIRETIME</source>
         <translation>千寻SDK方式账号过期</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1418"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1426"/>
         <source>QXWZ SDKRECRTCM</source>
         <translation>千寻SDK方式正接收rtcm</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1420"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1428"/>
         <source>QXWZ SDKSENDGGA</source>
         <translation>千寻SDK方式正发送GGA</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1532"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1540"/>
         <source>Upload mission success!</source>
         <translation>上传航线到飞机成功！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1532"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1540"/>
         <source>Upload mission fail!</source>
         <translation>上传航线到飞机失败！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1566"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1574"/>
         <source>Battery charge too low, please change battery!</source>
         <translation>电池电压低，请更换电池再作业!</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1593"/>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1599"/>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1617"/>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1632"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1602"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1608"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1626"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1641"/>
         <source>N/A</source>
         <translation>N/A</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1604"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1613"/>
         <source>invalid</source>
         <translation>不可用</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1606"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1615"/>
         <source>valid</source>
         <translation>可用</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1611"/>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1622"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1620"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1631"/>
         <source>un-work</source>
         <translation>未工作</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1624"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1633"/>
         <source>no position</source>
         <translation>未定位</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1626"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1635"/>
         <source>2D position</source>
         <translation>2D定位</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1628"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1637"/>
         <source>Single position</source>
         <translation>单点定位</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1834"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1847"/>
         <source>UAV %1 %2</source>
         <translation>飞机%1-%2</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1834"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1847"/>
         <source>disarm</source>
         <translation>已加锁</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1834"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1847"/>
         <source>arm</source>
         <translation>已解锁</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1866"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1882"/>
         <source>change flight model fail</source>
         <translation>设置飞行模式失败</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1888"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantInformation.cpp" line="1904"/>
         <source>%1 set home point %2!</source>
         <translation>%1设置Home点%2!</translation>
     </message>
@@ -2720,47 +2720,46 @@
 <context>
     <name>VGPlantManager</name>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="188"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="192"/>
         <source>while Magic correct,mast close Imitation!</source>
         <translation>空中校磁，必须先关闭仿地!</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="634"/>
         <source>UAV %1 GPS jam,please landing  immediately!</source>
-        <translation>飞机%1 GPS干扰,请尽快降落!</translation>
+        <translation type="vanished">飞机%1 GPS干扰,请尽快降落!</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="709"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="715"/>
         <source>No authorize control UAV %1</source>
         <translation>无权控制飞机 %1</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="711"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="717"/>
         <source>UAV %1 invalid</source>
         <translation>飞机%1 无效</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="713"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="719"/>
         <source>UAV %1 denied</source>
         <translation>飞机%1 被禁用</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="1251"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="1263"/>
         <source>Set QXSdk account success!</source>
         <translation>设置千寻账号成功！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="1251"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="1263"/>
         <source>Clear QXSdk account success!</source>
         <translation>清除千寻账号成功！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="357"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="368"/>
         <source>Synchronize mission to UAV(%1)</source>
         <translation>同步航线到飞机(%1%)</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="1044"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="1052"/>
         <source>Hold time must between 0 and 5!</source>
         <translation>停留时间必须在0--5之间!</translation>
     </message>
@@ -2769,12 +2768,12 @@
         <translation type="vanished">停留半径必须在0--5之间!</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="1227"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="1239"/>
         <source>Set QX account success!</source>
         <translation>设置千寻账号成功！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="1227"/>
+        <location filename="VGPlantViewerUI/plant/VGPlantManager.cpp" line="1239"/>
         <source>Clear QX account success!</source>
         <translation>清除千寻账号成功！</translation>
     </message>
@@ -3019,37 +3018,37 @@
 <context>
     <name>VGVehicle</name>
     <message>
-        <location filename="VGVehicle.cpp" line="417"/>
+        <location filename="VGVehicle.cpp" line="410"/>
         <source>Internal error</source>
         <translation>内部错误</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="420"/>
+        <location filename="VGVehicle.cpp" line="413"/>
         <source>Device respond timeout</source>
         <translation>等待设备回应超时</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="423"/>
+        <location filename="VGVehicle.cpp" line="416"/>
         <source>Request order of mission item error</source>
         <translation>任务点请求序列错误</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="426"/>
+        <location filename="VGVehicle.cpp" line="419"/>
         <source>Request mission item out of range</source>
         <translation>请求范围错误</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="429"/>
+        <location filename="VGVehicle.cpp" line="422"/>
         <source>Item not fit</source>
         <translation>任务点不匹配</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="432"/>
+        <location filename="VGVehicle.cpp" line="425"/>
         <source>Respond of device timeout</source>
         <translation>等待设备回应超时</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="435"/>
+        <location filename="VGVehicle.cpp" line="428"/>
         <source>Mission request error</source>
         <translation>任务请求错误</translation>
     </message>
@@ -3057,7 +3056,7 @@
 <context>
     <name>VGVehicleManager</name>
     <message>
-        <location filename="VGVehicleManager.cpp" line="191"/>
+        <location filename="VGVehicleManager.cpp" line="193"/>
         <source>Link timeout,communicate break</source>
         <translation>链接超时，断开通信</translation>
     </message>
@@ -3067,50 +3066,48 @@
         <translation>设备已连接</translation>
     </message>
     <message>
-        <location filename="VGVehicleManager.cpp" line="244"/>
+        <location filename="VGVehicleManager.cpp" line="252"/>
         <source>Download mission (%1%)</source>
         <translation>下载设备航线(%1%)</translation>
     </message>
     <message>
-        <location filename="VGVehicleManager.cpp" line="246"/>
+        <location filename="VGVehicleManager.cpp" line="254"/>
         <source>Synchronize mission (%1%)</source>
         <translation>同步航线到设备(%1%)</translation>
     </message>
     <message>
-        <location filename="VGVehicleManager.cpp" line="284"/>
         <source>magic un-expect, please correct</source>
-        <translation>磁异常,需要校磁</translation>
+        <translation type="vanished">磁异常,需要校磁</translation>
     </message>
     <message>
-        <location filename="VGVehicleManager.cpp" line="287"/>
         <source>GPS jam, please landing immediately</source>
-        <translation>GPS干扰,请尽快降落</translation>
+        <translation type="vanished">GPS干扰,请尽快降落</translation>
     </message>
 </context>
 <context>
     <name>VGVehicleMission</name>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGVehicleMission.cpp" line="527"/>
+        <location filename="VGPlantViewerUI/plant/VGVehicleMission.cpp" line="543"/>
         <source>Operation height mast be lower than support height</source>
         <translation>作业高度不能大于辅助点高度</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGVehicleMission.cpp" line="906"/>
+        <location filename="VGPlantViewerUI/plant/VGVehicleMission.cpp" line="921"/>
         <source>Land data error!</source>
         <translation>地块数据出错！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGVehicleMission.cpp" line="917"/>
+        <location filename="VGPlantViewerUI/plant/VGVehicleMission.cpp" line="932"/>
         <source>Support can not be in block!</source>
         <translation>辅助点不能设置在障碍物中！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGVehicleMission.cpp" line="919"/>
+        <location filename="VGPlantViewerUI/plant/VGVehicleMission.cpp" line="934"/>
         <source>Support can not be out boundary!</source>
         <translation>辅助点不能设置在地块外！</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/plant/VGVehicleMission.cpp" line="927"/>
+        <location filename="VGPlantViewerUI/plant/VGVehicleMission.cpp" line="942"/>
         <source>Support height mast higher than operate height!</source>
         <translation>辅助点高度不能小于作业高度！</translation>
     </message>

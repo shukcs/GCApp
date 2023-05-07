@@ -80,7 +80,7 @@ public:
     void connectLink();
     void disconnectLink();
 public:
-    static LinkCommand *createSettings(int type);
+    static LinkCommand *createSettings(int type, QObject *p);
 protected:
     virtual LinkInterface *CreateLink() = 0;
     LinkCommand(QObject *p = NULL);
@@ -88,7 +88,6 @@ protected slots:
     void onLinkConnected(bool b);
 signals:
     void nameChanged (const QString &name);
-    void linkDestroy(LinkInterface *link);
     void autoConnectChanged();
     void connectedChanged();
 protected:
@@ -96,6 +95,7 @@ protected:
 private:
     bool        m_autoConnect;   ///< This connection is started automatically at boot
     Link_Stat   m_stLink;       ///可以连接和断开
+    static LinkCommand *m_udpCmd;
 };
 
 #endif // LINKCONFIGURATION_H

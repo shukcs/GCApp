@@ -8,7 +8,7 @@ class VGLandInformation;
 class VGOneRoute;
 class VGCoordinate;
 class QGeoCoordinate;
-class VGOutline;
+class VGLandPolyline;
 class VGRoute;
 class VGVehicleMission;
 class MissionItem;
@@ -80,7 +80,7 @@ public:
     double  GetOutlineSafe()const;
     void    releaseSafe();
     void    SetSelected(bool b);
-    VGOutline *allMissionRoute()const;
+    VGLandPolyline *allMissionRoute()const;
     QString GetBoundaryID()const;
     QString GetActId()const;
     void SetActId(const QString &id);
@@ -175,7 +175,7 @@ private:
     void _genarateDefualtHome(VGLandBoundary *bdr);
     void _adjustSupportAttitude(double alt);
     void _adjustOperateAttitude(double alt);
-    void _calculateAnggle(VGOutline *rt);
+    void _calculateAnggle(VGLandPolyline *rt);
     void _calculateSafeBoundary();
     QString _bdrSafeDis2Str()const;
     void _parseSafeDis(const QString &str);
@@ -201,7 +201,7 @@ private:
     QString                 m_strActId;                         //服务器ID
     double                  m_fPrise;                           //单价
     VGCoordinate            *m_homePoint;                       //home点
-    VGOutline               *m_route;                           //规划
+    VGLandPolyline               *m_route;                           //规划
     bool                    m_bSingleShrink;                    //单边
     PlanStat                m_stPlan;                            //规划状态
     bool                    m_bUploaded;                        //航线是否上传过

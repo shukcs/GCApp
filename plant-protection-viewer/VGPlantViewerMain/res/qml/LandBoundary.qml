@@ -310,9 +310,7 @@ Page {
             }
             Rectangle{
                 id:                     seperator
-                anchors.top:            tabFunc.bottom
-                anchors.left:           parent.left
-                anchors.right:          parent.right
+                anchors {top: tabFunc.bottom; left: parent.left; right: parent.right }
                 height:                 1
                 color:                  "#D3D3D3"
             }
