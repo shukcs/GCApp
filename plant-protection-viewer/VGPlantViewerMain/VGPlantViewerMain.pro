@@ -112,3 +112,10 @@ AndroidBuild {
 }
 
 LIBS += -L$${OUT_ROOT} -lvgbase -lvgcomm -lvglog -lshare -lprotobuf -lvgmapplugin
+
+CONFIG(debug, debug|release) {
+    DESTDIR = $${OUT_PWD}/../../output/debug/
+}
+else:CONFIG(release, debug|release) {
+    DESTDIR = $${OUT_PWD}/../../output/release/
+}

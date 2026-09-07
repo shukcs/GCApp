@@ -1,0 +1,1100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="VGPlantViewerMain">
+      <UniqueIdentifier>{df64f46f-c147-4859-9c1b-d22c188aef73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\srcload">
+      <UniqueIdentifier>{c530771f-53e5-4ae5-9702-fb6a58b9aa57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI">
+      <UniqueIdentifier>{4d8acc0f-3978-4055-b0fa-8c0c366cdbd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\survey">
+      <UniqueIdentifier>{8dee0c86-6226-44bf-8f7a-a939fbb7990b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\qx">
+      <UniqueIdentifier>{6e25e02a-50d5-4ef3-bdf6-31c3729bb568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\plant">
+      <UniqueIdentifier>{5fb18af7-c32c-431d-a62b-50ccec95d3f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\land">
+      <UniqueIdentifier>{727cebd2-80fc-4c55-9fa1-84c5876c2e32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\friends">
+      <UniqueIdentifier>{6f0ef35a-59b0-49ce-ad36-262eff463c98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\VGPlantViewerUI\audio">
+      <UniqueIdentifier>{6fda7bf8-622c-4bf4-9384-63de0aed1a3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VGPlantViewerMain\base">
+      <UniqueIdentifier>{67b46bf7-3c8b-4e31-9a6c-491a3188a9f5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\main.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\MissionItem.cc">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGApplication.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\MissionManager.cc">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGDbManager.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGNetManager.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\srcload\VGIconEngine.cpp">
+      <Filter>VGPlantViewerMain\srcload</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\srcload\VGImageProvider.cpp">
+      <Filter>VGPlantViewerMain\srcload</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\MapAbstractItem.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\MapItemFactory.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\QmlObjectListModel.cc">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\VGLogDataObject.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\VGMapManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\VGPlanningWorker.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\VGUIInstance.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\survey\VGBDLocation.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\survey\VGBluetoothManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\survey\VGGetGpsLocation.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\survey\VGSurveyMonitor.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\qx\VGQXManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\qx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGBlock.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGController.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGMissionHistory.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGMissionRecord.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGPlantEvents.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGPlantInformation.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGPlantManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGSupportPolyline.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGVehicleMission.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGCoordinate.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGEdgeTip.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGFlyRoute.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGLandBoundary.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGLandInformation.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGLandManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGLandPolygon.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGLandPolyline.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGPolylineMapItem.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGSelectEdge.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\friends\VGFriend.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\friends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\friends\VGFriendsManager.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\friends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\audio\AudioWorker.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\base\logHelper.cpp">
+      <Filter>VGPlantViewerMain\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\base\ParameterLimit.cpp">
+      <Filter>VGPlantViewerMain\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\base\ParametersLimit.cpp">
+      <Filter>VGPlantViewerMain\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\base\VGGlobalFun.cpp">
+      <Filter>VGPlantViewerMain\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\base\VGMavLinkCode.cpp">
+      <Filter>VGPlantViewerMain\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\VGMainPage.cpp">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGTcpClient.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGToolBox.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGVehicle.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGVehicleLogManager.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGVehicleManager.cpp">
+      <Filter>VGPlantViewerMain</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\MissionItem.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\MissionManager.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGApplication.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGDbManager.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGNetManager.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\MapAbstractItem.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\QmlObjectListModel.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\VGLogDataObject.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\VGMapManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\VGPlanningWorker.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\VGUIInstance.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\survey\VGSurveyMonitor.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\survey\VGBDLocation.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\survey\VGBluetoothManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\survey\VGGetGpsLocation.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\survey</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\qx\VGQXManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\qx</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGBlock.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGController.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGMissionHistory.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGMissionRecord.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGPlantEvents.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGPlantInformation.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGPlantManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGVehicleMission.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGCoordinate.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGEdgeTip.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGFlyRoute.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGLandBoundary.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGLandInformation.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGLandManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGLandPolygon.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGLandPolyline.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGSelectEdge.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\land\VGPolylineMapItem.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\land</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\friends\VGFriend.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\friends</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\friends\VGFriendsManager.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\friends</Filter>
+    </CustomBuild>
+    <ClInclude Include="..\..\..\GCApp\plant-protection-viewer\base\QLog.h">
+      <Filter>VGPlantViewerMain\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\GCApp\plant-protection-viewer\base\VGMavLinkCode.h">
+      <Filter>VGPlantViewerMain\base</Filter>
+    </ClInclude>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\VGMainPage.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGTcpClient.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGToolBox.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGVehicle.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGVehicleManager.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGVehicleLogManager.h">
+      <Filter>VGPlantViewerMain</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\plant\VGSupportPolyline.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\plant</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="moc\moc_AudioWorker.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_MapAbstractItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_MissionItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_MissionManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_ParametersLimit.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_QmlObjectListModel.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGApplication.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGBDLocation.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGBlock.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGBluetoothManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGController.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGCoordinate.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGDbManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGEdgeTip.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGFlyRoute.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGFriend.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGFriendsManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGGetGpsLocation.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGLandBoundary.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGLandInformation.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGLandManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGLandPolygon.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGLandPolyline.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGLogDataObject.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGMainPage.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGMapManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGMissionHistory.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGMissionRecord.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGNetManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGPlanningWorker.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGPlantEvents.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGPlantInformation.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGPlantManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGPolylineMapItem.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGQXManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGSelectEdge.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGSupportPolyline.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGSurveyMonitor.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGTcpClient.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGToolBox.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGUIInstance.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGVehicle.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGVehicleLogManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGVehicleManager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_VGVehicleMission.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="moc\moc_logHelper.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <CustomBuild Include="D:\work\build-GCApp\plant-protection-viewer\VGPlantViewerMain\moc\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <ClCompile Include="rcc\qrc_VGPlantViewer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\A.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\ABC.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\B.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\BluetoothGPS.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\BluetoothSettings.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\C.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\DeviceOption.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\FriendsManager.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\GUISettings.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\GroundSetting.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\H.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\HomePage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\LandBoundary.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\LandBoundarySave.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\LandInfoEdit.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\LandManager.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\LandRouteOption.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\ListViewIndicator.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\LogPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\LogginPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\OperationPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\ParameterView.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\QXWZSetting.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\RegisterPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\RouteInfoEdit.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\SerialSettings.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\SurveyLand.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\SurveyLandSave.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\SurveyUavSelect.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\TestMotorPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\UavEvents.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\UdpSettings.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGAreaEditRect.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGBoundaryAdd.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGBoundaryAdjust.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGBoundaryEdit.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGBoundaryInfo.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGButtonStyle.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGCalendarBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGCheckBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGComboBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGContactPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGConversationPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGEdgeShrink.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGFriendCheckBox.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGGenaralPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGImage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGLandList.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGMap.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGMission.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGMissionHistoryDetail.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGNewFriendPage.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGOnKeyStart.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGOperationHeader.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGParamEdit.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGParamView.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewer.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGPopupButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGRadioButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGRouteList.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGRoutePlan.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGSlider.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGSliderRect.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGSplashScreen.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGSupportEditRect.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGSwitch.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGTabHeader.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGTextButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGTextField.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGTip.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGTip2.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGToolButton.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGValueChange.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGValueEdit.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGValueItem.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VGValueShow.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VehicleSearch.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\VoiceSetting.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\adbg.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\adjusting.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\adjusting_gray.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\arrow.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\arrow_down.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\arrow_down.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\arrow_gray.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\arrow_left.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\arrow_right.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\arrow_up.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\backBg.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\backBg_prs.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\backb.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\backb_prs.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\backw.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\backw_prs.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\bind.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\block_add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\blocksTip.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\bluetooth.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\bluetooth_prs.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\ccw.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\center.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\checked.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\clear.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\clock.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\close.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\close_prs.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\compass.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\confirm.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\craft.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\craft_gray.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\cw.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\dataSetting.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\detail.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\deviceOpt.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\disConnect.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\end.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\errRange.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\expand.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\fold.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\forbidden.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\gps.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\height.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\height2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\hold.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\imitateGround.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\linked.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\lock.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\logginBg.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\magnetic.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\qml\main.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\marker.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\marker_gray.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\maximum.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\medVol.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\minimum.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\minus.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\model.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\model2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\motor.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\msg_f.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\msg_f_select.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\notile.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\orientate.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\owner.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\pitch.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\plane.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\plane_gray.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\plant.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\plantG.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\plantV.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\plantV_gray.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\position.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\position_gray.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\postip.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\power.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\precision.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\pump.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\qxwz.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\return.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\roll.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\routePlan.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\rtk.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\rtkgps.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\satellite.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\scale.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\scale_tip.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\sendLand.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\sendLand_prs.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\settings.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\settings_prs.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\shadow.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\shutdown.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\speed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\speed.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\splash.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\start.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\step_minus.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\step_plus.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\survey.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\syscGreen.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\tip_error.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\tip_success.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\user.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\user_f.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\user_f_select.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\user_gray.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\vehicle.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\velocity.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\warning.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\res\image\wlc.png">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\srcload\VGIconEngine.h">
+      <Filter>VGPlantViewerMain\srcload</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\MapItemFactory.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\GCApp\plant-protection-viewer\base\ParameterLimit.h">
+      <Filter>VGPlantViewerMain\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\GCApp\plant-protection-viewer\base\VGGlobalFun.h">
+      <Filter>VGPlantViewerMain\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\srcload\VGImageProvider.h">
+      <Filter>VGPlantViewerMain\srcload</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\VGPlantViewerMain\VGPlantViewerUI\audio\AudioWorker.h">
+      <Filter>VGPlantViewerMain\VGPlantViewerUI\audio</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\base\logHelper.h">
+      <Filter>VGPlantViewerMain\base</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\GCApp\plant-protection-viewer\base\ParametersLimit.h">
+      <Filter>VGPlantViewerMain\base</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
