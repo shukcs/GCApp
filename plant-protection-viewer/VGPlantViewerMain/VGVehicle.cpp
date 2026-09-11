@@ -396,7 +396,7 @@ void VGVehicle::_sendMavCommandAgain()
             qvgApp->mavLink(), priorityLink()->getMavlinkChannel(), m_sysID,
             p[0], p[1], p[2], p[3], *(int*)(p+4), *(int*)(p+5), p[6]);
     else
-        VGMavLinkCode::EncodeCommands(msg, queuedCommand.component, queuedCommand.command,
+        VGMavLinkCode::EncodeCommandSt(msg, queuedCommand.component, queuedCommand.command,
             qvgApp->mavLink(), priorityLink()->getMavlinkChannel(), m_sysID,
             p[0], p[1], p[2], p[3], p[4], p[5], p[6]);
     sendMessageOnLink(priorityLink(), msg);

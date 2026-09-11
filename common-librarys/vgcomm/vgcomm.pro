@@ -27,6 +27,7 @@ SOURCES += \
     src/MAVLinkProtocol.cc \
     src/SerialPortInfo.cc \
     src/SerialLink.cc \
+    src/TCPLink.cc \
     src/UDPLink.cc \
     src/LinkInterface.cc
 
@@ -41,6 +42,7 @@ HEADERS += \
     src/MAVLinkProtocol.h \
     src/SerialPortInfo.h \
     src/SerialLink.h \
+    src/TCPLink.h \
     src/UDPLink.h \
     src/vgcomm_global.h
 

@@ -46,7 +46,7 @@ public:
         TypeSerial,     ///< Serial Link
 #endif
         TypeUdp,        ///< UDP Link
-        //TypeTcp,        ///< TCP Link
+        TypeTcp,        ///< TCP Link
 #ifdef QGC_ENABLE_BLUETOOTH
         TypeBluetooth,  ///< Bluetooth Link
 #endif
@@ -77,7 +77,7 @@ public:
     virtual LinkType type()const = 0;
     virtual QString getName()const = 0;
     virtual void setName(const QString &s) = 0;
-    void connectLink();
+    virtual void connectLink();
     void disconnectLink();
 public:
     static LinkCommand *createSettings(int type, QObject *p);
@@ -96,6 +96,7 @@ private:
     bool        m_autoConnect;   ///< This connection is started automatically at boot
     Link_Stat   m_stLink;       ///可以连接和断开
     static LinkCommand *m_udpCmd;
+    static LinkCommand *m_tcpCmd;
 };
 
 #endif // LINKCONFIGURATION_H

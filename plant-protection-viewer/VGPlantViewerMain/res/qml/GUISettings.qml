@@ -248,6 +248,13 @@ Rectangle {
             color:      "white"
             fontTitle:  vgMainPage.biggerFont(false)
         }
+
+        TcpSettings{
+            id:         tcpSettings
+            width:      parent.width
+            color:      "white"
+            fontTitle:  vgMainPage.biggerFont(false)
+        }
     }
     Connections {
         target: vgMainPage

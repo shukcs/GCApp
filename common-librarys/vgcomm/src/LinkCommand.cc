@@ -3,13 +3,16 @@
 #include "SerialLink.h"
 #endif
 #include "UDPLink.h"
+#include "TCPLink.h"
 #ifdef QGC_ENABLE_BLUETOOTH
 #include "BluetoothLink.h"
 #endif
 
 #define LINK_SETTING_ROOT "LinkCommand"
 
-LinkCommand *LinkCommand::m_udpCmd = NULL;
+LinkCommand *LinkCommand::m_udpCmd = nullptr;
+LinkCommand *LinkCommand::m_tcpCmd = nullptr;
+
 LinkCommand::LinkCommand(QObject *p):QObject(p), m_link(NULL)
 , m_autoConnect(false), m_stLink(St_Disconnected)
 {
@@ -84,9 +87,13 @@ LinkCommand *LinkCommand::createSettings(int type, QObject *p)
         return new SerialCommand(p);
 #endif
     case LinkCommand::TypeUdp:
-        if (m_udpCmd == NULL)
+        if (m_udpCmd == nullptr)
             m_udpCmd = new UDPCommand(p);
         return  m_udpCmd;
+    case LinkCommand::TypeTcp:
+        if (m_tcpCmd == nullptr)
+            m_tcpCmd = new TCPCommand(p);
+        return  m_tcpCmd;
 #ifdef QGC_ENABLE_BLUETOOTH
     case LinkCommand::TypeBluetooth:
         return new BluetoothCommand(p);

@@ -28,7 +28,7 @@ namespace VGMavLinkCode {
     bool InitMavMessage(mavlink_message_t &msg, uint8_t id, const void *payload, int len);
     void EncodeRTCM(mavlink_message_t &msg, const QByteArray arr, int flag=1, const MAVLinkProtocol *p = NULL, int ch = 0, int sysId = 0);
     void EncodeHartbeat(mavlink_message_t &msg, int cpnt=0, int sysId = 0, const mavlink_heartbeat_t *h=NULL);
-    void EncodeCommands(mavlink_message_t &msg, int cpnt, MAV_CMD cmd, const MAVLinkProtocol *p = NULL, int ch = 0, int sysId=0,
+    void EncodeCommandSt(mavlink_message_t &msg, int cpnt, MAV_CMD cmd, const MAVLinkProtocol *p = NULL, int ch = 0, int sysId=0,
         float p1 = 0, float p2 = 0, float p3 = 0, float p4 = 0, float p5 = 0, float p6 = 0, float p7 = 0 );
     void EncodeCommandInt(mavlink_message_t &msg, int cpnt, MAV_CMD cmd, const MAVLinkProtocol *p = NULL, int ch = 0, int sysId=0,
         float p1 = 0, float p2 = 0, float p3 = 0, float p4 = 0, int p5 = 0, int p6 = 0, float p7 = 0);

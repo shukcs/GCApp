@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/qml">
         <file alias="BluetoothGPS.qml">res/qml/BluetoothGPS.qml</file>
-        <file alias="BluetoothSettings.qml">res/qml/BluetoothSettings.qml</file>
         <file alias="DeviceOption.qml">res/qml/DeviceOption.qml</file>
         <file alias="FriendsManager.qml">res/qml/FriendsManager.qml</file>
         <file alias="GroundSetting.qml">res/qml/GroundSetting.qml</file>
@@ -21,13 +20,15 @@
         <file alias="QXWZSetting.qml">res/qml/QXWZSetting.qml</file>
         <file alias="RegisterPage.qml">res/qml/RegisterPage.qml</file>
         <file alias="RouteInfoEdit.qml">res/qml/RouteInfoEdit.qml</file>
+        <file alias="BluetoothSettings.qml">res/qml/BluetoothSettings.qml</file>
         <file alias="SerialSettings.qml">res/qml/SerialSettings.qml</file>
+        <file alias="TcpSettings.qml">res/qml/TcpSettings.qml</file>
+        <file alias="UdpSettings.qml">res/qml/UdpSettings.qml</file>
         <file alias="SurveyLand.qml">res/qml/SurveyLand.qml</file>
         <file alias="SurveyLandSave.qml">res/qml/SurveyLandSave.qml</file>
         <file alias="SurveyUavSelect.qml">res/qml/SurveyUavSelect.qml</file>
         <file alias="TestMotorPage.qml">res/qml/TestMotorPage.qml</file>
         <file alias="UavEvents.qml">res/qml/UavEvents.qml</file>
-        <file alias="UdpSettings.qml">res/qml/UdpSettings.qml</file>
         <file alias="VehicleSearch.qml">res/qml/VehicleSearch.qml</file>
         <file alias="VGAreaEditRect.qml">res/qml/VGAreaEditRect.qml</file>
         <file alias="VGBoundaryAdd.qml">res/qml/VGBoundaryAdd.qml</file>

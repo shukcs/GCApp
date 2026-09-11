@@ -369,13 +369,13 @@ private:
     QString         m_strAppsecret;
     QString         m_devid;
     int             m_devType;
-    VGVehicleMission        *m_prepareVm; //计划上传mission
-    VGVehicleMission        *m_uploadVm;  //上传mission
-    VGCoordinate            *m_homeCoor;  //home
-    VGCoordinate            *m_cntnCoor;  //中断点
+    VGVehicleMission        *m_prepareVm = nullptr; //计划上传mission
+    VGVehicleMission        *m_uploadVm = nullptr;  //上传mission
+    VGCoordinate            *m_homeCoor;    //home
+    VGCoordinate            *m_cntnCoor;    //中断点
     VGCoordinate            *m_aPointCoor;  //AB点的A
     VGCoordinate            *m_bPointCoor;  //AB点的B
-    VGLandPolyline               *m_planMissionLine;
+    VGLandPolyline          *m_planMissionLine;
     unsigned                m_baseMode;
     uint32_t                m_statSupport;
     VGSupportPolyline       *m_rtl;

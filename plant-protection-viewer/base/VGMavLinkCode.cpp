@@ -56,9 +56,8 @@ uint32_t VGMavLinkCode::GetFlightModeByString(const QString &mode)
 
 QString VGMavLinkCode::GetFlightModeName(uint32_t mode)
 {
-    QMap<QString, px4_custom_mode> &modes = GetModeMap();
-    QMap<QString, px4_custom_mode>::const_iterator itr = modes.begin();
-    for (; itr != modes.end(); ++itr)
+    auto &modes = GetModeMap();
+    for (auto itr = modes.begin(); itr != modes.end(); ++itr)
     {
         if (itr.value().data == mode)
             return itr.key();
@@ -106,7 +105,7 @@ void VGMavLinkCode::EncodeHartbeat(mavlink_message_t &msg, int cpnt, int sysId, 
     mavlink_msg_heartbeat_encode(sysId, cpnt, &msg, h);
 }
 
-void VGMavLinkCode::EncodeCommands(mavlink_message_t &msg, int cpnt, MAV_CMD cmd, const MAVLinkProtocol *p,
+void VGMavLinkCode::EncodeCommandSt(mavlink_message_t &msg, int cpnt, MAV_CMD cmd, const MAVLinkProtocol *p,
     int ch /*= 0*/, int sysId, float p1 /*= 0*/, float p2 /*= 0*/, float p3 /*= 0*/,
     float p4 /*= 0*/, float p5 /*= 0*/, float p6 /*= 0*/, float p7 /*= 0*/ )
 {
@@ -287,10 +286,7 @@ bool VGMavLinkCode::EncodeSetMode(mavlink_message_t &msg, const QString &mod, ui
         uint8_t baseMode = baseMod & ~MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE;
         baseMode |= MAV_MODE_FLAG_CUSTOM_MODE_ENABLED;
 
-        mavlink_msg_set_mode_pack_chan(p ? p->getSystemId() : 0,
-            p ? p->getComponentId() : 0,
-            ch, &msg, sysId,
-            baseMode, cstmMode);
+        EncodeCommandInt(msg, 0, MAV_CMD_DO_SET_MODE, p, ch, sysId, baseMod, cstmMode);
         return true;
     }
     return false;
@@ -340,13 +336,13 @@ QString VGMavLinkCode::DecodeParameter(const mavlink_message_t &msg, QVariant &v
     if (msg.msgid != MAVLINK_MSG_ID_PARAM_VALUE)
         return QString();
 
-    mavlink_param_value_t rawValue;
-    mavlink_msg_param_value_decode(&msg, &rawValue);
+    mavlink_param_value_t param;
+    mavlink_msg_param_value_decode(&msg, &param);
     mavlink_param_union_t paramVal;
-    paramVal.param_float = rawValue.param_value;
-    paramVal.type = rawValue.param_type;
+    paramVal.param_float = param.param_value;
+    paramVal.type = param.param_type;
 
-    switch (rawValue.param_type)
+    switch (param.param_type)
     {
     case MAV_PARAM_TYPE_REAL32:
         v.setValue<float>(paramVal.param_float);
@@ -373,7 +369,7 @@ QString VGMavLinkCode::DecodeParameter(const mavlink_message_t &msg, QVariant &v
         v = QVariant();
     }
 
-    QByteArray bytes(rawValue.param_id, MAVLINK_MSG_PARAM_VALUE_FIELD_PARAM_ID_LEN);
+    QByteArray bytes(param.param_id, MAVLINK_MSG_PARAM_VALUE_FIELD_PARAM_ID_LEN);
     return QString::fromUtf8(bytes);
 }
 

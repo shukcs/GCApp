@@ -396,7 +396,7 @@ void VGApplication::_initParamsAndEvents()
 #ifdef __mobile__
     QString path = "assets:/res/UavParamsAndEvents.xml";
 #else
-    QString path = "UavParamsAndEvents.xml";
+    QString path = applicationDirPath() + "/UavParamsAndEvents.xml";
 #endif
     QFile f(path);
     if (f.open(QIODevice::ReadOnly))

@@ -41,6 +41,7 @@ LinkManager::LinkManager(QObject *parent) : QObject(parent), m_mavlinkChannelsUs
     m_tmLinkCheck = startTimer(AutoconnectUpdateTimerMSecs);
     connect(this, &LinkManager::_shutdown, this, &LinkManager::onShutdown);
     m_bOpenUdp = _readUdpLinkConfig();
+    m_bOpenTcp = _readTcpLinkConfig();
 }
 
 LinkManager::~LinkManager()
@@ -59,7 +60,7 @@ void LinkManager::_checkUdpLink()
 
     for (LinkCommand *cmd : m_linkCmds)
     {
-        if (cmd->type() == LinkCommand::TypeUdp)
+        if (cmd->type() == LinkCommand::TypeUdp && cmd->isConnect())
             return;
     }
 
@@ -67,6 +68,25 @@ void LinkManager::_checkUdpLink()
     m_linkCmds.append(udpConfig);
     udpConfig->connectLink();
     _addLink(udpConfig->link());
+}
+
+void LinkManager::_checkTcpLink()
+{
+    if (!m_bOpenTcp)
+        return;
+
+    for (LinkCommand *cmd : m_linkCmds)
+    {
+        if (cmd->type()==LinkCommand::TypeTcp && cmd->isConnect())
+            return;
+    }
+
+    if (auto config = LinkCommand::createSettings(LinkCommand::TypeTcp, this))
+    {
+        m_linkCmds << config;
+        config->connectLink();
+        _addLink(config->link());
+    }
 }
 
 void LinkManager::_checkBleLink()
@@ -95,12 +115,34 @@ bool LinkManager::_readUdpLinkConfig() const
     return Application::Instance()->IsPcApp();
 }
 
-void LinkManager::_writeUdpLinkConfig() const
+void LinkManager::_writeUdpLinkConfig()
 {
     if (QSettings *st = Application::Instance()->GetSettings())
     {
         st->beginGroup("udpLinkConfig");
         st->setValue("open", m_bOpenUdp);
+        st->endGroup();
+    }
+}
+
+bool LinkManager::_readTcpLinkConfig() const
+{
+    if (QSettings *st = Application::Instance()->GetSettings())
+    {
+        st->beginGroup("TcpLinkConfig");
+        bool bOpen = st->value("open", Application::Instance()->IsPcApp()).toBool();
+        st->endGroup();
+        return bOpen;
+    }
+    return Application::Instance()->IsPcApp();
+}
+
+void LinkManager::_writeTcpLinkConfig()
+{
+    if (QSettings *st = Application::Instance()->GetSettings())
+    {
+        st->beginGroup("tcpLinkConfig");
+        st->setValue("open", m_bOpenTcp);
         st->endGroup();
     }
 }
@@ -277,6 +319,7 @@ void LinkManager::_updateAutoConnectLinks(void)
         return;
 
     _checkUdpLink();
+    _checkTcpLink();
 #ifndef __ios__
     QStringList currentPorts;
     if (m_bCheckPx4)
@@ -480,6 +523,21 @@ void LinkManager::SetOpenUdp(bool b)
     m_bOpenUdp = b;
     emit openUdpChanged(b);
     _writeUdpLinkConfig();
+}
+
+bool LinkManager::IsOpenTcp() const
+{
+    return m_bOpenTcp;
+}
+
+void LinkManager::SetOpenTcp(bool b)
+{
+    if (m_bOpenTcp == b)
+        return;
+
+    m_bOpenTcp = b;
+    emit openTcpChanged(b);
+    _writeTcpLinkConfig();
 }
 
 QList<LinkCommand *> LinkManager::linkCmds() const

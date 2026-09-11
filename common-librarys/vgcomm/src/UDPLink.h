@@ -31,13 +31,12 @@ public:
     QString GetHost()const;
     bool IsValid()const;
 
-    Q_INVOKABLE void setHost(const QString host, uint16_t port);
+    Q_INVOKABLE void setHost(const QString &host, uint16_t port);
 
     void        loadSettings    (const QString& root);
     void        saveSettings    (const QString& root);
     void        updateSettings();
     LinkType    type()const;
-    void        connectLink();
     QString getName()const;
     void setName(const QString &s);
 protected:
@@ -45,8 +44,6 @@ protected:
 signals:
     void localPortChanged(quint16 port);
     void hostChanged(const QString &host);
-private:
-    void _updateHostList();
 private:
     QMutex              _confMutex;
     QString             m_hostName;         ///< Exposed to QML
@@ -70,7 +67,6 @@ public slots:
     void writeBytes(const QByteArray &array);
 protected slots:
     void readBytes();
-    void OnSendUdp(const QByteArray &array);
 protected:
     void timerEvent(QTimerEvent *event);
 private:

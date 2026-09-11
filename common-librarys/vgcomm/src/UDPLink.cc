@@ -71,7 +71,15 @@ UDPLink::UDPLink(UDPCommand* cmd) :LinkInterface(cmd)
     if (m_thread)
         moveToThread(m_thread);
 
-    connect(this, &UDPLink::sendUdp, this, &UDPLink::OnSendUdp);
+    connect(this, &UDPLink::sendUdp, this, [=](const QByteArray &array){
+        UDPCommand *cmd = udpCommand();
+        if (!cmd || array.size() < 1)
+            return;
+        QString host;
+        int port;
+        if (cmd->GetLastRcvHost(host, port))
+            m_socket->writeDatagram(array.data(), array.size(), QHostAddress(host), port);
+    });
     m_thread->start(QThread::NormalPriority);
 }
 
@@ -133,18 +141,6 @@ void UDPLink::readBytes()
         emit bytesReceived(this, databuffer);
 }
 
-void UDPLink::OnSendUdp(const QByteArray &array)
-{
-    UDPCommand *cmd = udpCommand();
-    if (!cmd || array.size() < 1)
-        return;
-    QString host;
-    int port;
-    if (cmd->GetLastRcvHost(host, port))
-        m_socket->writeDatagram(array.data(), array.size(), QHostAddress(host), port);
-}
-
-
 void UDPLink::timerEvent(QTimerEvent *e)
 {
     if (e->timerId() == m_timerId)
@@ -180,6 +176,7 @@ bool UDPLink::_connect(void)
         m_thread->wait();
     }
     _hardwareConnect();
+    m_thread->start(QThread::NormalPriority);
     return true;
 }
 
@@ -196,7 +193,8 @@ bool UDPLink::_hardwareConnect()
     }
     m_socket = new QUdpSocket();
     m_socket->setProxy(QNetworkProxy::NoProxy);
-    m_connectState = m_socket->bind(QHostAddress(cmd->GetHost()), cmd->localPort(), QAbstractSocket::ReuseAddressHint | QUdpSocket::ShareAddress);
+    auto addr = cmd->GetHost();
+    m_connectState = m_socket->bind(QHostAddress(addr), cmd->localPort(), QAbstractSocket::ReuseAddressHint | QUdpSocket::ShareAddress);
     if (m_connectState)
     {
         //-- Make sure we have a large enough IO buffers
@@ -299,17 +297,6 @@ LinkCommand::LinkType UDPCommand::type()const
     return LinkCommand::TypeUdp;
 }
 
-void UDPCommand::connectLink()
-{
-    if (m_link)
-        m_link->deleteLater();
-
-    UDPLink *link = new UDPLink(this);
-    m_link = link;
-    if (link)
-        link->_connect();
-}
-
 QString UDPCommand::getName() const
 {
     return QString("%1:%2").arg(m_hostName).arg(m_localPort);
@@ -324,7 +311,7 @@ LinkInterface * UDPCommand::CreateLink()
     return new UDPLink(this);
 }
 
-void UDPCommand::setHost(const QString host, uint16_t port)
+void UDPCommand::setHost(const QString &host, uint16_t port)
 {
     if (host == m_hostName && port == m_localPort)
         return;

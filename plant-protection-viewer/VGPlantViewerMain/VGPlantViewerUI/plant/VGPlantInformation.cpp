@@ -1659,7 +1659,7 @@ void VGPlantInformation::_arm(bool bArm)
     else if (VGNetManager *nm = qvgApp->netManager())
     {
         mavlink_message_t msg;
-        VGMavLinkCode::EncodeCommands(msg, 0, MAV_CMD_COMPONENT_ARM_DISARM, NULL, 0, 0, bArm ? 1.0 : 0);
+        VGMavLinkCode::EncodeCommandSt(msg, 0, MAV_CMD_COMPONENT_ARM_DISARM, NULL, 0, 0, bArm ? 1.0 : 0);
         nm->SendControlUav(m_planeId, msg);
     }
     m_statSupport |= (uint32_t(bArm ? OpSetArm : OpSetDisarm) << 24);
@@ -1776,7 +1776,7 @@ void VGPlantInformation::sendCommand(int cmd, float f1, float f2, float f3, floa
     else if (VGNetManager *nm = qvgApp->netManager())
     {
         mavlink_message_t msg;
-        VGMavLinkCode::EncodeCommands(msg, 0, (MAV_CMD)cmd, NULL, 0, 0, f1, f2, f3, f4, f5, f6, f7);
+        VGMavLinkCode::EncodeCommandSt(msg, 0, (MAV_CMD)cmd, NULL, 0, 0, f1, f2, f3, f4, f5, f6, f7);
         nm->SendControlUav(m_planeId, msg);
     }
 }
