@@ -38,6 +38,22 @@ QString LinkInterface::devName() const
     return QString();
 }
 
+void LinkInterface::setTarget(uint8_t sysId, uint8_t cmptId)
+{
+    m_tSysId = sysId;
+    m_tCmptId = cmptId;
+}
+
+uint8_t LinkInterface::targetSystemId() const
+{
+    return  m_tSysId;
+}
+
+uint8_t LinkInterface::targetComponentId() const
+{
+    return m_tCmptId;
+}
+
 bool LinkInterface::isLogReplay(void) const
 {
     return false;

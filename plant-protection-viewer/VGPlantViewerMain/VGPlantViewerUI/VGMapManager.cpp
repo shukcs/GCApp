@@ -91,8 +91,13 @@ QString VGMapManager::GetStreetMapName() const
 {
     if (m_mapTypeID > 0 && m_mapTypeID <= UrlFactory::GoogleHybrid)
         return getQGCMapEngine()->getMapTypeName(UrlFactory::GoogleMap);
-    if (m_mapTypeID >= UrlFactory::AMap && m_mapTypeID <= UrlFactory::AMapHybridMap)
+
+    static QSet<UrlFactory::MapType> sGaodeMapIds = { UrlFactory::AMap,UrlFactory::AMap, UrlFactory::AMapHybridMap };
+    if (sGaodeMapIds.contains((UrlFactory::MapType)m_mapTypeID))
         return getQGCMapEngine()->getMapTypeName(UrlFactory::AMap);
+    static QSet<UrlFactory::MapType> sBingMapIds = { UrlFactory::BingMap,UrlFactory::BingSatellite, UrlFactory::BingHybrid };
+    if (sBingMapIds.contains((UrlFactory::MapType)m_mapTypeID))
+        return getQGCMapEngine()->getMapTypeName(UrlFactory::BingMap);
 
     return getQGCMapEngine()->getMapTypeName(UrlFactory::AMap);
 }

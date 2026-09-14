@@ -14,6 +14,33 @@
 #define MagMission		"MagMsm"
 #define Landing		    "Landing"
 #define ABPMod          "ABPoint"
+///APM 模式
+#define STABILIZEMod    "STABILIZE"
+#define ACROMod         "ACRO"
+#define ALT_HOLDMod     "ALT_HOLD"
+#define AUTOMod         "AUTO"
+#define GUIDEDMod       "GUIDED"
+#define LOITERMod       "LOITER"
+#define RTLMod          "RTL"
+#define CIRCLEMod       "CIRCLE"
+#define LANDMod         "LAND"
+#define DRIFTMod        "DRIFT"
+#define SPORTMod        "SPORT"
+#define FLIPMod         "FLIP"
+#define AUTOTUNEMod     "AUTOTUNE"
+#define POSHOLDMod      "POSHOLD"
+#define BRAKEMod        "BRAKE"
+#define THROWMod        "THROW"
+#define AVOID_ADSBMod   "AVOID_ADSB"
+#define GUIDED_NOGPSMod "GUIDED_NOGPS"
+#define SMART_RTLMod    "SMART_RTL"
+#define FLOWHOLDMod     "SMART_RTL"
+#define FOLLOWMod       "FLOWHOLD"
+#define ZIGZAGMod       "FOLLOW"
+#define SYSTEMIDMod     "SYSTEMID"
+#define AUTOROTATEMod   "AUTOROTATE"
+#define AUTO_RTLMod     "AUTO_RTL"
+#define TURTLEMod       "TURTLE"
 
 class MAVLinkProtocol;
 class MissionItem;
@@ -24,6 +51,7 @@ namespace VGMavLinkCode {
     uint32_t GetFlightModeByString(const QString &mode); 
     QString GetFlightModeName(uint32_t mode);
     QStringList SurpportModes();
+    QStringList &APMModes();
 
     bool InitMavMessage(mavlink_message_t &msg, uint8_t id, const void *payload, int len);
     void EncodeRTCM(mavlink_message_t &msg, const QByteArray arr, int flag=1, const MAVLinkProtocol *p = NULL, int ch = 0, int sysId = 0);

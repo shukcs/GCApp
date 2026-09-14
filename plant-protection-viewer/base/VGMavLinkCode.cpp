@@ -40,6 +40,17 @@ static QMap<QString, px4_custom_mode> &GetModeMap()
         mode.main_mode = PX4_CUSTOM_MAIN_MODE_AUTO;
         mode.sub_mode = PX4_CUSTOM_SUB_MODE_AUTO_LAND;
         s_Map[Landing] = mode;
+
+        QSet<int> noMods = {8, 10, 12};
+        auto itr = VGMavLinkCode::APMModes().begin();
+        for (int i = APM::STABILIZE; i <= APM::TURTLE; ++i)
+        {
+            if (noMods.contains(i))
+                continue;
+
+            mode.data = i;
+            s_Map[*itr++] = mode;
+        }
     }
     return s_Map;
 }
@@ -68,6 +79,16 @@ QString VGMavLinkCode::GetFlightModeName(uint32_t mode)
 QStringList VGMavLinkCode::SurpportModes()
 {
     return GetModeMap().keys();
+}
+
+QStringList &VGMavLinkCode::APMModes()
+{
+    static QStringList apmMods = { STABILIZEMod, ACROMod, ALT_HOLDMod, AUTOMod, GUIDEDMod, LOITERMod, RTLMod
+        , CIRCLEMod, LANDMod, DRIFTMod, SPORTMod, FLIPMod , AUTOTUNEMod, POSHOLDMod, BRAKEMod
+        , THROWMod, AVOID_ADSBMod, GUIDED_NOGPSMod, SMART_RTLMod, FLOWHOLDMod, FOLLOWMod
+        , ZIGZAGMod, SYSTEMIDMod, AUTOROTATEMod, AUTO_RTLMod,TURTLEMod };
+
+    return apmMods;
 }
 
 bool VGMavLinkCode::InitMavMessage(mavlink_message_t &msg, uint8_t id, const void *payload, int len)
@@ -285,6 +306,8 @@ bool VGMavLinkCode::EncodeSetMode(mavlink_message_t &msg, const QString &mod, ui
         // setFlightMode will only set MAV_MODE_FLAG_CUSTOM_MODE_ENABLED in base_mode, we need to move back in the existing
         uint8_t baseMode = baseMod & ~MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE;
         baseMode |= MAV_MODE_FLAG_CUSTOM_MODE_ENABLED;
+        if (mod == MissionMod)
+            baseMode |= MAV_MODE_FLAG_GUIDED_ENABLED;
 
         EncodeCommandInt(msg, 0, MAV_CMD_DO_SET_MODE, p, ch, sysId, baseMod, cstmMode);
         return true;

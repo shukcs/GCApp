@@ -38,8 +38,8 @@ MAVLinkProtocol::MAVLinkProtocol(LinkManager* linkMgr)
     , m_actionGuardEnabled(false)
     , m_actionRetransmissionTimeout(100)
     , versionMismatchIgnore(false)
-    , systemId(BASE::defaultSystemId)
-    , componentId(BASE::defaultComponentId)
+    , m_systemId(BASE::defaultSystemId)
+    , m_componentId(BASE::defaultComponentId)
 #ifndef __mobile__
     , _logSuspendError(false)
     , _logSuspendReplay(false)
@@ -80,16 +80,16 @@ void MAVLinkProtocol::loadSettings()
     enableMultiplexing(settings.value("MULTIPLEXING_ENABLED", m_multiplexingEnabled).toBool());
 
     // Only set system id if it was valid
-    int temp = settings.value("GCS_SYSTEM_ID", systemId).toInt();
+    int temp = settings.value("GCS_SYSTEM_ID", m_systemId).toInt();
     if (temp > 0 && temp < 256)
     {
-        systemId = temp;
+        m_systemId = temp;
     }
 
-    temp = settings.value("GCS_COMPONENT_ID", componentId).toInt();
+    temp = settings.value("GCS_COMPONENT_ID", m_componentId).toInt();
     if (temp >= 0 && temp < 256)
     {
-        componentId = temp;
+        m_componentId = temp;
     }
 
     // Set auth key
@@ -109,13 +109,13 @@ void MAVLinkProtocol::loadSettings()
 void MAVLinkProtocol::storeSettings()
 {
     // Store settings
-    qDebug() << "Store GCS_SYSTEM_ID = " << systemId << "GCS_COMPONENT_ID" << componentId;
+    qDebug() << "Store GCS_SYSTEM_ID = " << m_systemId << "GCS_COMPONENT_ID" << m_componentId;
     QSettings settings;
     settings.beginGroup("QGC_MAVLINK_PROTOCOL");
     settings.setValue("VERSION_CHECK_ENABLED", m_enable_version_check);
     settings.setValue("MULTIPLEXING_ENABLED", m_multiplexingEnabled);
-    settings.setValue("GCS_SYSTEM_ID", systemId);
-    settings.setValue("GCS_COMPONENT_ID", componentId);
+    settings.setValue("GCS_SYSTEM_ID", m_systemId);
+    settings.setValue("GCS_COMPONENT_ID", m_componentId);
     settings.setValue("GCS_AUTH_KEY", m_authKey);
     settings.setValue("GCS_AUTH_ENABLED", m_authEnabled);
     // Parameter interface settings
@@ -280,6 +280,7 @@ void MAVLinkProtocol::receiveBytes(LinkInterface* link, const QByteArray &b)
                 mavlink_heartbeat_t heartbeat;
                 mavlink_msg_heartbeat_decode(&message, &heartbeat);
                 emit vehicleHeartbeatInfo(link, message.sysid, heartbeat.mavlink_version, heartbeat.autopilot, heartbeat.type);
+                link->setTarget(message.sysid, message.compid);
             }
 
             // Increase receive counter
@@ -341,24 +342,24 @@ QString MAVLinkProtocol::getName()
 /** @return System id of this application */
 int MAVLinkProtocol::getSystemId()const
 {
-    return systemId;
+    return m_systemId;
 }
 
 void MAVLinkProtocol::setSystemId(int id)
 {
-    systemId = id;
+    m_systemId = id;
     storeSettings();
 }
 
 /** @return Component id of this application */
 int MAVLinkProtocol::getComponentId()const
 {
-    return componentId;//BASE::defaultComponentId;
+    return m_componentId;//BASE::defaultComponentId;
 }
 
 void MAVLinkProtocol::setComponentId(int id)
 {
-    componentId = id;
+    m_componentId = id;
     storeSettings();
 }
 

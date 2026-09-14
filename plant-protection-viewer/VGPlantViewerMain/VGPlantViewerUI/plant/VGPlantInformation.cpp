@@ -1363,24 +1363,28 @@ VGVehicleMission *VGPlantInformation::beginOperation(VGFlyRoute *fr)
 
 QString VGPlantInformation::GetFlightModeDscb(const QString &str)
 {
-    QString strMode = tr("Unknown");//"未知"
-    if (str == DenyMod)
-        strMode = tr("deny");//"禁飞"
-    else if (str == MissionMod)
-        strMode = tr("Mission");//"任务"
-    else if (str == ManualMod)
-        strMode = tr("Manual");//"手动"
-    else if (str == HoldMod)
-        strMode = tr("Hold");//"悬停"
-    else if (str == ReturnMod)
-        strMode = tr("Return");//"返航"
-    else if (str == MagMission)
-        strMode = tr("Magic correct");//"校磁"
-    else if (str == Landing)
-        strMode = tr("Landing");//"着陆"
-    else if(str == ABPMod)
-        strMode = tr("ABPoint");//"AB点模式"
-    return strMode;
+    static QMap<QString, QString> trans = { { DenyMod, tr("deny") }, { MissionMod, tr("Mission") },
+        { ManualMod, tr("Manual") }, { HoldMod, tr("Hold") },
+        { ReturnMod, tr("Return") },{ MagMission, tr("Magic correct") },
+        { Landing, tr("Landing") },{ ABPMod, tr("ABPoint") },
+        { STABILIZEMod, tr("STABILIZE") },{ ACROMod, tr("ACRO") },
+        { ALT_HOLDMod, tr("ALT_HOLD") },{ AUTOMod, tr("AUTO Mod") },
+        { GUIDEDMod, tr("GUIDED") },{ LOITERMod, tr("LOITER") },
+        { RTLMod, tr("Return") },{ CIRCLEMod, tr("CIRCLE") },
+        { LANDMod, tr("Landing") },{ DRIFTMod, tr("DRIFT") },
+        { SPORTMod, tr("SPORT") },{ FLIPMod, tr("FLIP") },
+        { AUTOTUNEMod, tr("AUTOTUNE") },{ POSHOLDMod, tr("Hold") },
+        { BRAKEMod, tr("BRAKE") },{ THROWMod, tr("THROW") },
+        { AVOID_ADSBMod, tr("AVOID_ADSB") },{ GUIDED_NOGPSMod, tr("GUIDED_NOGPS") },
+        { SMART_RTLMod, tr("SMART_RTL") },{ FLOWHOLDMod, tr("FLOWHOLD") },
+        { FOLLOWMod, tr("FOLLOW") },{ ZIGZAGMod, tr("ZIGZAG") },
+        { SYSTEMIDMod, tr("SYSTEMID") },{ AUTOROTATEMod, tr("AUTOROTATE") },
+        { AUTO_RTLMod, tr("Return") },{ TURTLEMod, tr("TURTLE") } };
+    auto itr = trans.find(str);
+    if (itr != trans.end())
+        return itr.value();
+
+    return tr("Unknown");//"未知";
 }
 
 QString VGPlantInformation::GetQxStatDscb(int stat)

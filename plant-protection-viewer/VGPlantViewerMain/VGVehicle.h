@@ -156,7 +156,12 @@ private:
     qint64          m_tmLastRtcm;
     qint64          m_tmLastMav;
 
-    int             m_nSatellites;          ///GPS可用星数
+    struct
+    {
+        float           m_preH=0;             ///定位水平精度 
+        uint16_t        m_nSatellites=0;      ///GPS可用星数
+        uint8_t         m_fix=0;              ///定位标志 
+    };
     double          m_distance;             ///离home点的距离
     double          m_latitude;            ///< Global latitude as estimated by position estimator
     double          m_longitude;           ///< Global longitude as estimated by position estimator

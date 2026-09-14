@@ -136,6 +136,9 @@ Rectangle {
                 case 201:
                     btnGD.checked = true
                     break;
+				case 555:
+					rbBing.checked = true
+                    break;
                 default:
                     btnGoogle.checked = true
                     break;
@@ -144,7 +147,9 @@ Rectangle {
             function changedMap() {
                 if (btnGoogle.checked)
                     mapManager.mapTypeID = 4
-                else
+				else if (rbBing.checked)
+					mapManager.mapTypeID = 555
+                else 
                     mapManager.mapTypeID = 201
             }
             Label{
@@ -170,6 +175,13 @@ Rectangle {
                 VGRadioButton {
                     id:   btnGD
                     text: qsTr("Gaode map")//qsTr("高德交通地图")
+                    ftText: vgMainPage.font()
+                    exclusiveGroup: groupMap
+                    onCheckedChanged: rctMap.changedMap()
+                }
+                VGRadioButton {
+                    id:   rbBing
+                    text: qsTr("Bing map")//qsTr("Bing地图")
                     ftText: vgMainPage.font()
                     exclusiveGroup: groupMap
                     onCheckedChanged: rctMap.changedMap()

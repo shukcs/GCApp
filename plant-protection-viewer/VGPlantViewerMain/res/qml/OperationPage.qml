@@ -202,25 +202,6 @@ Page {
             }
         }
         signal shrinkEdgeSelected()
-        //飞机
-        MapItemView {
-            model:    mapManager.getSpecItems(MapAbstractItem.Type_PlantInfo)
-            delegate: MapQuickItem{
-                anchorPoint.x:  plantImg.width/2
-                anchorPoint.y:  plantImg.height/2
-                coordinate :    object.coordinate
-                z:              111                          //显示层次，越大越上
-                rotation:       object.compass-45
-                sourceItem:		VGImage {
-                    id:         plantImg
-                    height:     30
-                    width:      height
-                    iconName:   "plane"
-                    bMosEnable: false
-                    bImgNormal: object.status === VGPlantInformation.Connected
-                }
-            }
-        }
         //飞机Home点
         MapItemView {
             model:    mapManager.getSpecItems(MapAbstractItem.Type_Home)

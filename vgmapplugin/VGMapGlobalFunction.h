@@ -5,7 +5,7 @@
 #include <QPoint>
 
 //以下是根据百度地图JavaScript API破解得到 百度坐标<->墨卡托坐标 转换算法
-double* Convertor(double x, double y, double* param);
+double* Convertor(double x, double y, const double* param);
 //百度转墨卡托坐标
 QPointF LatLng2Mercator(double lat, double lon);
 //墨卡托坐标转百度

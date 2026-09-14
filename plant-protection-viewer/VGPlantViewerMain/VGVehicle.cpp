@@ -755,7 +755,8 @@ void VGVehicle::_handleGpsSatellite(const mavlink_message_t& message)
     uint8_t fix;
     double pre;
 	uint16_t cog;
-    if (VGMavLinkCode::DecodeGpsSatlate(message, newPosition, m_nSatellites, fix, pre, cog))
+    int nNum = 0;
+    if (VGMavLinkCode::DecodeGpsSatlate(message, newPosition, nNum, fix, pre, cog))
     {
         if (MAVTYPESURVEY == vehicleType())
         {
@@ -764,9 +765,21 @@ void VGVehicle::_handleGpsSatellite(const mavlink_message_t& message)
             m_altitude = newPosition.altitude();
             emit altitudeChanged(this, m_altitude);
         }
-        emit precisionChanged(this, pre);
-        emit posTypeChanged(this, fix);
-        emit postionChanged(m_latitude, m_longitude, m_altitudeRelative, m_nSatellites);
+        if (int(1000 * (pre - m_preH)))
+        {
+            emit precisionChanged(this, pre);
+            m_preH = pre;
+        }
+        if (m_fix!=fix)
+        {
+            emit posTypeChanged(this, fix);
+            m_fix = fix;
+        }
+        if (m_nSatellites != nNum)
+        {
+            m_nSatellites = nNum;
+            emit postionChanged(m_latitude, m_longitude, nNum, m_nSatellites);
+        }
     }
 }
 
@@ -775,8 +788,11 @@ void VGVehicle::_handleGpsStatus(const mavlink_message_t& message)
     mavlink_gps_status_t pos;
     mavlink_msg_gps_status_decode(&message, &pos);
 
-    m_nSatellites = pos.satellites_visible;
-    emit postionChanged(m_latitude, m_longitude, m_altitudeRelative, m_nSatellites);
+    if (m_nSatellites != pos.satellites_visible)
+    {
+        m_nSatellites = pos.satellites_visible;
+        emit postionChanged(m_latitude, m_longitude, m_altitudeRelative, m_nSatellites);
+    }
 }
 
 void VGVehicle::_handleAltitude(const mavlink_message_t& message)

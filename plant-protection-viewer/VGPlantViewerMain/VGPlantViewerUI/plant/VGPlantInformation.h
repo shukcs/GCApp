@@ -322,7 +322,6 @@ private:
     bool            m_bSychUav;
     bool            m_bSys;
 
-    QGeoCoordinate  m_lastPosition; //地图位置
     double          m_lat;          //GPS
     double          m_lon;          //GPS
     double          m_relativeAltitude;
@@ -369,6 +368,7 @@ private:
     QString         m_strAppsecret;
     QString         m_devid;
     int             m_devType;
+    QGeoCoordinate  m_lastPosition; //地图位置
     VGVehicleMission        *m_prepareVm = nullptr; //计划上传mission
     VGVehicleMission        *m_uploadVm = nullptr;  //上传mission
     VGCoordinate            *m_homeCoor;    //home

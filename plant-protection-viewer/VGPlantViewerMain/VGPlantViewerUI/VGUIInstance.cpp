@@ -25,6 +25,7 @@
 #include "BluetoothLink.h"
 #include "SerialLink.h"
 #include "UdpLink.h"
+#include "TCPLink.h"
 #include "ParametersLimit.h"
 #include "srcload/VGImageProvider.h"
 #include "VGPlantEvents.h"
@@ -54,6 +55,7 @@ VGUIInstance::VGUIInstance(QObject* parent) : QObject(parent)
     qmlRegisterUncreatableType<BluetoothCommand>("VGGroundControl", 1, 0, "BluetoothCommand", "Reference only");
     qmlRegisterUncreatableType<SerialCommand>("VGGroundControl", 1, 0, "SerialCommand", "Reference only");
     qmlRegisterUncreatableType<UDPCommand>("VGGroundControl", 1, 0, "UDPCommand", "Reference only");
+    qmlRegisterUncreatableType<TCPCommand>("VGGroundControl", 1, 0, "TCPCommand", "Reference only");
 
     qmlRegisterUncreatableType<VGLandInformation>("VGGroundControl", 1, 0, "VGLandInformation", "Reference only");
     qmlRegisterUncreatableType<VGVehicle>("VGGroundControl", 1, 0, "VGVehicle", "Reference only");

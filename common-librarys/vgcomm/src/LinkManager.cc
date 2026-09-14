@@ -227,7 +227,7 @@ void LinkManager::_addLink(LinkInterface *link)
         int i = 1;
         for (; i<32; i++)
         {
-            if (!(m_mavlinkChannelsUsedBitMask & 1 << i))
+            if (!(m_mavlinkChannelsUsedBitMask & (1 << i)))
             {
                 mavlink_reset_channel_status(i);
                 link->_setMavlinkChannel(i);
@@ -248,7 +248,8 @@ void LinkManager::_addLink(LinkInterface *link)
 void LinkManager::DeleteLink(LinkInterface *link)
 {
     LinkCommand *cmd = link ? link->getLinkCommand() : NULL;
-    if (!cmd || cmd->type() ==LinkCommand::TypeUdp)
+    static QSet<LinkCommand::LinkType> sDefualtCmd = { LinkCommand::TypeUdp, LinkCommand::TypeTcp };
+    if (!cmd || sDefualtCmd.contains(cmd->type()))
         return;
 
     if (m_linkCmds.removeAll(cmd) + m_autolinkCmds.removeAll((SerialCommand*)cmd) < 1)

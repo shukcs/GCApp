@@ -55,6 +55,9 @@ public:
     bool IsDecodedMavlink()const;
     void SetDecodedMavlink(bool b);
     QString devName()const;
+    void setTarget(uint8_t sysId, uint8_t cmptId);
+    uint8_t targetSystemId()const;
+    uint8_t targetComponentId()const;
 public slots:
     virtual void writeBytes(const QByteArray &array) = 0;
 protected:
@@ -76,6 +79,10 @@ private:
     uint8_t     m_nMavCh;           ///< mavlink channel to use for this link, as used by mavlink_parse_char
     bool        m_active;           ///< true: link is actively receiving mavlink messages
     bool        m_bDecodedMavlink;
+    struct {
+        uint8_t m_tSysId=0;
+        uint8_t m_tCmptId = 0;
+    };
 
     mutable QMutex _dataRateMutex;  /// Mutex for accessing the data rate member variables
 };

@@ -293,37 +293,37 @@
         <translation>亩)</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundary.qml" line="427"/>
+        <location filename="res/qml/LandBoundary.qml" line="425"/>
         <source>QX opened</source>
         <translation>千寻开启</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundary.qml" line="427"/>
+        <location filename="res/qml/LandBoundary.qml" line="425"/>
         <source>QX closed</source>
         <translation>千寻关闭</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundary.qml" line="465"/>
+        <location filename="res/qml/LandBoundary.qml" line="463"/>
         <source>Tip</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundary.qml" line="466"/>
+        <location filename="res/qml/LandBoundary.qml" line="464"/>
         <source>Ensure cancle boundary adjust？</source>
         <translation>确认取消边界点调整？</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundary.qml" line="466"/>
+        <location filename="res/qml/LandBoundary.qml" line="464"/>
         <source>Ensure cancle create land？</source>
         <translation>确认取消创建地块？</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundary.qml" line="480"/>
+        <location filename="res/qml/LandBoundary.qml" line="478"/>
         <source>Modify land name(different of orientate)</source>
         <translation>修改地块名称（不能与之前一致）</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundary.qml" line="481"/>
+        <location filename="res/qml/LandBoundary.qml" line="479"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
@@ -331,54 +331,54 @@
 <context>
     <name>LandBoundarySave</name>
     <message>
-        <location filename="res/qml/LandBoundarySave.qml" line="23"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="22"/>
         <source>Owner</source>
         <translation>主人</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundarySave.qml" line="24"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="23"/>
         <source>Phone No</source>
         <translation>联系方式</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundarySave.qml" line="25"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="24"/>
         <source>Area</source>
         <translation>亩数</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundarySave.qml" line="26"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="25"/>
         <source>Block</source>
         <translation>障碍物</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundarySave.qml" line="27"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="26"/>
         <source>Survey source</source>
         <translation>边界点来源</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundarySave.qml" line="28"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="27"/>
         <source>Surveyor</source>
         <translation>创建人</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundarySave.qml" line="29"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="28"/>
         <source>Create time</source>
         <translation>创建时间</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundarySave.qml" line="30"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="29"/>
         <source>Notes</source>
         <translation>备注</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundarySave.qml" line="33"/>
-        <location filename="res/qml/LandBoundarySave.qml" line="40"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="34"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="41"/>
         <source>Boundary adjust</source>
         <translation>边界点调整</translation>
     </message>
     <message>
-        <location filename="res/qml/LandBoundarySave.qml" line="34"/>
-        <location filename="res/qml/LandBoundarySave.qml" line="42"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="35"/>
+        <location filename="res/qml/LandBoundarySave.qml" line="43"/>
         <source>Delete</source>
         <translation>删除</translation>
     </message>
@@ -386,80 +386,85 @@
 <context>
     <name>LandInfoEdit</name>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="61"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="62"/>
         <source>Land information</source>
         <translation>地块信息</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="78"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="69"/>
+        <source>Free point</source>
+        <translation>自由飞行</translation>
+    </message>
+    <message>
+        <location filename="res/qml/LandInfoEdit.qml" line="84"/>
         <source>Land name:</source>
         <oldsource>Land name</oldsource>
         <translation>地块名称:</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="86"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="92"/>
         <source>Please input Land name</source>
         <translation>请输入地块名称</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="103"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="109"/>
         <source>Owner:</source>
         <translation>地主:</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="111"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="117"/>
         <source>Please input Owner name</source>
         <translation>请输入地主姓名</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="128"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="134"/>
         <source>Phone number:</source>
         <oldsource>Phone number</oldsource>
         <translation>手机号:</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="136"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="142"/>
         <source>Please input phone number</source>
         <translation>请输入地主联系方式</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="155"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="161"/>
         <source>Survey source:</source>
         <translation>边界点来源:</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="164"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="170"/>
         <source>Draw</source>
         <translation>手动标点</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="164"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="170"/>
         <source>Beidu Survey</source>
         <translation>北斗伴侣踩点</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="164"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="170"/>
         <source>Chongqing RTK survey</source>
         <translation>重庆单频RTK测绘站</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="164"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="170"/>
         <source>Plant survey</source>
         <translation>飞机踩点</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="180"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="186"/>
         <source>Notes:</source>
         <oldsource>Notes</oldsource>
         <translation>备注:</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="220"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="226"/>
         <source>Cancle</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="res/qml/LandInfoEdit.qml" line="239"/>
+        <location filename="res/qml/LandInfoEdit.qml" line="245"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
@@ -560,17 +565,17 @@
 <context>
     <name>LinkManager</name>
     <message>
-        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="309"/>
+        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="352"/>
         <source>Serial</source>
         <translation>串口</translation>
     </message>
     <message>
-        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="311"/>
+        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="354"/>
         <source>UDP</source>
         <translation>UDP</translation>
     </message>
     <message>
-        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="314"/>
+        <location filename="../../common-librarys/vgcomm/src/LinkManager.cc" line="357"/>
         <source>BlueTooth</source>
         <translation>蓝牙</translation>
     </message>
@@ -722,23 +727,23 @@
 <context>
     <name>MAVLinkProtocol</name>
     <message>
-        <location filename="../../common-librarys/vgcomm/src/MAVLinkProtocol.cc" line="178"/>
-        <location filename="../../common-librarys/vgcomm/src/MAVLinkProtocol.cc" line="251"/>
+        <location filename="../../common-librarys/vgcomm/src/MAVLinkProtocol.cc" line="182"/>
+        <location filename="../../common-librarys/vgcomm/src/MAVLinkProtocol.cc" line="255"/>
         <source>MAVLink Protocol</source>
         <translation>MAVLink协议</translation>
     </message>
     <message>
-        <location filename="../../common-librarys/vgcomm/src/MAVLinkProtocol.cc" line="178"/>
+        <location filename="../../common-librarys/vgcomm/src/MAVLinkProtocol.cc" line="182"/>
         <source>There is a MAVLink Version or Baud Rate Mismatch. Please check if the baud rates of QGroundControl and your autopilot are the same.</source>
         <translation>MavLink版本或波特率不匹配。</translation>
     </message>
     <message>
-        <location filename="../../common-librarys/vgcomm/src/MAVLinkProtocol.cc" line="251"/>
+        <location filename="../../common-librarys/vgcomm/src/MAVLinkProtocol.cc" line="255"/>
         <source>MAVLink Logging failed. Could not write to file %1, logging disabled.</source>
         <translation>MavLink日志记录失败。不能写文件%1，日志失效。</translation>
     </message>
     <message>
-        <location filename="../../common-librarys/vgcomm/src/MAVLinkProtocol.cc" line="334"/>
+        <location filename="../../common-librarys/vgcomm/src/MAVLinkProtocol.cc" line="338"/>
         <source>MAVLink protocol</source>
         <translation>MAVLink协议</translation>
     </message>
@@ -1613,6 +1618,61 @@
     </message>
 </context>
 <context>
+    <name>TCPCommand</name>
+    <message>
+        <location filename="../../common-librarys/vgcomm/src/TCPLink.h" line="49"/>
+        <source>TCP Link Settings</source>
+        <translation>TCP连接设置</translation>
+    </message>
+</context>
+<context>
+    <name>TCPLink</name>
+    <message>
+        <location filename="../../common-librarys/vgcomm/src/TCPLink.cc" line="157"/>
+        <location filename="../../common-librarys/vgcomm/src/TCPLink.cc" line="170"/>
+        <source>Link Error</source>
+        <translation>连接错误</translation>
+    </message>
+    <message>
+        <location filename="../../common-librarys/vgcomm/src/TCPLink.cc" line="157"/>
+        <source>Error on link %1. Connection failed</source>
+        <translation>连接%1错误</translation>
+    </message>
+    <message>
+        <location filename="../../common-librarys/vgcomm/src/TCPLink.cc" line="170"/>
+        <source>Error on link %1. Error on socket: %2.</source>
+        <translation>连接%1错误, 错误码: %2!</translation>
+    </message>
+</context>
+<context>
+    <name>TcpSettings</name>
+    <message>
+        <location filename="res/qml/TcpSettings.qml" line="21"/>
+        <source>TCP link:</source>
+        <translation>TCP连接:</translation>
+    </message>
+    <message>
+        <location filename="res/qml/TcpSettings.qml" line="30"/>
+        <source>Server IP:</source>
+        <translation>IP地址:</translation>
+    </message>
+    <message>
+        <location filename="res/qml/TcpSettings.qml" line="39"/>
+        <source>Server port:</source>
+        <translation>服务器Port:</translation>
+    </message>
+    <message>
+        <location filename="res/qml/TcpSettings.qml" line="51"/>
+        <source>Auto link</source>
+        <translation>自动连接</translation>
+    </message>
+    <message>
+        <location filename="res/qml/TcpSettings.qml" line="61"/>
+        <source>Link</source>
+        <translation>连接</translation>
+    </message>
+</context>
+<context>
     <name>TestMotorPage</name>
     <message>
         <location filename="res/qml/TestMotorPage.qml" line="32"/>
@@ -2028,42 +2088,42 @@
 <context>
     <name>VGLandBoundary</name>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="102"/>
+        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="93"/>
         <source>Draw</source>
         <translation>手动标点</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="100"/>
+        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="91"/>
         <source>Plant position</source>
         <translation>飞机踩点</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="104"/>
+        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="95"/>
         <source>Banlv position</source>
         <translation>北斗伴侣踩点</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="106"/>
+        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="97"/>
         <source>Survey position</source>
         <translation>测绘设备踩点</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="108"/>
+        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="99"/>
         <source>Unknow</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="215"/>
+        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="203"/>
         <source>boundary point 4--2000m</source>
         <translation>边界点在4-2000米之间</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="234"/>
+        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="222"/>
         <source>Block point 2-100m</source>
         <translation>障碍物在2-100米之间</translation>
     </message>
     <message>
-        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="241"/>
+        <location filename="VGPlantViewerUI/land/VGLandBoundary.cpp" line="229"/>
         <source>Please add block first</source>
         <translation>请先添加障碍物</translation>
     </message>
@@ -2309,37 +2369,37 @@
 <context>
     <name>VGNetManager</name>
     <message>
-        <location filename="VGNetManager.cpp" line="170"/>
+        <location filename="VGNetManager.cpp" line="138"/>
         <source>User not fit</source>
         <translation>用户名不合法</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="172"/>
+        <location filename="VGNetManager.cpp" line="140"/>
         <source>server error</source>
         <translation>服务器出错</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="174"/>
+        <location filename="VGNetManager.cpp" line="142"/>
         <source>User exist</source>
         <translation>用户名已存在</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="176"/>
+        <location filename="VGNetManager.cpp" line="144"/>
         <source>User OK</source>
         <translation>用户名可用</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="178"/>
+        <location filename="VGNetManager.cpp" line="146"/>
         <source>letter,number,_ combine(3-24)</source>
         <translation>字母,数字,_组合(3-24)</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="463"/>
+        <location filename="VGNetManager.cpp" line="431"/>
         <source>Code error</source>
         <translation>验证码错误</translation>
     </message>
     <message>
-        <location filename="VGNetManager.cpp" line="734"/>
+        <location filename="VGNetManager.cpp" line="702"/>
         <source>Register success</source>
         <translation>注册成功</translation>
     </message>
@@ -3018,37 +3078,37 @@
 <context>
     <name>VGVehicle</name>
     <message>
-        <location filename="VGVehicle.cpp" line="410"/>
+        <location filename="VGVehicle.cpp" line="411"/>
         <source>Internal error</source>
         <translation>内部错误</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="413"/>
+        <location filename="VGVehicle.cpp" line="414"/>
         <source>Device respond timeout</source>
         <translation>等待设备回应超时</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="416"/>
+        <location filename="VGVehicle.cpp" line="417"/>
         <source>Request order of mission item error</source>
         <translation>任务点请求序列错误</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="419"/>
+        <location filename="VGVehicle.cpp" line="420"/>
         <source>Request mission item out of range</source>
         <translation>请求范围错误</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="422"/>
+        <location filename="VGVehicle.cpp" line="423"/>
         <source>Item not fit</source>
         <translation>任务点不匹配</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="425"/>
+        <location filename="VGVehicle.cpp" line="426"/>
         <source>Respond of device timeout</source>
         <translation>等待设备回应超时</translation>
     </message>
     <message>
-        <location filename="VGVehicle.cpp" line="428"/>
+        <location filename="VGVehicle.cpp" line="429"/>
         <source>Mission request error</source>
         <translation>任务请求错误</translation>
     </message>

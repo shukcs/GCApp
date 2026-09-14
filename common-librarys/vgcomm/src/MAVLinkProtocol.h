@@ -201,9 +201,8 @@ protected:
     int currReceiveCounter[MAVLINK_COMM_NUM_BUFFERS];     ///< Received messages during this sample time window. Used for calculating loss %.
     int currLossCounter[MAVLINK_COMM_NUM_BUFFERS];        ///< Lost messages during this sample time window. Used for calculating loss %.
     bool versionMismatchIgnore;
-    int systemId;
-    int componentId;
-
+    int m_systemId;
+    int m_componentId;
 signals:
     /// Heartbeat received on link
     void vehicleHeartbeatInfo(LinkInterface* link, int vehicleId, int vehicleMavlinkVersion, int vehicleFirmwareType, int vehicleType);
@@ -221,11 +220,11 @@ signals:
     /** @brief Emitted if a message from the protocol should reach the user */
     void protocolStatusMessage(const QString& title, const QString& message);
     /** @brief Emitted if a new system ID was set */
-    void systemIdChanged(int systemId);
+    void systemIdChanged(int);
     /** @brief Emitted if a new component ID was set */
-    void componentIdChanged(int componentId);
+    void componentIdChanged(int);
     /** @brief Emitted if param guard status changed */
-    void paramGuardChanged(bool enabled);
+    void paramGuardChanged(bool);
     /** @brief Emitted if param read timeout changed */
     void paramRetransmissionTimeoutChanged(int ms);
     /** @brief Emitted if param write timeout changed */
