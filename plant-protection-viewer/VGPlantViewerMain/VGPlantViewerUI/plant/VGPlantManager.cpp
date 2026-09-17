@@ -569,7 +569,7 @@ void VGPlantManager::startQueryMyPlaneStatus()
      else
          m_plants.insert(i, info);
      
-     //info->LoadFromVehicle();
+     info->LoadFromVehicle();
 
      connect(info, &QObject::destroyed, this, &VGPlantManager::onChildDestroyed);
      connect(info, &VGPlantInformation::statusChanged, this, &VGPlantManager::onPlantConnectChanged);

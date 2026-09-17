@@ -161,7 +161,6 @@ Rectangle
                     }
                 }
 
-
                 rowDelegate: Rectangle{
                     id:rowDel
                     height: fontSizeLog * 2

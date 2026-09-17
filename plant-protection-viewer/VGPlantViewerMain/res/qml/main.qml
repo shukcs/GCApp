@@ -9,11 +9,11 @@ ApplicationWindow {
     id: root
     width:      500
     height:     700
-    property var pageHome:      null
-    property var pageLoggin:    null
-    property var vclSchPage:    null
+    property var	pageHome:			null
+    property var	pageLoggin:			null
+    property var	vclSchPage:			null
+    property var    guiSettingsPage:    null
     property bool bSplashScreen:true
-
     Component {
         id:         splashCom
         VGSplashScreen {
@@ -39,6 +39,10 @@ ApplicationWindow {
             visible: false
             anchors.fill: contentRec
         }
+    }
+    Component {
+        id: guiSettingsPageCom
+        GUISettings { anchors.fill: parent }
     }
     Component {
         id: vclSchCom
@@ -84,19 +88,35 @@ ApplicationWindow {
         height:     titles.contentHeight*2
         color:      vgMainPage.bgColor
         visible:    vgMainPage.titleVisible && !bSplashScreen
-        VGToolButton {
-            id:                     logginImg
-            anchors{verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10}
-            icSize: 24
-            colNormal:   "transparent"
-            bICNormal:   netManager.connectState===1
-            iconName:    "user"
-            onBtnClicked: {
-                if (!pageLoggin) {
-                    pageLoggin = logginComponent.createObject(contentRec)
-                    vgMainPage.addQmlObject(pageLoggin, root)
+        Row {
+			spacing:    6
+            anchors {verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 10}
+            VGToolButton {
+                id:                     logginImg
+                icSize: 24
+                colNormal:   "transparent"
+                bICNormal:   netManager.connectState===1
+                iconName:    "user"
+                onBtnClicked: {
+                    if (!pageLoggin) {
+                        pageLoggin = logginComponent.createObject(contentRec)
+                        vgMainPage.addQmlObject(pageLoggin, root)
+                    }
+                    vgMainPage.curQmlPage = pageLoggin
                 }
-                vgMainPage.curQmlPage = pageLoggin
+            }
+            VGToolButton {
+                id:                     planeImg
+                icSize:                 24
+                colNormal:   "transparent"
+                bICNormal:   plantManager.connected
+                iconName:    "plantG"
+                onBtnClicked: {
+                    if (netManager.connectState===1)
+                        vehicleQml()
+                    else
+                        logginQml()
+                }
             }
         }
         Label {
@@ -107,22 +127,21 @@ ApplicationWindow {
             font:                       vgMainPage.biggerFont(true)
             anchors.horizontalCenter:   parent.horizontalCenter
             anchors.verticalCenter:     parent.verticalCenter
-        }
-
-        VGToolButton {
-            id:                     planeImg
-            icSize:                 24
-            anchors{verticalCenter: parent.verticalCenter; right:parent.right; rightMargin: 10}
-            colNormal:   "transparent"
-            bICNormal:   plantManager.connected
-            iconName:    "plantG"
-            onBtnClicked: {
-                if (netManager.connectState===1)
-                    vehicleQml()
-                else
-                    logginQml()
-            }
-        }
+        }	
+		VGImage {
+			id: settingsImg
+			anchors {right: parent.right; rightMargin:15; verticalCenter: parent.verticalCenter }
+			width: 36
+			height: width
+			iconName:   "settings"
+			onImgClicked: {
+				if (!guiSettingsPage) {
+					guiSettingsPage = guiSettingsPageCom.createObject(root)
+					vgMainPage.addQmlObject(guiSettingsPage, root)
+				}
+				vgMainPage.curQmlPage = guiSettingsPage
+			}
+		}
     }
     Rectangle{
         id:             contentRec

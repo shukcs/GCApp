@@ -128,29 +128,29 @@ void VGVehicle::_mavlinkMessageReceived(LinkInterface *link, const mavlink_messa
     case MAVLINK_MSG_ID_MISSION_CURRENT:
         emit recvMavlink(this, message); break;
     case MAVLINK_MSG_ID_SPRAY_VALUE:
-        emit recvMavlink(this, message); break;
+        emit recvMavlink(this, message); return;
     case MAVLINK_MSG_ID_VFR_HUD://HUD速率等
-        _handleVfrHud(message); break;
+        _handleVfrHud(message); return;
     case MAVLINK_MSG_ID_ATTITUDE_TARGET:
-        break;
+        return;
     case MAVLINK_MSG_ID_BATTERY_STATUS://电池
-        _handleBattery(message); break;
+        _handleBattery(message); return;
     case MAVLINK_MSG_ID_ALTITUDE://高度
-        _handleAltitude(message); break;
+        _handleAltitude(message); return;
 	case MAVLINK_MSG_ID_AUTOPILOT_VERSION:
-		_handleAutopilotVersion(link, message); break;
+		_handleAutopilotVersion(link, message); return;
     case MAVLINK_MSG_ID_WIND_COV://风速等
-        break;
+        return;
     case MAVLINK_MSG_ID_COMMAND_ACK:
         _handleCommandAck(message); break;
     case MAVLINK_MSG_ID_LOG_ENTRY:  //接收日志文件信息
-        _handleLogEntry(message); break;
+        _handleLogEntry(message); return;
     case MAVLINK_MSG_ID_LOG_DATA:   //接收日志数据；
-        _handleLogData(message); break;
+        _handleLogData(message); return;
     case MAVLINK_MSG_ID_PARAM_VALUE:
-        _handleParameter(message); break;
+        _handleParameter(message); return;
     case MAVLINK_MSG_ID_INTERRUPT_POINT:
-        _handleInterrupt(message); break;
+        _handleInterrupt(message); return;
     default:
         break;
     }

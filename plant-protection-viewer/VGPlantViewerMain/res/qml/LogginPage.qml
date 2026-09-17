@@ -7,15 +7,9 @@ import QtQuick.Layouts 1.1
 Page {
     id:root
     anchors.fill:   parent
-    property var    guiSettingsPage:    null
     property var    registerPage:       null
     property alias  bWait:              contentCol.enabled
 
-
-    Component {
-        id: guiSettingsPageCom
-        GUISettings { anchors.fill: parent }
-    }
     Component {
         id: registerPageCom
         RegisterPage { anchors.fill: parent }
@@ -29,20 +23,6 @@ Page {
         anchors {left: parent.left; right: parent.right; top: parent.top}
         fillMode:       Image.PreserveAspectFit
         source:         "qrc:/images/logginBg.png"
-    }
-    VGImage {
-        id: settingsImg
-        anchors {right: parent.right; rightMargin:15; top: parent.top; topMargin:5 }
-        width: 36
-        height: width
-        iconName:   "settings"
-        onImgClicked: {
-            if (!guiSettingsPage) {
-                guiSettingsPage = guiSettingsPageCom.createObject(root)
-                vgMainPage.addQmlObject(guiSettingsPage, root)
-            }
-            vgMainPage.curQmlPage = guiSettingsPage
-        }
     }
     VGImage {
         id: backImg
